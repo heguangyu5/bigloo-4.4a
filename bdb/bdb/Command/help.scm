@@ -13,9 +13,9 @@
 ;*---------------------------------------------------------------------*/
 (module command_help
    (import command_command
-	   gdb_invoke
-	   engine_param
-	   tools_io))
+           gdb_invoke
+           engine_param
+           tools_io))
 
 ;*---------------------------------------------------------------------*/
 ;*    print-command-help ...                                           */
@@ -26,20 +26,13 @@
       (console-echo " -- ")
       (console-echo help)
       (console-newline)))
-   
+
 ;*---------------------------------------------------------------------*/
 ;*    main-help-callback ...                                           */
 ;*---------------------------------------------------------------------*/
 (define (main-help-callback)
    (lambda ()
       (console-echo (gdb-call->string "help"))))
-
-;*---------------------------------------------------------------------*/
-;*    gdb-help-callback ...                                            */
-;*---------------------------------------------------------------------*/
-(define (gdb-help-callback line)
-   (lambda ()
-      (gdb-call->string line)))
 
 ;*---------------------------------------------------------------------*/
 ;*    sub-help-command ...                                             */
@@ -49,39 +42,39 @@
       ;; display the information relative to that command
       (print-command-help sub-cmd)
       (with-access::command sub-cmd (name env)
-	 (if (pair? env)
-	     (begin
-		;; they are subcommands
-		(console-newline)
-		(console-echo "List of ")
-		(console-echo name)
-		(console-echo " subcommands:")
-		(console-newline)
-		(console-newline)
-		(for-each (lambda (cmd)
-			     (with-access::command cmd (help)
-				(console-echo help)
-				(console-newline)))
-			  env))))))
+         (if (pair? env)
+             (begin
+                ;; they are subcommands
+                (console-newline)
+                (console-echo "List of ")
+                (console-echo name)
+                (console-echo " subcommands:")
+                (console-newline)
+                (console-newline)
+                (for-each (lambda (cmd)
+                             (with-access::command cmd (help)
+                                (console-echo help)
+                                (console-newline)))
+                          env))))))
 
 ;*---------------------------------------------------------------------*/
 ;*    help-command-parse ...                                           */
 ;*---------------------------------------------------------------------*/
 (define (help-command-parse cmd-list source::bstring level::int env)
    (let loop ((cmd-list  cmd-list)
-	      (help      (main-help-callback))
-	      (env       (toplevel-command-env))
-	      (err-level level))
+              (help      (main-help-callback))
+              (env       (toplevel-command-env))
+              (err-level level))
       (if (null? cmd-list)
-	  (help)
-	  (let* ((sub-cmd-id (car cmd-list))
-		 (sub-cmd::command (find-command sub-cmd-id env)))
-	     (if (not (isa? sub-cmd command))
-		 (gdb-help-callback source)
-		 (loop (cdr cmd-list)
-		       (sub-help-command sub-cmd)
-		       (-> sub-cmd env)
-		       (+fx err-level 1)))))))
+          (help)
+          (let* ((sub-cmd-id (car cmd-list))
+                 (sub-cmd (find-command sub-cmd-id env)))
+             (if (not (isa? sub-cmd command))
+                 (console-echo (gdb-call->string source))
+                 (loop (cdr cmd-list)
+                       (sub-help-command sub-cmd)
+                       (with-access::command sub-cmd ((sub-cmd-env env)) sub-cmd-env)
+                       (+fx err-level 1)))))))
 
 ;*---------------------------------------------------------------------*/
 ;*    The help command                                                 */
@@ -90,5 +83,4 @@
    1
    help-command-parse
    "Print list of commands.")
-			   
-	   
+

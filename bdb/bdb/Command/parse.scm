@@ -13,16 +13,16 @@
 ;*---------------------------------------------------------------------*/
 (module command_parse
    (import engine_param
-	   tools_error
-	   tools_speek
-	   tools_io
-	   command_command
-	   gdb_invoke
-	   gdb_annotate)
+           tools_error
+           tools_speek
+           tools_io
+           command_command
+           gdb_invoke
+           gdb_annotate)
    (export (command-parse ::pair ::bstring)
-	   (generic-parse ::pair-nil ::bstring ::int ::pair-nil)
-	   (make-stop-parse ::procedure)
-	   (parse-error ::bstring ::bstring ::bstring ::int)))
+           (generic-parse ::pair-nil ::bstring ::int ::pair-nil)
+           (make-stop-parse ::procedure)
+           (parse-error ::bstring ::bstring ::bstring ::int)))
 
 ;*---------------------------------------------------------------------*/
 ;*    command-parse ...                                                */
@@ -36,38 +36,34 @@
 ;*---------------------------------------------------------------------*/
 (define (command-parse cmd-list::pair source::bstring)
    (let* ((env        (toplevel-command-env))
-	  (sub-cmd-id (car cmd-list))
-	  (sub-cmd::command    (find-command sub-cmd-id env)))
+          (sub-cmd-id (car cmd-list))
+          (sub-cmd    (find-command sub-cmd-id env)))
       (if (not (isa? sub-cmd command))
-	  ;; unknown command are simply pass to gdb without filtering
-	  (begin 
-	     (gdb-enable-print!)
-	     (console-echo (gdb-call->string source)))
-	  ((-> sub-cmd parser ) (cdr cmd-list)
-				source
-				1
-				(-> sub-cmd env)))))
+          ;; unknown command are simply pass to gdb without filtering
+          (begin
+             (gdb-enable-print!)
+             (console-echo (gdb-call->string source)))
+          (with-access::command sub-cmd (parser (sub-cmd-env env))
+            (parser (cdr cmd-list) source 1 sub-cmd-env)))))
 
 ;*---------------------------------------------------------------------*/
 ;*    generic-parse ...                                                */
 ;*---------------------------------------------------------------------*/
 (define (generic-parse cmd-list source level env)
    (let loop ((cmd-list cmd-list)
-	      (env      (toplevel-command-env))
-	      (level    level))
+              (env      (toplevel-command-env))
+              (level    level))
       (if (null? cmd-list)
-	  ;; if we have reached null command it means that we have
-	  ;; nothing to do otherwise the end of list would have be
-	  ;; intercepted by a sub command parser
-	  'nop
-	  (let* ((sub-cmd-id (car cmd-list))
-		 (sub-cmd::command    (find-command sub-cmd-id env)))
-	     (if (not (isa? sub-cmd command))
-		 (parse-error "Unknown command" sub-cmd-id source level)
-		 ((-> sub-cmd parser ) (cdr cmd-list)
-				       source
-				       (+fx level 1)
-				       (-> sub-cmd env)))))))
+          ;; if we have reached null command it means that we have
+          ;; nothing to do otherwise the end of list would have be
+          ;; intercepted by a sub command parser
+          'nop
+          (let* ((sub-cmd-id (car cmd-list))
+                 (sub-cmd    (find-command sub-cmd-id env)))
+             (if (not (isa? sub-cmd command))
+                 (parse-error "Unknown command" sub-cmd-id source level)
+                 (with-access::command sub-cmd (parser (sub-cmd-env env))
+                    (parser (cdr cmd-list) source (+fx level 1) sub-cmd-env)))))))
 
 ;*---------------------------------------------------------------------*/
 ;*    make-stop-parse ...                                              */
@@ -75,8 +71,8 @@
 (define (make-stop-parse action::procedure)
    (lambda (cmd-list::pair-nil source::bstring level::int env)
       (if (null? cmd-list)
-	  (action source)
-	  (parse-error "Unknown command" (car cmd-list) source level))))
+          (action source)
+          (parse-error "Unknown command" (car cmd-list) source level))))
 
 ;*---------------------------------------------------------------------*/
 ;*    parse-error ...                                                  */
@@ -87,11 +83,11 @@
 (define (parse-error msg pattern source err-level)
    (bdb-notify-error "parse" msg pattern)
    (let* ((len  (find-pattern pattern source err-level))
-	  (sstr (if (>fx len 0)
-		    (fix-tabulation! len
-		       source
-		       (make-string len #\space))
-		    "")))
+          (sstr (if (>fx len 0)
+                    (fix-tabulation! len
+                       source
+                       (make-string len #\space))
+                    "")))
       (console-error (string-append "#" source #"\n#" sstr #"^\n"))))
 
 ;*---------------------------------------------------------------------*/
@@ -102,55 +98,53 @@
    ;; the index of the char following the n-th separator
    (define (skip str index num)
       (if (=fx num 0)
-	  0
-	  (let loop ((index index)
-		     (num   num))
-	     (cond
-		((=fx num 0)
-		 index)
-		((or (char=? (string-ref str index) #\Space)
-		     (char=? (string-ref str index) #\Tab))
-		 (loop (+fx index 1) (-fx num 1)))
-		(else
-		 (loop (+fx index 1) num))))))
+          0
+          (let loop ((index index)
+                     (num   num))
+             (cond
+                ((=fx num 0)
+                 index)
+                ((or (char=? (string-ref str index) #\Space)
+                     (char=? (string-ref str index) #\Tab))
+                 (loop (+fx index 1) (-fx num 1)))
+                (else
+                 (loop (+fx index 1) num))))))
    (define (substring-at=? r2 pat src lpat)
       (if (<fx (string-length src) (+fx r2 lpat))
-	  (error "substring-at=?" "Illegal search" (cons pat src))
-	  (let loop ((r1 0)
-		     (r2 r2))
-	     (cond
-		((=fx r1 lpat)
-		 #t)
-		((char=? (string-ref src r2) (string-ref pat r1))
-		 (loop (+fx r1 1) (+fx r2 1)))
-		(else
-		 #f)))))
+          (error "substring-at=?" "Illegal search" (cons pat src))
+          (let loop ((r1 0)
+                     (r2 r2))
+             (cond
+                ((=fx r1 lpat)
+                 #t)
+                ((char=? (string-ref src r2) (string-ref pat r1))
+                 (loop (+fx r1 1) (+fx r2 1)))
+                (else
+                 #f)))))
    (let* ((start (skip source 0 err-level))
-	  (len   (string-length source))
-	  (lpat  (string-length pat))
-	  (stop  (-fx len lpat)))
+          (len   (string-length source))
+          (lpat  (string-length pat))
+          (stop  (-fx len lpat)))
       (let loop ((i start))
-	 (cond
-	    ((=fx i stop)
-	     i)
-	    ((substring-at=? i pat source lpat)
-	     i)
-	    (else
-	     (loop (+fx i 1)))))))
-   
+         (cond
+            ((=fx i stop)
+             i)
+            ((substring-at=? i pat source lpat)
+             i)
+            (else
+             (loop (+fx i 1)))))))
+
 ;*---------------------------------------------------------------------*/
 ;*    fix-tabulation! ...                                              */
 ;*---------------------------------------------------------------------*/
 (define (fix-tabulation! marker src dst)
    (let loop ((read (-fx marker 1)))
       (cond
-	 ((=fx read -1)
-	  dst)
-	 ((char=? (string-ref src read) #\tab)
-	  (string-set! dst read #\tab)
-	  (loop (-fx read 1)))
-	 (else
-	  (loop (-fx read 1))))))
-    
+         ((=fx read -1)
+          dst)
+         ((char=? (string-ref src read) #\tab)
+          (string-set! dst read #\tab)
+          (loop (-fx read 1)))
+         (else
+          (loop (-fx read 1))))))
 
-	  
