@@ -76,7 +76,7 @@
 	  ;; flush
 	  (flush-gdb-pending-output #t)
 	  ;; we silently change the gdb configuration
-	  (gdb-server->string "set print repeat -1"))))
+	  (gdb-server->string "set print repeat unlimited"))))
 
 ;*---------------------------------------------------------------------*/
 ;*    gdb-stop ...                                                     */
