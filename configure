@@ -45,7 +45,7 @@ importantapis="pthread fthread srfi18 ssl sqlite web multimedia mail calendar pk
 apis="$importantapis gstreamer phidget alsa pulseaudio wav flac mpg123 phone avahi srfi27 packrat"
 
 #*--- bee configuration -----------------------------------------------*/
-bee=partial # "partial" or "full"
+bee=full # "partial" or "full"
 
 #*--- build directory -------------------------------------------------*/
 buildtmp=$TMPDIR
@@ -1082,7 +1082,7 @@ while : ; do
       echo "Bigloo compiler:"  >&2;
       echo "   --native=yes|no [default yes]" >&2;
       echo "   --jvm=yes|no|force [default no]" >&2;
-      echo "   --bee=partial|full [default partial]" >&2;
+      echo "   --bee=partial|full [default full]" >&2;
       echo "" >&2;
       echo "API:" >&2;
       echo "   --enable-[$eapis]" >&2;
