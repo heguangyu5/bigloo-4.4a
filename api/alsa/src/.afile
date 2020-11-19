@@ -1,0 +1,14 @@
+;; automatically generated, don't edit
+;; /tmp/4.4a/api/alsa/src
+;; Thu Nov 19 07:13:53 2020
+
+(
+  (__alsa_alsa "Llib/alsa.scm")
+  (__alsa_card "Llib/card.scm")
+  (__alsa_control "Llib/control.scm")
+  (__alsa_mixer "Llib/mixer.scm")
+  (__alsa_music "Llib/music.scm")
+  (__alsa_pcm "Llib/pcm.scm")
+  (__alsa_rawmidi "Llib/rawmidi.scm")
+)
+

@@ -1,0 +1,8 @@
+;; automatically generated, don't edit
+;; /tmp/4.4a/api/avahi/src
+;; Thu Nov 19 07:13:53 2020
+
+(
+  (__avahi_avahi "Llib/avahi.scm")
+)
+

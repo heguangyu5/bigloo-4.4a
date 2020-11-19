@@ -1,0 +1,12 @@
+;; /tmp/4.4a/api/pthread/src
+;; Thu Nov 19 07:13:52 2020
+
+(
+  (__pth_semaphore "bigloo.pthread.psemaphore")
+  (__pth_backend "bigloo.pthread.pbackend")
+  (__pth_thread "bigloo.pthread.pthread")
+  (__pth_condvar "bigloo.pthread.pcondvar")
+  (__pth_mutex "bigloo.pthread.pmutex")
+  (__pth_makelib "bigloo.pthread.make_lib")
+)
+

@@ -1,0 +1,225 @@
+;; ==========================================================
+;; Class accessors
+;; Bigloo (4.2c)
+;; Inria -- Sophia Antipolis     Fri Nov 6 10:55:25 CET 2015 
+;; (bigloo.new -classgen SawMill/remove.scm)
+;; ==========================================================
+
+;; The directives
+(directives
+
+;; defcollect
+(cond-expand ((and bigloo-class-sans (not bigloo-class-generate))
+  (static
+    (inline make-defcollect::defcollect label1250::int preds1251::pair-nil succs1252::pair-nil first1253::pair)
+    (inline defcollect?::bool ::obj)
+    (defcollect-nil::defcollect)
+    (inline defcollect-first::pair ::defcollect)
+    (inline defcollect-first-set! ::defcollect ::pair)
+    (inline defcollect-succs::pair-nil ::defcollect)
+    (inline defcollect-succs-set! ::defcollect ::pair-nil)
+    (inline defcollect-preds::pair-nil ::defcollect)
+    (inline defcollect-preds-set! ::defcollect ::pair-nil)
+    (inline defcollect-label::int ::defcollect)
+    (inline defcollect-label-set! ::defcollect ::int))))
+
+;; rcollect
+(cond-expand ((and bigloo-class-sans (not bigloo-class-generate))
+  (static
+    (inline make-rcollect::rcollect label1245::int preds1246::pair-nil succs1247::pair-nil first1248::pair)
+    (inline rcollect?::bool ::obj)
+    (rcollect-nil::rcollect)
+    (inline rcollect-first::pair ::rcollect)
+    (inline rcollect-first-set! ::rcollect ::pair)
+    (inline rcollect-succs::pair-nil ::rcollect)
+    (inline rcollect-succs-set! ::rcollect ::pair-nil)
+    (inline rcollect-preds::pair-nil ::rcollect)
+    (inline rcollect-preds-set! ::rcollect ::pair-nil)
+    (inline rcollect-label::int ::rcollect)
+    (inline rcollect-label-set! ::rcollect ::int))))
+
+;; ucollect
+(cond-expand ((and bigloo-class-sans (not bigloo-class-generate))
+  (static
+    (inline make-ucollect::ucollect label1240::int preds1241::pair-nil succs1242::pair-nil first1243::pair)
+    (inline ucollect?::bool ::obj)
+    (ucollect-nil::ucollect)
+    (inline ucollect-first::pair ::ucollect)
+    (inline ucollect-first-set! ::ucollect ::pair)
+    (inline ucollect-succs::pair-nil ::ucollect)
+    (inline ucollect-succs-set! ::ucollect ::pair-nil)
+    (inline ucollect-preds::pair-nil ::ucollect)
+    (inline ucollect-preds-set! ::ucollect ::pair-nil)
+    (inline ucollect-label::int ::ucollect)
+    (inline ucollect-label-set! ::ucollect ::int))))
+
+;; removed
+(cond-expand ((and bigloo-class-sans (not bigloo-class-generate))
+  (static
+    (inline make-removed::removed loc1234::obj %spill1235::pair-nil dest1236::obj fun1237::rtl_fun args1238::pair-nil)
+    (inline removed?::bool ::obj)
+    (removed-nil::removed)
+    (inline removed-args::pair-nil ::removed)
+    (inline removed-args-set! ::removed ::pair-nil)
+    (inline removed-fun::rtl_fun ::removed)
+    (inline removed-fun-set! ::removed ::rtl_fun)
+    (inline removed-dest::obj ::removed)
+    (inline removed-dest-set! ::removed ::obj)
+    (inline removed-%spill::pair-nil ::removed)
+    (inline removed-%spill-set! ::removed ::pair-nil)
+    (inline removed-loc::obj ::removed)
+    (inline removed-loc-set! ::removed ::obj))))
+
+;; visited
+(cond-expand ((and bigloo-class-sans (not bigloo-class-generate))
+  (static
+    (inline make-visited::visited label1229::int preds1230::pair-nil succs1231::pair-nil first1232::pair)
+    (inline visited?::bool ::obj)
+    (visited-nil::visited)
+    (inline visited-first::pair ::visited)
+    (inline visited-first-set! ::visited ::pair)
+    (inline visited-succs::pair-nil ::visited)
+    (inline visited-succs-set! ::visited ::pair-nil)
+    (inline visited-preds::pair-nil ::visited)
+    (inline visited-preds-set! ::visited ::pair-nil)
+    (inline visited-label::int ::visited)
+    (inline visited-label-set! ::visited ::int))))
+
+;; bremoved
+(cond-expand ((and bigloo-class-sans (not bigloo-class-generate))
+  (static
+    (inline make-bremoved::bremoved label1224::int preds1225::pair-nil succs1226::pair-nil first1227::pair)
+    (inline bremoved?::bool ::obj)
+    (bremoved-nil::bremoved)
+    (inline bremoved-first::pair ::bremoved)
+    (inline bremoved-first-set! ::bremoved ::pair)
+    (inline bremoved-succs::pair-nil ::bremoved)
+    (inline bremoved-succs-set! ::bremoved ::pair-nil)
+    (inline bremoved-preds::pair-nil ::bremoved)
+    (inline bremoved-preds-set! ::bremoved ::pair-nil)
+    (inline bremoved-label::int ::bremoved)
+    (inline bremoved-label-set! ::bremoved ::int))))
+
+;; creg
+(cond-expand ((and bigloo-class-sans (not bigloo-class-generate))
+  (static
+    (inline make-creg::creg type1215::type var1216::obj onexpr?1217::obj name1218::obj key1219::obj hardware1220::obj defs1221::obj nbuses1222::obj)
+    (inline creg?::bool ::obj)
+    (creg-nil::creg)
+    (inline creg-nbuses::obj ::creg)
+    (inline creg-nbuses-set! ::creg ::obj)
+    (inline creg-defs::obj ::creg)
+    (inline creg-defs-set! ::creg ::obj)
+    (inline creg-hardware::obj ::creg)
+    (inline creg-key::obj ::creg)
+    (inline creg-name::obj ::creg)
+    (inline creg-onexpr?::obj ::creg)
+    (inline creg-onexpr?-set! ::creg ::obj)
+    (inline creg-var::obj ::creg)
+    (inline creg-var-set! ::creg ::obj)
+    (inline creg-type::type ::creg)
+    (inline creg-type-set! ::creg ::type)))))
+
+;; The definitions
+(cond-expand (bigloo-class-sans
+;; defcollect
+(define-inline (make-defcollect::defcollect label1250::int preds1251::pair-nil succs1252::pair-nil first1253::pair) (instantiate::defcollect (label label1250) (preds preds1251) (succs succs1252) (first first1253)))
+(define-inline (defcollect?::bool obj::obj) ((@ isa? __object) obj (@ defcollect saw_remove)))
+(define (defcollect-nil::defcollect) (class-nil (@ defcollect saw_remove)))
+(define-inline (defcollect-first::pair o::defcollect) (-> |#!bigloo_wallow| o first))
+(define-inline (defcollect-first-set! o::defcollect v::pair) (set! (-> |#!bigloo_wallow| o first) v))
+(define-inline (defcollect-succs::pair-nil o::defcollect) (-> |#!bigloo_wallow| o succs))
+(define-inline (defcollect-succs-set! o::defcollect v::pair-nil) (set! (-> |#!bigloo_wallow| o succs) v))
+(define-inline (defcollect-preds::pair-nil o::defcollect) (-> |#!bigloo_wallow| o preds))
+(define-inline (defcollect-preds-set! o::defcollect v::pair-nil) (set! (-> |#!bigloo_wallow| o preds) v))
+(define-inline (defcollect-label::int o::defcollect) (-> |#!bigloo_wallow| o label))
+(define-inline (defcollect-label-set! o::defcollect v::int) (set! (-> |#!bigloo_wallow| o label) v))
+
+;; rcollect
+(define-inline (make-rcollect::rcollect label1245::int preds1246::pair-nil succs1247::pair-nil first1248::pair) (instantiate::rcollect (label label1245) (preds preds1246) (succs succs1247) (first first1248)))
+(define-inline (rcollect?::bool obj::obj) ((@ isa? __object) obj (@ rcollect saw_remove)))
+(define (rcollect-nil::rcollect) (class-nil (@ rcollect saw_remove)))
+(define-inline (rcollect-first::pair o::rcollect) (-> |#!bigloo_wallow| o first))
+(define-inline (rcollect-first-set! o::rcollect v::pair) (set! (-> |#!bigloo_wallow| o first) v))
+(define-inline (rcollect-succs::pair-nil o::rcollect) (-> |#!bigloo_wallow| o succs))
+(define-inline (rcollect-succs-set! o::rcollect v::pair-nil) (set! (-> |#!bigloo_wallow| o succs) v))
+(define-inline (rcollect-preds::pair-nil o::rcollect) (-> |#!bigloo_wallow| o preds))
+(define-inline (rcollect-preds-set! o::rcollect v::pair-nil) (set! (-> |#!bigloo_wallow| o preds) v))
+(define-inline (rcollect-label::int o::rcollect) (-> |#!bigloo_wallow| o label))
+(define-inline (rcollect-label-set! o::rcollect v::int) (set! (-> |#!bigloo_wallow| o label) v))
+
+;; ucollect
+(define-inline (make-ucollect::ucollect label1240::int preds1241::pair-nil succs1242::pair-nil first1243::pair) (instantiate::ucollect (label label1240) (preds preds1241) (succs succs1242) (first first1243)))
+(define-inline (ucollect?::bool obj::obj) ((@ isa? __object) obj (@ ucollect saw_remove)))
+(define (ucollect-nil::ucollect) (class-nil (@ ucollect saw_remove)))
+(define-inline (ucollect-first::pair o::ucollect) (-> |#!bigloo_wallow| o first))
+(define-inline (ucollect-first-set! o::ucollect v::pair) (set! (-> |#!bigloo_wallow| o first) v))
+(define-inline (ucollect-succs::pair-nil o::ucollect) (-> |#!bigloo_wallow| o succs))
+(define-inline (ucollect-succs-set! o::ucollect v::pair-nil) (set! (-> |#!bigloo_wallow| o succs) v))
+(define-inline (ucollect-preds::pair-nil o::ucollect) (-> |#!bigloo_wallow| o preds))
+(define-inline (ucollect-preds-set! o::ucollect v::pair-nil) (set! (-> |#!bigloo_wallow| o preds) v))
+(define-inline (ucollect-label::int o::ucollect) (-> |#!bigloo_wallow| o label))
+(define-inline (ucollect-label-set! o::ucollect v::int) (set! (-> |#!bigloo_wallow| o label) v))
+
+;; removed
+(define-inline (make-removed::removed loc1234::obj %spill1235::pair-nil dest1236::obj fun1237::rtl_fun args1238::pair-nil) (instantiate::removed (loc loc1234) (%spill %spill1235) (dest dest1236) (fun fun1237) (args args1238)))
+(define-inline (removed?::bool obj::obj) ((@ isa? __object) obj (@ removed saw_remove)))
+(define (removed-nil::removed) (class-nil (@ removed saw_remove)))
+(define-inline (removed-args::pair-nil o::removed) (-> |#!bigloo_wallow| o args))
+(define-inline (removed-args-set! o::removed v::pair-nil) (set! (-> |#!bigloo_wallow| o args) v))
+(define-inline (removed-fun::rtl_fun o::removed) (-> |#!bigloo_wallow| o fun))
+(define-inline (removed-fun-set! o::removed v::rtl_fun) (set! (-> |#!bigloo_wallow| o fun) v))
+(define-inline (removed-dest::obj o::removed) (-> |#!bigloo_wallow| o dest))
+(define-inline (removed-dest-set! o::removed v::obj) (set! (-> |#!bigloo_wallow| o dest) v))
+(define-inline (removed-%spill::pair-nil o::removed) (-> |#!bigloo_wallow| o %spill))
+(define-inline (removed-%spill-set! o::removed v::pair-nil) (set! (-> |#!bigloo_wallow| o %spill) v))
+(define-inline (removed-loc::obj o::removed) (-> |#!bigloo_wallow| o loc))
+(define-inline (removed-loc-set! o::removed v::obj) (set! (-> |#!bigloo_wallow| o loc) v))
+
+;; visited
+(define-inline (make-visited::visited label1229::int preds1230::pair-nil succs1231::pair-nil first1232::pair) (instantiate::visited (label label1229) (preds preds1230) (succs succs1231) (first first1232)))
+(define-inline (visited?::bool obj::obj) ((@ isa? __object) obj (@ visited saw_remove)))
+(define (visited-nil::visited) (class-nil (@ visited saw_remove)))
+(define-inline (visited-first::pair o::visited) (-> |#!bigloo_wallow| o first))
+(define-inline (visited-first-set! o::visited v::pair) (set! (-> |#!bigloo_wallow| o first) v))
+(define-inline (visited-succs::pair-nil o::visited) (-> |#!bigloo_wallow| o succs))
+(define-inline (visited-succs-set! o::visited v::pair-nil) (set! (-> |#!bigloo_wallow| o succs) v))
+(define-inline (visited-preds::pair-nil o::visited) (-> |#!bigloo_wallow| o preds))
+(define-inline (visited-preds-set! o::visited v::pair-nil) (set! (-> |#!bigloo_wallow| o preds) v))
+(define-inline (visited-label::int o::visited) (-> |#!bigloo_wallow| o label))
+(define-inline (visited-label-set! o::visited v::int) (set! (-> |#!bigloo_wallow| o label) v))
+
+;; bremoved
+(define-inline (make-bremoved::bremoved label1224::int preds1225::pair-nil succs1226::pair-nil first1227::pair) (instantiate::bremoved (label label1224) (preds preds1225) (succs succs1226) (first first1227)))
+(define-inline (bremoved?::bool obj::obj) ((@ isa? __object) obj (@ bremoved saw_remove)))
+(define (bremoved-nil::bremoved) (class-nil (@ bremoved saw_remove)))
+(define-inline (bremoved-first::pair o::bremoved) (-> |#!bigloo_wallow| o first))
+(define-inline (bremoved-first-set! o::bremoved v::pair) (set! (-> |#!bigloo_wallow| o first) v))
+(define-inline (bremoved-succs::pair-nil o::bremoved) (-> |#!bigloo_wallow| o succs))
+(define-inline (bremoved-succs-set! o::bremoved v::pair-nil) (set! (-> |#!bigloo_wallow| o succs) v))
+(define-inline (bremoved-preds::pair-nil o::bremoved) (-> |#!bigloo_wallow| o preds))
+(define-inline (bremoved-preds-set! o::bremoved v::pair-nil) (set! (-> |#!bigloo_wallow| o preds) v))
+(define-inline (bremoved-label::int o::bremoved) (-> |#!bigloo_wallow| o label))
+(define-inline (bremoved-label-set! o::bremoved v::int) (set! (-> |#!bigloo_wallow| o label) v))
+
+;; creg
+(define-inline (make-creg::creg type1215::type var1216::obj onexpr?1217::obj name1218::obj key1219::obj hardware1220::obj defs1221::obj nbuses1222::obj) (instantiate::creg (type type1215) (var var1216) (onexpr? onexpr?1217) (name name1218) (key key1219) (hardware hardware1220) (defs defs1221) (nbuses nbuses1222)))
+(define-inline (creg?::bool obj::obj) ((@ isa? __object) obj (@ creg saw_remove)))
+(define (creg-nil::creg) (class-nil (@ creg saw_remove)))
+(define-inline (creg-nbuses::obj o::creg) (-> |#!bigloo_wallow| o nbuses))
+(define-inline (creg-nbuses-set! o::creg v::obj) (set! (-> |#!bigloo_wallow| o nbuses) v))
+(define-inline (creg-defs::obj o::creg) (-> |#!bigloo_wallow| o defs))
+(define-inline (creg-defs-set! o::creg v::obj) (set! (-> |#!bigloo_wallow| o defs) v))
+(define-inline (creg-hardware::obj o::creg) (-> |#!bigloo_wallow| o hardware))
+(define-inline (creg-hardware-set! o::creg v::obj) (set! (-> |#!bigloo_wallow| o hardware) v))
+(define-inline (creg-key::obj o::creg) (-> |#!bigloo_wallow| o key))
+(define-inline (creg-key-set! o::creg v::obj) (set! (-> |#!bigloo_wallow| o key) v))
+(define-inline (creg-name::obj o::creg) (-> |#!bigloo_wallow| o name))
+(define-inline (creg-name-set! o::creg v::obj) (set! (-> |#!bigloo_wallow| o name) v))
+(define-inline (creg-onexpr?::obj o::creg) (-> |#!bigloo_wallow| o onexpr?))
+(define-inline (creg-onexpr?-set! o::creg v::obj) (set! (-> |#!bigloo_wallow| o onexpr?) v))
+(define-inline (creg-var::obj o::creg) (-> |#!bigloo_wallow| o var))
+(define-inline (creg-var-set! o::creg v::obj) (set! (-> |#!bigloo_wallow| o var) v))
+(define-inline (creg-type::type o::creg) (-> |#!bigloo_wallow| o type))
+(define-inline (creg-type-set! o::creg v::type) (set! (-> |#!bigloo_wallow| o type) v))
+))

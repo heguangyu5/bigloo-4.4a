@@ -1,0 +1,10 @@
+;; automatically generated, don't edit
+;; /tmp/4.4a/api/pulseaudio/src
+;; Thu Nov 19 07:13:53 2020
+
+(
+  (__pulseaudio_music "Llib/music.scm")
+  (__pulseaudio_pulseaudio "Llib/pulseaudio.scm")
+  (__pulseaudio_simple "Llib/simple.scm")
+)
+

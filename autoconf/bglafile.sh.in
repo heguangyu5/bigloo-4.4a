@@ -1,0 +1,19 @@
+#!@SHELL@
+#*=====================================================================*/
+#*    serrano/prgm/project/bigloo/autoconf/bglafile.sh.in              */
+#*    -------------------------------------------------------------    */
+#*    Author      :  Manuel Serrano                                    */
+#*    Creation    :  Tue Oct 13 14:06:43 2015                          */
+#*    Last change :  Wed Oct 11 22:08:19 2017 (serrano)                */
+#*    Copyright   :  2015-17 Manuel Serrano                            */
+#*    -------------------------------------------------------------    */
+#*    Afile wrapper                                                    */
+#*=====================================================================*/
+
+LD_LIBRARY_PATH=@BGLBUILDGMPLIBDIR@:@BGLBUILDPCRELIBDIR@:@BGLBUILDLIBUVLIBDIR@:@BGLBUILDLIBUNISTRINGLIBDIR@:@BGLBUILDLIBDIR@:$LD_LIBRARY_PATH
+DYLD_LIBRARY_PATH=@BGLBUILDGMPLIBDIR@:@BGLBUILDPCRELIBDIR@:@BGLBUILDLIBUVLIBDIR@:@BGLBUILDLIBUNISTRINGLIBDIR@:@BGLBUILDLIBDIR@:$DYLD_LIBRARY_PATH
+
+export LD_LIBRARY_PATH
+export DYLD_LIBRARY_PATH
+
+exec @AFILE@ "$@"

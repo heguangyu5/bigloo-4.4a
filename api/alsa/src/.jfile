@@ -1,0 +1,14 @@
+;; /tmp/4.4a/api/alsa/src
+;; Thu Nov 19 07:13:53 2020
+
+(
+  (__alsa_rawmidi "bigloo.alsa.rawmidi")
+  (__alsa_music "bigloo.alsa.music")
+  (__alsa_mixer "bigloo.alsa.mixer")
+  (__alsa_control "bigloo.alsa.control")
+  (__alsa_card "bigloo.alsa.card")
+  (__alsa_pcm "bigloo.alsa.pcm")
+  (__alsa_alsa "bigloo.alsa.alsa")
+  (__alsa_makelib "bigloo.alsa.make_lib")
+)
+

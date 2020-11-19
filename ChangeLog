@@ -1,0 +1,599 @@
+bigloo (4.4a-1) unstable; urgency=low
+
+  * Cleanup
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Thu, 19 Nov 2020 07:09:04 +0100
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * Fix date
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Thu, 19 Nov 2020 07:03:59 +0100
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * Fix date implementation (bootstrap)
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Wed, 18 Nov 2020 18:58:19 +0100
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * Java fixes
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Wed, 18 Nov 2020 14:05:41 +0100
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * .
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Wed, 18 Nov 2020 13:51:57 +0100
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * Java fix and gmp-6.2.1
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Wed, 18 Nov 2020 13:50:08 +0100
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * Release 4.4a
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Mon, 9 Nov 2020 08:06:02 +0100
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * Fix map/for-each inlining (bootstrap)
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Thu, 5 Nov 2020 13:25:52 +0100
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * Autoconfiguration.
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Wed, 4 Nov 2020 14:17:35 +0100
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * Add essential tools detection
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Wed, 4 Nov 2020 13:52:45 +0100
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * Minor configure fix
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Wed, 4 Nov 2020 07:08:02 +0100
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * MacOS, again.
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Tue, 3 Nov 2020 13:27:06 +0100
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * Minor MacOS fix (attempt)
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Tue, 3 Nov 2020 12:30:54 +0100
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * Autoconfiguration fix
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Tue, 3 Nov 2020 11:33:36 +0100
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * Add detection of pthread_cancel (lacked by Android)
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Sun, 1 Nov 2020 18:49:49 +0100
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * .
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Sun, 1 Nov 2020 09:23:07 +0100
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * Minor configure extension
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Sun, 1 Nov 2020 07:19:45 +0100
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * Fix regular expressions
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Fri, 30 Oct 2020 11:09:47 +0100
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * pcre minor fix
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Thu, 29 Oct 2020 15:17:42 +0100
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * Fix simple regexp
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Tue, 27 Oct 2020 14:33:44 +0100
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * Merge branch 'master' of github.com:manuel-serrano/bigloo
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Tue, 27 Oct 2020 14:01:41 +0100
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * Merge pull request #47 from donaldsonjw/pthread_modifications
+
+ -- manuel-serrano <manuel-serrano@users.noreply.github.com>  Tue, 27 Oct 2020 14:01:22 +0100
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * Merge branch 'master' of github.com:manuel-serrano/bigloo
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Tue, 27 Oct 2020 12:46:58 +0100
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * Sigtrap
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Tue, 27 Oct 2020 12:46:50 +0100
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * Merge pull request #53 from jamesjer/format-strings
+
+ -- manuel-serrano <manuel-serrano@users.noreply.github.com>  Tue, 27 Oct 2020 12:37:15 +0100
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * Merge pull request #52 from jamesjer/avahi-string-list
+
+ -- manuel-serrano <manuel-serrano@users.noreply.github.com>  Tue, 27 Oct 2020 12:36:50 +0100
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * Merge pull request #51 from jamesjer/avahi-defs
+
+ -- manuel-serrano <manuel-serrano@users.noreply.github.com>  Tue, 27 Oct 2020 12:36:10 +0100
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * Merge pull request #50 from jamesjer/flac-pulse
+
+ -- manuel-serrano <manuel-serrano@users.noreply.github.com>  Tue, 27 Oct 2020 12:35:21 +0100
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * Merge pull request #48 from jamesjer/master
+
+ -- manuel-serrano <manuel-serrano@users.noreply.github.com>  Tue, 27 Oct 2020 12:34:26 +0100
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * Minor string cleanup (bootstrap)
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Tue, 27 Oct 2020 08:13:14 +0100
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * Improved string allocation
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Mon, 26 Oct 2020 18:51:46 +0100
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * Fix cpcre
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Thu, 22 Oct 2020 20:07:29 +0200
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * Correct 2 gcc warnings about format specifiers
+
+ -- Jerry James <loganjerry@gmail.com>  Thu, 22 Oct 2020 11:21:24 -0600
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * Correct initialization of empty AvahiStringList
+
+ -- Jerry James <loganjerry@gmail.com>  Thu, 22 Oct 2020 11:00:22 -0600
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * Provide prototypes for C avahi functions
+
+ -- Jerry James <loganjerry@gmail.com>  Thu, 22 Oct 2020 10:45:07 -0600
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * Get pa_strerror prototype for inline function pulseaudio-simple-flush
+
+ -- Jerry James <loganjerry@gmail.com>  Thu, 22 Oct 2020 10:15:26 -0600
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * Fix mismatches between prototypes and definitions
+
+ -- Jerry James <loganjerry@gmail.com>  Thu, 22 Oct 2020 09:05:03 -0600
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * .
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Wed, 21 Oct 2020 18:15:48 +0200
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * .
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Wed, 21 Oct 2020 18:08:56 +0200
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * .
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Tue, 20 Oct 2020 15:07:13 +0200
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * Date fixes
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Tue, 20 Oct 2020 12:48:51 +0200
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * Tiny string-append improvement (bootstrap)
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Sun, 18 Oct 2020 19:14:58 +0200
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * Add position optional parameter to string->integer
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Sun, 18 Oct 2020 07:23:05 +0200
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * Library installation
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Wed, 14 Oct 2020 05:15:53 +0200
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * Dynamic multithread library loading
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Tue, 13 Oct 2020 16:35:13 +0200
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * Fix gc Makefile
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Tue, 13 Oct 2020 15:54:51 +0200
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * Fix runtime Makefile
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Tue, 13 Oct 2020 15:20:42 +0200
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * Makefile fixes (bootstrap)
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Tue, 13 Oct 2020 15:09:05 +0200
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * .
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Tue, 13 Oct 2020 09:50:16 +0200
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * .
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Tue, 13 Oct 2020 09:09:43 +0200
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * Pthread/Fthread compilation and installation
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Tue, 13 Oct 2020 08:46:31 +0200
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * configuration (bootstrap)
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Tue, 13 Oct 2020 07:46:39 +0200
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * Fix autoconfiguration
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Tue, 13 Oct 2020 07:15:52 +0200
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * Merge branch 'master' of inria:GIT/bigloo
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Tue, 13 Oct 2020 05:21:48 +0200
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * Makefile fixes
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Mon, 12 Oct 2020 18:42:04 +0200
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * New libuv version (bootstrap)
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Mon, 12 Oct 2020 13:31:28 +0200
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * Merge branch 'master' of inria:GIT/bigloo into master
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Mon, 12 Oct 2020 07:34:10 +0200
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * Error management
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Mon, 12 Oct 2020 07:34:08 +0200
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * More agressive return-goto optimization
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Sun, 11 Oct 2020 20:37:56 +0200
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * Uncell optimization (bootstrap)
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Sun, 11 Oct 2020 08:39:25 +0200
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * Procedure duplication (for client lib stack allocation)
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Sat, 3 Oct 2020 06:53:44 +0200
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * Var args stack allocation
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Sun, 27 Sep 2020 20:36:59 +0200
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * Prepare varargs stack allocation
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Sun, 27 Sep 2020 09:38:16 +0200
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * .
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Mon, 21 Sep 2020 15:48:24 +0200
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * .
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Mon, 21 Sep 2020 15:31:51 +0200
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * .
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Mon, 21 Sep 2020 15:30:30 +0200
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * .
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Mon, 21 Sep 2020 15:28:39 +0200
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * .
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Mon, 21 Sep 2020 15:27:51 +0200
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * .
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Mon, 21 Sep 2020 15:26:50 +0200
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * Modify bglpmutex so that it is based on ReentrantLock
+
+ -- Joseph Donaldson <donaldsonjw@yahoo.com>  Sun, 20 Sep 2020 11:20:19 -0700
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * Stack allocation of globalized cells
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Sun, 20 Sep 2020 16:28:38 +0200
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * Stack allocation of integrate cells (bootstrap)
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Sun, 20 Sep 2020 15:54:42 +0200
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * Towards cell stack allocation
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Sun, 20 Sep 2020 15:21:22 +0200
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * .
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Sun, 13 Sep 2020 09:32:08 +0200
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * .
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Sun, 13 Sep 2020 07:04:45 +0200
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * .
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Fri, 11 Sep 2020 16:03:26 +0200
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * Travis update
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Fri, 11 Sep 2020 15:50:07 +0200
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * Merge branch 'master' of inria:GIT/bigloo into master
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Thu, 10 Sep 2020 16:30:50 +0200
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * Minor Makefile fix
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Thu, 10 Sep 2020 09:21:27 +0200
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * Version branding (bootstrap)
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Thu, 10 Sep 2020 09:17:43 +0200
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * Merge branch 'master' of inria:GIT/bigloo into master
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Thu, 10 Sep 2020 07:45:04 +0200
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * .
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Thu, 10 Sep 2020 07:45:01 +0200
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * .
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Wed, 9 Sep 2020 19:32:53 +0200
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * hash table improvements (tentative)
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Wed, 9 Sep 2020 15:56:31 +0200
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * Makefile fix
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Wed, 9 Sep 2020 10:14:38 +0200
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * Correct timeout for blgpth_thread_join
+
+ -- Joseph Donaldson <donaldsonjw@yahoo.com>  Mon, 7 Sep 2020 16:21:15 -0700
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * Minor Makefile fixes
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Mon, 7 Sep 2020 14:57:05 +0200
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * Bootstrap with new stringhash (bootstrap)
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Mon, 7 Sep 2020 08:14:29 +0200
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * Merge branch 'master' of inria:GIT/bigloo into master
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Mon, 7 Sep 2020 07:44:58 +0200
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * .
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Mon, 7 Sep 2020 07:44:54 +0200
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * C hash function fixed
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Sun, 6 Sep 2020 19:59:14 +0200
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * pthread modifications and corrections
+
+ -- Joseph Donaldson <donaldsonjw@yahoo.com>  Sat, 5 Sep 2020 19:14:52 -0700
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * GC cleanup
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Thu, 3 Sep 2020 07:29:54 +0200
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * Adapt new lib naming to bmem
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Thu, 3 Sep 2020 07:27:20 +0200
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * New shared libraries naming (bootstrap)
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Sun, 30 Aug 2020 11:55:27 +0200
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * Merge branch 'master' of inria:GIT/bigloo into master
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Fri, 28 Aug 2020 11:10:22 +0200
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * RegExp fix (2) (bootstrap)
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Fri, 28 Aug 2020 11:08:22 +0200
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * RegExp fix (bootstrap)
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Fri, 28 Aug 2020 10:50:03 +0200
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * Fix minor date typing error (bootstrap)
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Fri, 28 Aug 2020 10:05:45 +0200
+
+bigloo (4.4a-1) unstable; urgency=low
+
+  * .
+
+ -- Manuel Serrano <Manuel.Serrano@inria.fr>  Thu, 27 Aug 2020 21:34:39 +0200

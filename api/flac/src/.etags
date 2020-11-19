@@ -1,0 +1,84 @@
+
+-,0
+(meta-define define define0,0
+(meta-define define define-struct0,0
+(meta-define define define-parameter0,0
+(meta-define define define0,0
+(meta-define define define-inline0,0
+(meta-define define define-generic0,0
+(meta-define define define-macro0,0
+(meta-define define define-expander0,0
+(meta-define define module0,0
+
+Llib/flac.scm,1129
+(module __flac_flac15,963
+(define (&flac-error?43,1945
+(define (make-&flac-error43,1945
+(define (fill-&flac-error!43,1945
+	   (class &flac-error43,1945
+(define-method (object-print o::flac-decoder port print-slot71,3151
+(define (%$flac-decoder-new77,3476
+(define (%$flac-make-custom83,3752
+(define-generic (flac-decoder-init89,4030
+(define-generic (flac-decoder-close99,4535
+(define-generic (flac-decoder-decode107,4902
+(define-generic (flac-decoder-decode16118,5394
+(define-generic (flac-decoder-reset!129,5890
+(define (flac-decoder-get-state139,6373
+(define-generic (flac-decoder-read146,6760
+(define-generic (flac-decoder-write151,7047
+(define-generic (flac-decoder-metadata160,7397
+(define-generic (flac-decoder-tell169,7747
+(define-generic (flac-decoder-seek175,8029
+(define-generic (flac-decoder-length181,8318
+(define-generic (flac-decoder-info187,8602
+(define (flac-decoder-state->symbol195,9025
+(define (flac-error-status223,10226
+(define-generic (flac-decoder-position239,10869
+(define-generic (flac-volume-get251,11346
+(define-generic (flac-volume-set!258,11714
+(define (flac-error267,12159
+
+Llib/flac_decoder.scm,1359
+(module __flac_decoder15,963
+(define (flacmusicdecoder?37,1661
+(define (make-flacmusicdecoder37,1661
+(define (fill-flacmusicdecoder!37,1661
+	   (class flacmusicdecoder37,1661
+(define (flacmusicdecoder-%flac::obj-set!38,1703
+(define (flacmusicdecoder-%flac::obj38,1703
+(define (flacmusicdecoder-%inseek-set!39,1736
+(define (flacmusicdecoder-%inseek39,1736
+(define-macro ($compiler-debug47,2076
+(define (flac-debug53,2359
+(define (flac-checksum-debug63,2683
+(define-method (musicdecoder-init dec::flacmusicdecoder73,3100
+(define-method (flac-decoder-reset! o::flacdec81,3540
+(define-method (flac-decoder-write o::flacdec size rate channels bps92,4024
+(define-method (musicdecoder-reset! o::flacmusicdecoder101,4439
+(define-method (musicdecoder-position o::flacmusicdecoder abuf109,4824
+(define-method (musicdecoder-info o::flacmusicdecoder116,5193
+(define-method (musicdecoder-volume-set! o::flacmusicdecoder vol123,5549
+(define-method (musicdecoder-seek o::flacmusicdecoder sec130,5919
+(define-method (flac-decoder-read o::flacdec size::long143,6577
+(define-method (flac-decoder-tell o::flacdec253,10009
+(define-method (flac-decoder-seek o::flacdec off263,10488
+(define-method (flac-decoder-length o::flacdec274,10969
+(define *debug-port*283,11410
+(define (debug-init!288,11658
+(define (debug-stop!295,12038
+(define (debug302,12399
+
+Llib/flac_alsadec.scm,167
+(module __flac_alsadec15,963
+(define (flacalsadec?26,1125
+(define (make-flacalsadec26,1125
+(define (fill-flacalsadec!26,1125
+   (static (class flacalsadec26,1125
+
+Llib/flac_padec.scm,157
+(module __flac_padec15,963
+(define (flacpadec?26,1138
+(define (make-flacpadec26,1138
+(define (fill-flacpadec!26,1138
+   (static (class flacpadec26,1138

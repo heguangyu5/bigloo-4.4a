@@ -1,0 +1,22 @@
+;; automatically generated, don't edit
+;; /tmp/4.4a/api/libuv/src
+;; Thu Nov 19 07:13:53 2020
+
+(
+  (__libuv_async "Llib/async.scm")
+  (__libuv_check "Llib/check.scm")
+  (__libuv_fs "Llib/fs.scm")
+  (__libuv_fs-event "Llib/fsevent.scm")
+  (__libuv_fs-poll "Llib/fspoll.scm")
+  (__libuv_handle "Llib/handle.scm")
+  (__libuv_idle "Llib/idle.scm")
+  (__libuv_loop "Llib/loop.scm")
+  (__libuv_net "Llib/net.scm")
+  (__libuv_os "Llib/os.scm")
+  (__libuv_pipe "Llib/pipe.scm")
+  (__libuv_poll "Llib/poll.scm")
+  (__libuv_process "Llib/process.scm")
+  (__libuv_timer "Llib/timer.scm")
+  (__libuv_types "Llib/uvtypes.scm")
+)
+

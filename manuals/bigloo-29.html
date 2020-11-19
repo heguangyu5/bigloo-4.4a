@@ -1,0 +1,788 @@
+<!-- 95% W3C COMPLIANT, 95% CSS FREE, RAW HTML -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1">
+<title>Bigloo</title>
+ <style type="text/css">
+  <!--
+  pre { font-family: monospace }
+  tt { font-family: monospace }
+  code { font-family: monospace }
+  p.flushright { text-align: right }
+  p.flushleft { text-align: left }
+  span.sc { font-variant: small-caps }
+  span.sf { font-family: sans-serif }
+  span.skribetitle { font-family: sans-serif; font-weight: bolder; font-size: x-large; }
+  span.refscreen { }
+  span.refprint { display: none; }
+  -->
+ </style>
+</head>
+
+<body class="chapter" bgcolor="#ffffff">
+<table width="100%" class="skribetitle" cellspacing="0" cellpadding="0"><tbody>
+<tr><td align="center" bgcolor="#8381de"><div class="skribetitle"><strong><big><big><big>28. Bigloo<br/>A practical Scheme compiler (4.4a)<br/>User manual for version 4.4a<br/>November 2020 -- The Java interface</big></big></big></strong></div><center>
+</center>
+</td></tr></tbody></table>
+<table cellpadding="3" cellspacing="0" width="100%" class="skribe-margins"><tr>
+<td align="left" valign="top" class="skribe-left-margin" width="20%" bgcolor="#dedeff"><div class="skribe-left-margin">
+<br/><center id='center36535'
+><table width="97%" border="1" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" frame="box" rules="none"><tbody>
+<tr bgcolor="#8381de"><th id="tc36525" align="center" colspan="1"><font color="#ffffff"><strong id='bold36523'
+>main page</strong></font></th></tr>
+<tr bgcolor="#ffffff"><td id="tc36532" align="center" colspan="1"><table width="100%" border="0" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc36528" align="left" valign="top" colspan="1"><strong id='bold36527'
+>top:</strong></td><td id="tc36529" align="right" valign="top" colspan="1"><a href="bigloo.html#Bigloo-A-practical-Scheme-compiler-(-4.4a-)-User-manual-for-version-4.4a-November-2020" class="inbound">Bigloo<br/>A practical Scheme compiler (4.4a)<br/>User manual for version 4.4a<br/>November 2020</a></td></tr>
+</tbody></table>
+</td></tr>
+</tbody></table>
+</center>
+<br/><br/><center id='center36545'
+><table width="97%" border="1" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" frame="box" rules="none"><tbody>
+<tr bgcolor="#8381de"><th id="tc36539" align="center" colspan="1"><font color="#ffffff"><strong id='bold36537'
+>The Java interface</strong></font></th></tr>
+<tr bgcolor="#ffffff"><td id="tc36542" align="center" colspan="1"><table cellspacing="1" cellpadding="1" width="100%" class="toc">
+<tbody>
+ <tr><td valign="top" align="left">28.1</td><td colspan="4" width="100%"><a href="bigloo-29.html#Compiling-with-the-JVM-back-end">Compiling with the JVM back-end</a></td></tr>
+ <tr><td></td><td valign="top" align="left">28.1.1</td><td colspan="3" width="100%"><a href="bigloo-29.html#Compiler-JVM-options">Compiler JVM options</a></td></tr>
+ <tr><td></td><td valign="top" align="left">28.1.2</td><td colspan="3" width="100%"><a href="bigloo-29.html#Compiling-multi-modules-applications">Compiling multi-modules applications</a></td></tr>
+ <tr><td valign="top" align="left">28.2</td><td colspan="4" width="100%"><a href="bigloo-29.html#JVM-back-end-and-SRFI-0">JVM back-end and SRFI-0</a></td></tr>
+ <tr><td valign="top" align="left">28.3</td><td colspan="4" width="100%"><a href="bigloo-29.html#Limitation-of-the-JVM-back-end">Limitation of the JVM back-end</a></td></tr>
+ <tr><td valign="top" align="left">28.4</td><td colspan="4" width="100%"><a href="bigloo-29.html#Connecting-Scheme-and-Java-code">Connecting Scheme and Java code</a></td></tr>
+ <tr><td></td><td valign="top" align="left">28.4.1</td><td colspan="3" width="100%"><a href="bigloo-29.html#Automatic-Java-clauses-generation">Automatic Java clauses generation</a></td></tr>
+ <tr><td></td><td valign="top" align="left">28.4.2</td><td colspan="3" width="100%"><a href="bigloo-29.html#Declaring-Java-classes">Declaring Java classes</a></td></tr>
+ <tr><td></td><td valign="top" align="left">28.4.3</td><td colspan="3" width="100%"><a href="bigloo-29.html#Declaring-abstract-Java-classes">Declaring abstract Java classes</a></td></tr>
+ <tr><td></td><td valign="top" align="left">28.4.4</td><td colspan="3" width="100%"><a href="bigloo-29.html#Extending-Java-classes">Extending Java classes</a></td></tr>
+ <tr><td></td><td valign="top" align="left">28.4.5</td><td colspan="3" width="100%"><a href="bigloo-29.html#Declaring-Java-arrays">Declaring Java arrays</a></td></tr>
+ <tr><td></td><td valign="top" align="left">28.4.6</td><td colspan="3" width="100%"><a href="bigloo-29.html#Exporting-Scheme-variables">Exporting Scheme variables</a></td></tr>
+ <tr><td></td><td valign="top" align="left">28.4.7</td><td colspan="3" width="100%"><a href="bigloo-29.html#Bigloo-module-initialization">Bigloo module initialization</a></td></tr>
+ <tr><td valign="top" align="left">28.5</td><td colspan="4" width="100%"><a href="bigloo-29.html#Performance-of-the-JVM-back-end">Performance of the JVM back-end</a></td></tr>
+</tbody>
+</table>
+</td></tr>
+</tbody></table>
+</center>
+<br/><br/><center id='center36555'
+><table width="97%" border="1" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" frame="box" rules="none"><tbody>
+<tr bgcolor="#8381de"><th id="tc36549" align="center" colspan="1"><font color="#ffffff"><strong id='bold36547'
+>Chapters</strong></font></th></tr>
+<tr bgcolor="#ffffff"><td id="tc36552" align="center" colspan="1"><table cellspacing="1" cellpadding="1" width="100%" class="toc">
+<tbody>
+ <tr><td valign="top" align="left"></td><td colspan="4" width="100%"><a href="bigloo-1.html#Acknowledgements">Acknowledgements</a></td></tr>
+ <tr><td valign="top" align="left">1</td><td colspan="4" width="100%"><a href="bigloo-2.html#Table-of-contents">Table of contents</a></td></tr>
+ <tr><td valign="top" align="left">2</td><td colspan="4" width="100%"><a href="bigloo-3.html#Overview-of-Bigloo">Overview of Bigloo</a></td></tr>
+ <tr><td valign="top" align="left">3</td><td colspan="4" width="100%"><a href="bigloo-4.html#Modules">Modules</a></td></tr>
+ <tr><td valign="top" align="left">4</td><td colspan="4" width="100%"><a href="bigloo-5.html#Core-Language">Core Language</a></td></tr>
+ <tr><td valign="top" align="left">5</td><td colspan="4" width="100%"><a href="bigloo-6.html#DSSSL-support">DSSSL support</a></td></tr>
+ <tr><td valign="top" align="left">6</td><td colspan="4" width="100%"><a href="bigloo-7.html#Standard-Library">Standard Library</a></td></tr>
+ <tr><td valign="top" align="left">7</td><td colspan="4" width="100%"><a href="bigloo-8.html#Pattern-Matching">Pattern Matching</a></td></tr>
+ <tr><td valign="top" align="left">8</td><td colspan="4" width="100%"><a href="bigloo-9.html#Fast-search">Fast search</a></td></tr>
+ <tr><td valign="top" align="left">9</td><td colspan="4" width="100%"><a href="bigloo-10.html#Structures-and-Records">Structures and Records</a></td></tr>
+ <tr><td valign="top" align="left">10</td><td colspan="4" width="100%"><a href="bigloo-11.html#Object-System">Object System</a></td></tr>
+ <tr><td valign="top" align="left">11</td><td colspan="4" width="100%"><a href="bigloo-12.html#Regular-parsing">Regular parsing</a></td></tr>
+ <tr><td valign="top" align="left">12</td><td colspan="4" width="100%"><a href="bigloo-13.html#Lalr(1)-parsing">Lalr(1) parsing</a></td></tr>
+ <tr><td valign="top" align="left">13</td><td colspan="4" width="100%"><a href="bigloo-14.html#Posix-Regular-Expressions">Posix Regular Expressions</a></td></tr>
+ <tr><td valign="top" align="left">14</td><td colspan="4" width="100%"><a href="bigloo-15.html#Command-Line-Parsing">Command Line Parsing</a></td></tr>
+ <tr><td valign="top" align="left">15</td><td colspan="4" width="100%"><a href="bigloo-16.html#Cryptography">Cryptography</a></td></tr>
+ <tr><td valign="top" align="left">16</td><td colspan="4" width="100%"><a href="bigloo-17.html#Errors-Assertions-and-Traces">Errors, Assertions, and Traces</a></td></tr>
+ <tr><td valign="top" align="left">17</td><td colspan="4" width="100%"><a href="bigloo-18.html#Threads">Threads</a></td></tr>
+ <tr><td valign="top" align="left">18</td><td colspan="4" width="100%"><a href="bigloo-19.html#Database">Database</a></td></tr>
+ <tr><td valign="top" align="left">19</td><td colspan="4" width="100%"><a href="bigloo-20.html#Multimedia">Multimedia</a></td></tr>
+ <tr><td valign="top" align="left">20</td><td colspan="4" width="100%"><a href="bigloo-21.html#Mail">Mail</a></td></tr>
+ <tr><td valign="top" align="left">21</td><td colspan="4" width="100%"><a href="bigloo-22.html#Text">Text</a></td></tr>
+ <tr><td valign="top" align="left">22</td><td colspan="4" width="100%"><a href="bigloo-23.html#CSV">CSV</a></td></tr>
+ <tr><td valign="top" align="left">23</td><td colspan="4" width="100%"><a href="bigloo-24.html#Eval-and-code-interpretation">Eval and code interpretation</a></td></tr>
+ <tr><td valign="top" align="left">24</td><td colspan="4" width="100%"><a href="bigloo-25.html#Macro-expansion">Macro expansion</a></td></tr>
+ <tr><td valign="top" align="left">25</td><td colspan="4" width="100%"><a href="bigloo-26.html#Parameters">Parameters</a></td></tr>
+ <tr><td valign="top" align="left">26</td><td colspan="4" width="100%"><a href="bigloo-27.html#Explicit-typing">Explicit typing</a></td></tr>
+ <tr><td valign="top" align="left">27</td><td colspan="4" width="100%"><a href="bigloo-28.html#The-C-interface">The C interface</a></td></tr>
+ <tr><td valign="top" align="left">28</td><td colspan="4" width="100%"><a href="bigloo-29.html#The-Java-interface">The Java interface</a></td></tr>
+ <tr><td valign="top" align="left">29</td><td colspan="4" width="100%"><a href="bigloo-30.html#Bigloo-Libraries">Bigloo Libraries</a></td></tr>
+ <tr><td valign="top" align="left">30</td><td colspan="4" width="100%"><a href="bigloo-31.html#Extending-the-Runtime-System">Extending the Runtime System</a></td></tr>
+ <tr><td valign="top" align="left">31</td><td colspan="4" width="100%"><a href="bigloo-32.html#SRFIs">SRFIs</a></td></tr>
+ <tr><td valign="top" align="left">32</td><td colspan="4" width="100%"><a href="bigloo-33.html#Compiler-description">Compiler description</a></td></tr>
+ <tr><td valign="top" align="left">33</td><td colspan="4" width="100%"><a href="bigloo-34.html#Cross-Compilation">Cross Compilation</a></td></tr>
+ <tr><td valign="top" align="left">34</td><td colspan="4" width="100%"><a href="bigloo-35.html#User-Extensions">User Extensions</a></td></tr>
+ <tr><td valign="top" align="left">35</td><td colspan="4" width="100%"><a href="bigloo-36.html#Bigloo-Development-Environment">Bigloo Development Environment</a></td></tr>
+ <tr><td valign="top" align="left">36</td><td colspan="4" width="100%"><a href="bigloo-37.html#Global-Index">Global Index</a></td></tr>
+ <tr><td valign="top" align="left">37</td><td colspan="4" width="100%"><a href="bigloo-38.html#Library-Index">Library Index</a></td></tr>
+ <tr><td valign="top" align="left"></td><td colspan="4" width="100%"><a href="bigloo-39.html#Bibliography">Bibliography</a></td></tr>
+</tbody>
+</table>
+</td></tr>
+</tbody></table>
+</center>
+</div></td>
+<td align="left" valign="top" class="skribe-body"><div class="skribe-body">
+<a name="Java-Interface" class="mark"></a><a name="g28925" class="mark"></a>
+When the Bigloo is configured for a JVM back-end support, the compiler is
+able to produce Java class file instead of C files. In order to produce 
+JVM class files, use the <code id='code28927'
+>-jvm</code> compiler option. Example:<br/><br/><center id='center28931'
+><table cellspacing="0" class="color" cellpadding="0" width="95%"><tbody>
+<tr><td bgcolor="#ccffcc"><pre class="prog" id='prog28929'
+>$ cat &gt; foo.scm
+(module foo (main main))
+(define (main argv)
+   (print &quot;Hello world: &quot; argv))
+$ bigloo -jvm foo.scm
+$ a.out
+  -| Hello world: (a.out)
+</pre>
+</td></tr>
+</tbody></table></center>
+
+
+
+<!-- Compiling with the JVM back-end -->
+<a name="Compiling-with-the-JVM-back-end"></a>
+<div class="section-atitle"><table width="100%"><tr><td bgcolor="#dedeff"><h3><font color="black">28.1 Compiling with the JVM back-end</font>
+</h3></td></tr></table>
+</div><div class="section">
+<a name="Compiling-with-the-JVM-back-end" class="mark"></a><a name="g28932" class="mark"></a>
+<!-- Compiler JVM options -->
+<a name="Compiler-JVM-options"></a>
+<div class="subsection-atitle"><table width="100%"><tr><td bgcolor="#ffffff"><h3><font color="#8381de">28.1.1 Compiler JVM options</font>
+</h3></td></tr></table>
+</div><div class="subsection">
+<a name="g28934" class="mark"></a>
+All the compiler options that control the compilation (optimization options,
+debugging options, etc.), can be used in conjunction with the <code id='code28936'
+>-jvm</code> option.
+However, the <code id='code28937'
+>-jvm</code> option <em id='emph28938'
+>MUST</em> be the first compiler option
+on the command line.<br/><br/>In order to prevent the compiler to produce a script shell file to run
+the program, it is required to use simultaneously the <code id='code28940'
+>-jvm</code> and 
+<code id='code28941'
+>-c</code> options.<br/><br/></div>
+<!-- Compiling multi-modules applications -->
+<a name="Compiling-multi-modules-applications"></a>
+<div class="subsection-atitle"><table width="100%"><tr><td bgcolor="#ffffff"><h3><font color="#8381de">28.1.2 Compiling multi-modules applications</font>
+</h3></td></tr></table>
+</div><div class="subsection">
+<a name="g28943" class="mark"></a><a name="g28945" class="mark"></a>
+In order to compile and link multi-modules applications, it is required
+to specify the association between Scheme source modules and Java
+qualified type names. This task is generally complex because of the
+annoying mapping that exists from Java class names and the operating
+file system names. In order to get rid of this problem, the Bigloo
+standard distribution contains a tool, <code id='code28947'
+>jfile</code>, that automatically
+produces Bigloo Module/Java classes association files. The default name
+for such a table is <code id='code28948'
+>.jfile</code>. When compiling a module, Bigloo checks
+if a <code id='code28949'
+>.jfile</code> exists in the current directory, if it exists, the
+file is read. The compilation option <code id='code28950'
+>-jfile</code> may be used to
+specify an alternative jfile name. Example:<br/><br/><center id='center28954'
+><table cellspacing="0" class="color" cellpadding="0" width="95%"><tbody>
+<tr><td bgcolor="#ccffcc"><pre class="prog" id='prog28952'
+>$ cat &gt; foo.scm
+(module foo (export (foo))) (define (foo) 'foo)
+$ cat &gt; bar.scm
+(module bar (export (bar))) (define (bar) 'bar)
+$ cat &gt; hux.scm
+(module hux (export (hux))) (define (hux) 'hux)
+$ cat &gt; main.scm
+(module main (main main) (import foo bar hux)
+(define (main argv)
+   (print (foo))
+   (print (bar))
+   (print (fhux)))
+$ afile *.scm &gt; .afile
+$ jfile *.scm &gt; .jfile
+$ bigloo -jvm -c foo.scm
+$ bigloo -jvm -c bar.scm
+$ bigloo -jvm -c hux.scm
+$ bigloo -jvm main.scm foo.class bar.class hux.class
+</pre>
+</td></tr>
+</tbody></table></center>
+
+For an explanation about the <code id='code28955'
+>.afile</code>, see <a href="bigloo-4.html#Modules" class="inbound">Modules</a>.<br/><br/></div>
+</div><br>
+<!-- JVM back-end and SRFI-0 -->
+<a name="JVM-back-end-and-SRFI-0"></a>
+<div class="section-atitle"><table width="100%"><tr><td bgcolor="#dedeff"><h3><font color="black">28.2 JVM back-end and SRFI-0</font>
+</h3></td></tr></table>
+</div><div class="section">
+<a name="JVM-back-end-and-SRFI-0" class="mark"></a><a name="g28957" class="mark"></a><a name="g28959" class="mark"></a>
+The currently running back-end may be tested by the means of the SRFI-0
+<code id='code28961'
+>cond-expand</code> form (see <a href="bigloo-32.html#SRFIs" class="inbound">SRFIs</a>). That is, when the JVM is ran,
+the <code id='code28962'
+>bigloo-jvm</code> clause is true. Otherwise, the <code id='code28963'
+>bigloo-c</code>
+is true. Example:<br/><br/><center id='center28967'
+><table cellspacing="0" class="color" cellpadding="0" width="95%"><tbody>
+<tr><td bgcolor="#ccffcc"><pre class="prog" id='prog28965'
+>$ cat &gt; foo.scm
+(module foo (main main))
+(define (main argv)
+   (cond-expand
+      (bigloo-jvm (print &quot;JVM back-end&quot;))
+      (bigloo-c (print &quot;C back-end&quot;))
+      (else (error &quot;main&quot; &quot;unsupported back-end&quot; #unspecified))))
+$ bigloo -jvm foo.scm
+$ a.out
+  -| JVM back-end
+$ bigloo foo.scm
+$ a.out
+  -| C back-end
+</pre>
+</td></tr>
+</tbody></table></center>
+
+</div><br>
+<!-- Limitation of the JVM back-end -->
+<a name="Limitation-of-the-JVM-back-end"></a>
+<div class="section-atitle"><table width="100%"><tr><td bgcolor="#dedeff"><h3><font color="black">28.3 Limitation of the JVM back-end</font>
+</h3></td></tr></table>
+</div><div class="section">
+<a name="Limitation-of-the-JVM-back-end" class="mark"></a><a name="g28968" class="mark"></a>
+The JVM back-end supports the entire Bigloo source language but the
+<code id='code28970'
+>call/cc</code> function. More precisely, using the JVM back-end, the
+continuation reified in a <code id='code28971'
+>call/cc</code> form can only be invoked in the
+dynamic extent of that form. <br/><br/>The other restrictions of the C back-end apply to the JVM
+back-end. Mainly, <br/><br/><ul class="itemize" id='itemize28993'
+><li>Bigloo is not able to compile all the tail recursive call
+without stack consumption (however, most of the tail recursive calls are
+optimized by Bigloo and don't use stack activation frames).<br/><br/></li>
+<li>Bigloo compiled applications do not check for arithmetic overflow.
+
+</li>
+<li>When compiling to Jvm, the <code id='code28977'
+>extern</code> module clauses are not used.
+
+</li>
+<li>Jvm runtime system does support the following function <code id='code28979'
+>chdir</code>.
+
+</li>
+<li>Jvm runtime system support for <code id='code28981'
+>chmod</code> is restricted.
+
+</li>
+<li>In order to read a shell variable from a Bigloo compiled Jvm program,
+      you have to use the Bigloo link option <code id='code28983'
+>-jvm-env</code> <em id='emph28984'
+>when</em>
+      linking that program. However, some shell variables are 
+      automatically defined (<code id='code28985'
+>HOME</code>, <code id='code28986'
+>USER</code>, <code id='code28987'
+>CLASSPATH</code> and
+      <code id='code28988'
+>TMPDIR</code>.<br/><br/></li>
+<li>JVM code generation does not support <code id='code28991'
+>pragma</code> forms. 
+
+</li>
+</ul>
+</div><br>
+<!-- Connecting Scheme and Java code -->
+<a name="Connecting-Scheme-and-Java-code"></a>
+<div class="section-atitle"><table width="100%"><tr><td bgcolor="#dedeff"><h3><font color="black">28.4 Connecting Scheme and Java code</font>
+</h3></td></tr></table>
+</div><div class="section">
+<a name="Connecting-Scheme-and-Java-code" class="mark"></a><a name="g28994" class="mark"></a>
+When compiling and linking with the JVM back-end, Bigloo source code may
+use the Java API. That is, Bigloo Scheme source code may use (refer or set)
+Java static variables, Bigloo source code may call static or virtual
+Java methods. In addition, Bigloo variables and functions may be exported
+to Java, that is use, set or called in Java source code. Java module clauses
+are enabled (read and parsed) only when compiling to JVM byte code.<br/><br/>Java definitions are declared in Bigloo modules by the mean of a Bigloo
+module clause: the <em id='emph28997'
+>java</em> module clause. The syntax of a <em id='emph28998'
+>Java</em>
+clause is defined by:<br/><br/><center id='center29002'
+><table cellspacing="0" class="color" cellpadding="0" width="95%"><tbody>
+<tr><td bgcolor="#ccccff"><pre class="prog" id='prog29000'
+>&lt;java&gt; ==&gt; &lt;declare-class-clause&gt;
+     | &lt;declare-abstract-class-clause&gt;
+     | &lt;extend-class-clause&gt;
+     | &lt;array-clause&gt;
+     | &lt;export-clause&gt;
+</pre>
+</td></tr>
+</tbody></table></center>
+
+As for the <em id='emph29003'
+>extern</em> clause, <em id='emph29004'
+>java</em> clauses are automatically
+``transmitted'' by the importation process.  That is, if module
+<code id='code29005'
+>module1</code> imports a module <code id='code29006'
+>module2</code>, <code id='code29007'
+>module</code> treats the
+<code id='code29008'
+>java</code> clauses of <code id='code29009'
+>module2</code> as though they were included in
+its own module declaration. Redefinition of a variable or a function
+already defined in an java clause is an error. However, the definition of
+a Java class or an Java abstract class may be enriched from module to
+module.<br/><br/>
+<!-- Automatic Java clauses generation -->
+<a name="Automatic-Java-clauses-generation"></a>
+<div class="subsection-atitle"><table width="100%"><tr><td bgcolor="#ffffff"><h3><font color="#8381de">28.4.1 Automatic Java clauses generation</font>
+</h3></td></tr></table>
+</div><div class="subsection">
+<a name="Automatic-Java-clauses-generation" class="mark"></a><a name="g29011" class="mark"></a><a name="g29014" class="mark"></a>
+Java clauses can be automatically generated using the Jigloo program
+which is distributed in the same package as Bigloo. Using Jigloo may be
+a good way to understand how Java classes, methods, and variables have to 
+be declared in Bigloo. Jigloo reads Java <em id='emph29016'
+>class</em> files and generate the 
+Bigloo java clauses for that classes.<br/><br/></div>
+<!-- Declaring Java classes -->
+<a name="Declaring-Java-classes"></a>
+<div class="subsection-atitle"><table width="100%"><tr><td bgcolor="#ffffff"><h3><font color="#8381de">28.4.2 Declaring Java classes</font>
+</h3></td></tr></table>
+</div><div class="subsection">
+<a name="Declaring-Java-classes" class="mark"></a><a name="g29018" class="mark"></a>The &lt;declare-class-clause&gt; clause denotes importation of Java classes.<br/><br/><center id='center29041'
+><table cellspacing="0" class="color" cellpadding="0" width="95%"><tbody>
+<tr><td bgcolor="#ccccff"><pre class="prog" id='prog29039'
+>&lt;declare-class-clause&gt; ==&gt; <code id='code29021'
+>(</code>class &lt;typed-ident&gt; &lt;slot&gt;* &lt;string&gt;<code id='code29022'
+>)</code> 
+&lt;slot&gt; ==&gt; &lt;field&gt; | &lt;method&gt; | &lt;constructor&gt;
+&lt;field&gt; ==&gt; <code id='code29023'
+>(field</code> &lt;modifier&gt; &lt;typed-ident&gt; &lt;string&gt;<code id='code29024'
+>)</code>
+&lt;method&gt; ==&gt; <code id='code29025'
+>(method</code> &lt;modifier&gt; &lt;typed-ident&gt; <code id='code29026'
+>(</code>&lt;typed-ident&gt;*<code id='code29027'
+>)</code> &lt;string&gt;<code id='code29028'
+>)</code>
+&lt;constructor&gt; ==&gt; <code id='code29029'
+>(constructor</code> &lt;ident&gt; <code id='code29030'
+>(</code>&lt;typed-ident&gt;*<code id='code29031'
+>))</code>
+&lt;modifier&gt; ==&gt; <code id='code29032'
+>public</code> | <code id='code29033'
+>private</code> | <code id='code29034'
+>protected</code>
+     | <code id='code29035'
+>static</code> | <code id='code29036'
+>final</code> | <code id='code29037'
+>synchronized</code> | <code id='code29038'
+>abstract</code>
+</pre>
+</td></tr>
+</tbody></table></center>
+
+When the compiler encounters a Java class declaration, it automatically
+creates a predicate. If the class identifier is <code id='code29042'
+>id</code>, the predicate
+is named <code id='code29043'
+>id?</code>. In addition, the compiler generates functions that
+fetch and set the field values. For a field named <code id='code29044'
+>f</code>, these functions
+are named <code id='code29045'
+>id-f</code> and <code id='code29046'
+>id-f-set!</code>. Methods and constructors are
+also always prefixed the name of the class. That is, for a method named 
+<code id='code29047'
+>m</code> of a class <code id='code29048'
+>k</code>, the Scheme name of the method is <code id='code29049'
+>k-m</code>.<br/><br/>Example:<br/><br/><center id='center29072'
+><table cellspacing="0" class="color" cellpadding="0" width="95%"><tbody>
+<tr><td bgcolor="#ffffcc"><pre class="prog" id='prog29070'
+>(<font color="#1919af"><strong id='bold36556'
+>module</strong></font> <font color="#1919af"><strong id='bold36558'
+>java-example</strong></font>
+   (java (<strong id='bold36560'
+>class</strong> point
+            (constructor new-default ())
+            (field x<font color="#00cf00"><strong id='bold36561'
+>::int</strong></font> <font color="red">&quot;x&quot;</font>)
+            (method show<font color="#00cf00"><strong id='bold36564'
+>::void</strong></font> (<font color="#00cf00"><strong id='bold36566'
+>::point</strong></font>) <font color="red">&quot;show&quot;</font>)
+            (method static statistics<font color="#00cf00"><strong id='bold36569'
+>::int</strong></font> () <font color="red">&quot;PointStatistics&quot;</font>)
+            <font color="red">&quot;Point&quot;</font>)
+         (<strong id='bold36573'
+>class</strong> point-3d<font color="#00cf00"><strong id='bold36574'
+>::point</strong></font>
+            <font color="red">&quot;Point3D&quot;</font>)))<br/><br/>(<strong id='bold36577'
+>let</strong> ((p (point-new-default)))
+   (print (point? p))   -| <code id='code29053'
+>#t</code>
+   (point-x-set! p 3)
+   (print (point-x p))) -| <code id='code29054'
+>3</code>
+</pre>
+</td></tr>
+</tbody></table></center>
+
+</div>
+<!-- Declaring abstract Java classes -->
+<a name="Declaring-abstract-Java-classes"></a>
+<div class="subsection-atitle"><table width="100%"><tr><td bgcolor="#ffffff"><h3><font color="#8381de">28.4.3 Declaring abstract Java classes</font>
+</h3></td></tr></table>
+</div><div class="subsection">
+<a name="Declaring-abstract-Java-classes" class="mark"></a><a name="g29073" class="mark"></a>
+A Bigloo abstract Java class declaration corresponds to a Java interface.
+It cannot be instantiate but regular classes may inherit from it.<br/><br/><center id='center29080'
+><table cellspacing="0" class="color" cellpadding="0" width="95%"><tbody>
+<tr><td bgcolor="#ccccff"><pre class="prog" id='prog29078'
+>&lt;declare-abstract-class-clause&gt; ==&gt; <code id='code29076'
+>(</code>abstract-class &lt;typed-ident&gt; &lt;slot&gt;* &lt;string&gt;<code id='code29077'
+>)</code> 
+</pre>
+</td></tr>
+</tbody></table></center>
+
+</div>
+<!-- Extending Java classes -->
+<a name="Extending-Java-classes"></a>
+<div class="subsection-atitle"><table width="100%"><tr><td bgcolor="#ffffff"><h3><font color="#8381de">28.4.4 Extending Java classes</font>
+</h3></td></tr></table>
+</div><div class="subsection">
+<a name="Extending-Java-classes" class="mark"></a>A class definition may be split into several pieces. One class declaration
+(see &lt;declare-class-clause&gt;) and several extensions. The syntax for a Java
+class extension is:<br/><br/><center id='center29086'
+><table cellspacing="0" class="color" cellpadding="0" width="95%"><tbody>
+<tr><td bgcolor="#ccccff"><pre class="prog" id='prog29084'
+>&lt;extend-class-clause&gt; ==&gt; <code id='code29082'
+>(</code>class &lt;typed-ident&gt; &lt;slot&gt;*<code id='code29083'
+>)</code> 
+</pre>
+</td></tr>
+</tbody></table></center>
+
+Example:<br/><br/><center id='center29101'
+><table cellspacing="0" class="color" cellpadding="0" width="95%"><tbody>
+<tr><td bgcolor="#ffffcc"><pre class="prog" id='prog29099'
+>(<font color="#1919af"><strong id='bold36578'
+>module</strong></font> <font color="#1919af"><strong id='bold36580'
+>java-example2</strong></font>
+   (<font color="#1919af"><strong id='bold36582'
+>import</strong></font> <font color="#1919af"><strong id='bold36584'
+>java-example</strong></font>)
+   (java (<strong id='bold36586'
+>class</strong> point 
+            (field y<font color="#00cf00"><strong id='bold36587'
+>::int</strong></font> <font color="red">&quot;y&quot;</font>)
+            (field static num<font color="#00cf00"><strong id='bold36590'
+>::int</strong></font> <font color="red">&quot;point_num&quot;</font>)
+            (constructor new (<font color="#00cf00"><strong id='bold36593'
+>::int</strong></font> <font color="#00cf00"><strong id='bold36595'
+>::int</strong></font>)))))
+</pre>
+</td></tr>
+</tbody></table></center>
+
+</div>
+<!-- Declaring Java arrays -->
+<a name="Declaring-Java-arrays"></a>
+<div class="subsection-atitle"><table width="100%"><tr><td bgcolor="#ffffff"><h3><font color="#8381de">28.4.5 Declaring Java arrays</font>
+</h3></td></tr></table>
+</div><div class="subsection">
+<a name="Declaring-Java-arrays" class="mark"></a><a name="g29102" class="mark"></a>
+Java arrays may be allocated and used inside Scheme code. The syntax of
+a Java array module clause is:<br/><br/><center id='center29109'
+><table cellspacing="0" class="color" cellpadding="0" width="95%"><tbody>
+<tr><td bgcolor="#ccccff"><pre class="prog" id='prog29107'
+>&lt;array-clause&gt; ==&gt; <code id='code29105'
+>(array</code> &lt;ident&gt; &lt;typed-ident&gt;<code id='code29106'
+>)</code>
+</pre>
+</td></tr>
+</tbody></table></center>
+
+The &lt;typed-ident&gt; must refer to the name of an existing type (i.e., a
+primitive Bigloo type, a Bigloo class, an already defined Java class or
+an already defined Java array). For an array named <code id='code29110'
+>ar</code>, Bigloo
+generates:<br/><br/><ul class="itemize" id='itemize29125'
+><li>a creator named <code id='code29112'
+>make-ar</code> which is a function of one integer 
+      argument.<br/><br/></li>
+<li>a predicate named <code id='code29115'
+>ar?</code>.
+
+</li>
+<li>a getter named <code id='code29117'
+>ar-ref</code> which is a function of two arguments:
+an array and one integer argument.<br/><br/></li>
+<li>a setter named <code id='code29120'
+>ar-set!</code> which is a function of three arguments:
+an array, an integer, and a value of the array item types.<br/><br/></li>
+<li>a length named <code id='code29123'
+>ar-length</code>.
+
+</li>
+</ul>
+Example:<br/><br/><center id='center29140'
+><table cellspacing="0" class="color" cellpadding="0" width="95%"><tbody>
+<tr><td bgcolor="#ffffcc"><pre class="prog" id='prog29138'
+>(<font color="#1919af"><strong id='bold36597'
+>module</strong></font> <font color="#1919af"><strong id='bold36599'
+>foo</strong></font>
+   (java (array int* <font color="#00cf00"><strong id='bold36601'
+>::int</strong></font>)
+         (<strong id='bold36603'
+>class</strong> bar
+            (method static hello<font color="#00cf00"><strong id='bold36604'
+>::int</strong></font> (<font color="#00cf00"><strong id='bold36606'
+>::int*</strong></font>) <font color="red">&quot;hello&quot;</font>)
+            <font color="red">&quot;bar&quot;</font>))
+   (main main))<br/><br/>(<font color="#6959cf"><strong id='bold36610'
+>define</strong></font> (<font color="#6959cf"><strong id='bold36612'
+>main</strong></font> argv)
+   (<strong id='bold36614'
+>let</strong> ((tab (make-int* 2)))
+      (int*-set! tab 0 3)
+      (int*-set! tab 1 6)
+      (print (bar-hello tab))))
+</pre>
+</td></tr>
+</tbody></table></center>
+
+</div>
+<!-- Exporting Scheme variables -->
+<a name="Exporting-Scheme-variables"></a>
+<div class="subsection-atitle"><table width="100%"><tr><td bgcolor="#ffffff"><h3><font color="#8381de">28.4.6 Exporting Scheme variables</font>
+</h3></td></tr></table>
+</div><div class="subsection">
+<a name="Exporting-Scheme-variables" class="mark"></a><a name="g29141" class="mark"></a>
+As for the C connection, a Scheme variable (or function) can be exported
+to the Java world if and only if it is also exported using an
+<code id='code29143'
+>export</code> Java clause. Type information is given in the Scheme
+exportation, thus, the only requirement for a variable to be Java
+exported is to be given a Java name. The Java &lt;export-clause&gt; does
+this:<br/><br/><center id='center29149'
+><table cellspacing="0" class="color" cellpadding="0" width="95%"><tbody>
+<tr><td bgcolor="#ccccff"><pre class="prog" id='prog29147'
+>&lt;export-clause&gt; ==&gt; <code id='code29145'
+>(export</code> &lt;ident&gt; &lt;string&gt;<code id='code29146'
+>)</code>
+</pre>
+</td></tr>
+</tbody></table></center>
+ 
+Here is an example of exportation:<br/><br/><center id='center29165'
+><table cellspacing="0" class="color" cellpadding="0" width="95%"><tbody>
+<tr><td bgcolor="#ffffcc"><pre class="prog" id='prog29163'
+>(<font color="#1919af"><strong id='bold36615'
+>module</strong></font> <font color="#1919af"><strong id='bold36617'
+>example</strong></font>
+   (<font color="#1919af"><strong id='bold36619'
+>export</strong></font> (<font color="#1919af"><strong id='bold36621'
+>fib</strong></font><font color="#00cf00"><strong id='bold36623'
+>::long</strong></font> <font color="#00cf00"><strong id='bold36625'
+>::long</strong></font>))
+   (java (<font color="#1919af"><strong id='bold36627'
+>export</strong></font> <font color="#1919af"><strong id='bold36629'
+>fib</strong></font> <font color="red">&quot;scheme_fib&quot;</font>)))<br/><br/>(<font color="#6959cf"><strong id='bold36632'
+>define</strong></font> (<font color="#6959cf"><strong id='bold36634'
+>fib</strong></font> x) (<strong id='bold36636'
+>if</strong> (&lt; x 2) 1 ...))
+</pre>
+</td></tr>
+</tbody></table></center>
+
+Here is a concrete example that illustrates how to invoke Scheme
+functions from Java code. First, here is a Java source file:<br/><br/><center id='center29177'
+><table cellspacing="0" class="color" cellpadding="0" width="95%"><tbody>
+<tr><td bgcolor="#ffffcc"><pre class="prog" id='prog29175'
+>// arr.java
+import java.io.*;
+import bigloo.*;<br/><br/>public class arr {
+   public static int hello( int[] tab ) {
+      System.out.println( <font color="red">&quot;tab[ 0 ]: &quot;</font> + tab[ 0 ] );
+      System.out.println( <font color="red">&quot;tab[ 1 ]: &quot;</font> + tab[ 1 ] );
+      System.out.println( <font color="red">&quot;&lt;callback: &quot;</font> + main.callback( 10 ) + <font color="red">&quot;&gt;&quot;</font> );
+      System.out.println(<font color="red">&quot;tab = main.squareJavaArray(tab);&quot;</font>);
+      tab = main.squareJavaArray(tab);
+      System.out.println( <font color="red">&quot;tab[ 0 ]: &quot;</font> + tab[ 0 ] );
+      System.out.println( <font color="red">&quot;tab[ 1 ]: &quot;</font> + tab[ 1 ] );
+      return tab.length;
+   }
+}
+</pre>
+</td></tr>
+</tbody></table></center>
+
+Then the main Scheme file<br/><br/><center id='center29227'
+><table cellspacing="0" class="color" cellpadding="0" width="95%"><tbody>
+<tr><td bgcolor="#ffffcc"><pre class="prog" id='prog29225'
+><font color="#ffa600"><em id='it36644'
+>;; main.scm</em></font>
+(<font color="#1919af"><strong id='bold36646'
+>module</strong></font> <font color="#1919af"><strong id='bold36648'
+>main</strong></font>
+   (java (array int* <font color="#00cf00"><strong id='bold36650'
+>::int</strong></font>)
+      
+      (<strong id='bold36652'
+>class</strong> bar
+	 (method static hello<font color="#00cf00"><strong id='bold36653'
+>::int</strong></font> (<font color="#00cf00"><strong id='bold36655'
+>::int*</strong></font>) <font color="red">&quot;hello&quot;</font>)
+	 <font color="red">&quot;bar&quot;</font>))
+   
+   (<font color="#1919af"><strong id='bold36659'
+>export</strong></font> (<font color="#1919af"><strong id='bold36661'
+>callback</strong></font><font color="#00cf00"><strong id='bold36663'
+>::int</strong></font> <font color="#00cf00"><strong id='bold36665'
+>::int</strong></font>))
+   (<font color="#1919af"><strong id='bold36667'
+>export</strong></font> (<font color="#1919af"><strong id='bold36669'
+>squareJavaArray</strong></font><font color="#00cf00"><strong id='bold36671'
+>::int*</strong></font> <font color="#00cf00"><strong id='bold36673'
+>::int*</strong></font>))
+   
+   (main main))<br/><br/>(<font color="#6959cf"><strong id='bold36675'
+>define</strong></font> (<font color="#6959cf"><strong id='bold36677'
+>main</strong></font> argv)
+  (<strong id='bold36679'
+>let</strong> ((tab (make-int* 2)))
+    (print <font color="red">&quot;tab length: &quot;</font> (int*-length tab))
+    (int*-set! tab 0 3)
+    (int*-set! tab 1 6)
+    (display (int*-ref tab 1))
+    (newline)<br/><br/>    (display <font color="red">&quot;(java-array-int-&gt;scheme-vector tab) : &quot;</font>)
+    (display (java-array-int-&gt;scheme-vector tab))
+    (newline)
+    (display <font color="red">&quot;(square-vector (java-array-int-&gt;scheme-vector tab)) : &quot;</font>)
+    (display (square-vector (java-array-int-&gt;scheme-vector tab)))
+    (newline)
+  
+    (print (bar-hello tab))))<br/><br/>(<font color="#6959cf"><strong id='bold36683'
+>define</strong></font> (<font color="#6959cf"><strong id='bold36685'
+>callback</strong></font> x)
+   (+ 1 x))<br/><br/>(<font color="#6959cf"><strong id='bold36687'
+>define</strong></font> (<font color="#6959cf"><strong id='bold36689'
+>square</strong></font> x)
+   (* x x))<br/><br/>(<font color="#6959cf"><strong id='bold36691'
+>define</strong></font> (<font color="#6959cf"><strong id='bold36693'
+>square-list</strong></font> L)
+   (map square L))<br/><br/>(<font color="#6959cf"><strong id='bold36695'
+>define</strong></font> (<font color="#6959cf"><strong id='bold36697'
+>square-vector</strong></font> V)
+   (vector-map square V))<br/><br/>(<font color="#6959cf"><strong id='bold36699'
+>define</strong></font> (<font color="#6959cf"><strong id='bold36701'
+>sum-vector</strong></font> V)
+   (<strong id='bold36703'
+>apply</strong> + (vector-&gt;list V)))<br/><br/>(<font color="#6959cf"><strong id='bold36704'
+>define</strong></font> (<font color="#6959cf"><strong id='bold36706'
+>squareJavaArray</strong></font> A)
+   (scheme-vector-&gt;java-array-int
+      (square-vector (java-array-int-&gt;scheme-vector A))))<br/><br/>(<font color="#6959cf"><strong id='bold36708'
+>define</strong></font> (<font color="#6959cf"><strong id='bold36710'
+>java-array-int-&gt;scheme-vector</strong></font> A)
+   (<strong id='bold36712'
+>let*</strong> ((len (int*-length A))
+	  (res (make-vector len)))
+      (display len)
+      (newline)
+      (<strong id='bold36713'
+>let</strong> loop ((i 0))
+	 (vector-set! res i (int*-ref A i))
+	 (<strong id='bold36714'
+>if</strong> (= i (- len 1))
+	     res
+	     (loop (+ i 1))))))<br/><br/>(<font color="#6959cf"><strong id='bold36715'
+>define</strong></font> (<font color="#6959cf"><strong id='bold36717'
+>scheme-vector-&gt;java-array-int</strong></font> V)
+   (<strong id='bold36719'
+>let*</strong> ((len (vector-length V))
+	  (res (make-int* len)))
+      (<strong id='bold36720'
+>let</strong> loop ((i 0))
+	 (int*-set! res i (vector-ref V i))
+	 (<strong id='bold36721'
+>if</strong> (= i (- len 1))
+	     res
+	     (loop (+ i 1))))))
+</pre>
+</td></tr>
+</tbody></table></center>
+
+To compile this example:<br/><br/><center id='center29231'
+><table cellspacing="0" class="color" cellpadding="0" width="95%"><tbody>
+<tr><td bgcolor="#ccffcc"><pre class="prog" id='prog29229'
+>$ bigloo -jvm main.scm -c
+$ javac arr.java -classpath=bigloo.zip:.
+$ bigloo -jvm main.scm arr.class
+</pre>
+</td></tr>
+</tbody></table></center>
+
+To run it:<br/><br/><center id='center29235'
+><table cellspacing="0" class="color" cellpadding="0" width="95%"><tbody>
+<tr><td bgcolor="#ccffcc"><pre class="prog" id='prog29233'
+>$ ./a.out
+tab length: 2
+6
+(java-array-int-&gt;scheme-vector tab) : 2
+#(3 6)
+(square-vector (java-array-int-&gt;scheme-vector tab)) : 2
+#(9 36)
+tab[ 0 ]: 3
+tab[ 1 ]: 6
+&lt;callback: 11&gt;
+tab = main.squareJavaArray(tab);
+2
+tab[ 0 ]: 9
+tab[ 1 ]: 36
+2
+</pre>
+</td></tr>
+</tbody></table></center>
+
+</div>
+<!-- Bigloo module initialization -->
+<a name="Bigloo-module-initialization"></a>
+<div class="subsection-atitle"><table width="100%"><tr><td bgcolor="#ffffff"><h3><font color="#8381de">28.4.7 Bigloo module initialization</font>
+</h3></td></tr></table>
+</div><div class="subsection">
+<a name="Bigloo-module-initialization" class="mark"></a><a name="g29236" class="mark"></a>
+By default Bigloo modules are initialized when the application starts. It might
+be convenient to initialize the module when the Java classes implementing
+the Bigloo modules are loaded. It is possible to drive the Bigloo compiler
+to introduce code inside the Java class constructors for initializing the
+modules. This is the role of the <code id='code29238'
+>-jvm-cinit-module</code> compiler option.<br/><br/><br/></div>
+</div><br>
+<!-- Performance of the JVM back-end -->
+<a name="Performance-of-the-JVM-back-end"></a>
+<div class="section-atitle"><table width="100%"><tr><td bgcolor="#dedeff"><h3><font color="black">28.5 Performance of the JVM back-end</font>
+</h3></td></tr></table>
+</div><div class="section">
+<a name="Performance-of-the-JVM-back-end" class="mark"></a><a name="g29240" class="mark"></a>
+We are currently improving and investigating about the performance of
+the JVM back-end. JVM performance is extremely sensitive to the host
+platform (for instance, very unfortunately, Linux seems to be a poor
+platform to run JVM code). Currently, it seems that the JVM back-end
+produces codes that are in between 4 times and 10 times slower than
+codes produced by the C back-end. The ratio between JVM and C is subject
+to changes. The gap between JVM and C code is bound to bridge because
+of the huge amount of efforts applied to efficiently implement Java
+virtual machines.
+
+
+</div><br>
+</div></td>
+</tr></table><div class="skribe-ending">
+<hr> 
+<p class="ending" id='paragraph36727'
+><font size="-1">
+This <span class="sc">Html</span> page has been produced by 
+<a href="http://www-sop.inria.fr/indes/fp/Skribe" class="http">Skribe</a>.
+<br/>
+Last update <em id='it36725'
+>Thu Nov 19 07:13:49 2020</em>.</font></p></div>
+</body>
+</html>

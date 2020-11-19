@@ -1,0 +1,10 @@
+;; automatically generated, don't edit
+;; /tmp/4.4a/api/upnp/src
+;; Thu Nov 19 07:13:53 2020
+
+(
+  (__upnp_content-directory "Llib/content.scm")
+  (__upnp_soap "Llib/soap.scm")
+  (__upnp_ssdp "Llib/ssdp.scm")
+)
+

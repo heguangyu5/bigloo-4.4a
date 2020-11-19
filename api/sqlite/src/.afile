@@ -1,0 +1,12 @@
+;; automatically generated, don't edit
+;; /tmp/4.4a/api/sqlite/src
+;; Thu Nov 19 07:13:52 2020
+
+(
+  (__sqlite_engine "Llib/engine.scm")
+  (__sqlite_lexer "Llib/lexer.scm")
+  (__sqlite_parser "Llib/parser.scm")
+  (__sqlite_sqlite "Llib/sqlite.scm")
+  (__sqlite_sqltiny "Llib/sqltiny.scm")
+)
+

@@ -1,0 +1,86 @@
+
+-,0
+(meta-define define define0,0
+(meta-define define define-struct0,0
+(meta-define define define-parameter0,0
+(meta-define define define0,0
+(meta-define define define-inline0,0
+(meta-define define define-generic0,0
+(meta-define define define-macro0,0
+(meta-define define define-expander0,0
+(meta-define define module0,0
+
+Llib/mpg123.scm,1323
+(module __mpg123_mpg12315,963
+(define (mpg123-handle?21,1075
+(define (make-mpg123-handle21,1075
+(define (fill-mpg123-handle!21,1075
+   (export (class mpg123-handle21,1075
+(define (mpg123-handle-mpg123-handle-init-set!22,1107
+(define (mpg123-handle-mpg123-handle-init22,1107
+(define (mpg123-handle-$builtin::$mpg123-handle-set!23,1135
+(define (mpg123-handle-$builtin::$mpg123-handle23,1135
+(define (mpg123-handle-decoder24,1201
+(define (mpg123-handle-size::long-set!25,1241
+(define (mpg123-handle-size::long25,1241
+(define (&mpg123-error?27,1279
+(define (make-&mpg123-error27,1279
+(define (fill-&mpg123-error!27,1279
+	   (class &mpg123-error27,1279
+(define (%$mpg123-handle-nil48,2204
+(define-generic (mpg123-handle-init54,2480
+(define (mpg123-handle-close64,2959
+(define (mpg123-handle-reset!72,3315
+(define (mpg123-error80,3704
+(define (mpg123-decode90,4059
+(define (mpg123-get-format99,4530
+(define (mpg123-position108,4991
+(define (mpg123-decode-status->symbol115,5341
+(define (mpg123-format->symbol130,5957
+(define (mpg123-param-get154,7119
+(define (mpg123-param-set!161,7503
+(define (mpg123-param->symbol170,7944
+(define (symbol->mpg123-param196,9248
+(define (mpg123-info232,10836
+(define (mpg123-seek239,11181
+(define (mpg123-volume-get256,11951
+(define (mpg123-volume-set!269,12503
+
+Llib/mpg123_decoder.scm,1505
+(module __mpg123_decoder15,963
+(define (mpg123-decoder?21,1052
+(define (make-mpg123-decoder21,1052
+(define (fill-mpg123-decoder!21,1052
+   (export (class mpg123-decoder21,1052
+(define (mpg123-decoder-outbuf::bstring22,1099
+(define (mpg123-decoder-%mpg12323,1171
+(define (mpg123-decoder-%!dseek::long-set!24,1237
+(define (mpg123-decoder-%!dseek::long24,1237
+(define (mpg123-decoder-%rate::int-set!25,1273
+(define (mpg123-decoder-%rate::int25,1273
+(define (mpg123-decoder-%channels::int-set!26,1305
+(define (mpg123-decoder-%channels::int26,1305
+(define (mpg123-decoder-%encoding::symbol-set!27,1341
+(define (mpg123-decoder-%encoding::symbol27,1341
+(define-macro ($compiler-debug32,1617
+(define (mpg123-debug38,1900
+(define-method (object-print o::mpg123-decoder port print-slot46,2212
+(define-method (musicdecoder-init dec::mpg123-decoder52,2538
+(define-method (musicdecoder-close dec::mpg123-decoder60,2932
+(define-method (musicdecoder-reset! dec::mpg123-decoder67,3295
+(define-method (musicdecoder-position dec::mpg123-decoder b75,3685
+(define-method (musicdecoder-info dec::mpg123-decoder82,4060
+(define-method (musicdecoder-seek dec::mpg123-decoder sec89,4414
+(define-method (musicdecoder-volume-set! dec::mpg123-decoder vol99,4883
+(define-method (musicdecoder-decode dec::mpg123-decoder am::musicbuf buffer::musicbuffer106,5259
+(define (new-format303,11670
+(define *debug-port*322,12498
+(define (debug-init!327,12746
+(define (debug-stop!334,13130
+(define (debug341,13493
+
+Llib/mpg123_alsadec.scm,32
+(module __mpg123_alsadec15,963
+
+Llib/mpg123_padec.scm,30
+(module __mpg123_padec15,963

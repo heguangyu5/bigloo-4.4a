@@ -1,0 +1,11 @@
+;; /tmp/4.4a/api/flac/src
+;; Thu Nov 19 07:13:53 2020
+
+(
+  (__flac_padec "bigloo.flac.flac_padec")
+  (__flac_alsadec "bigloo.flac.flac_alsadec")
+  (__flac_decoder "bigloo.flac.flac_decoder")
+  (__flac_flac "bigloo.flac.flac")
+  (__flac_makelib "bigloo.flac.make_lib")
+)
+

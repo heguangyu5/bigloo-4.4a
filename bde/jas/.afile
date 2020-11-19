@@ -1,0 +1,18 @@
+;; automatically generated, don't edit
+;; /tmp/4.4a/bde/jas
+;; Thu Nov 19 07:13:47 2020
+
+(
+  (jas_as "as.scm")
+  (jas_classfile "classfile.scm")
+  (jas "jas.scm")
+  (jas_labels "labels.scm")
+  (jas_lib "lib.scm")
+  (jas_opcode "opcode.scm")
+  (jas_peep "peep.scm")
+  (jas_produce "produce.scm")
+  (jas_profile "profile.scm")
+  (jas_stack "stack.scm")
+  (jas_wide "wide.scm")
+)
+

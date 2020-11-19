@@ -1,0 +1,518 @@
+<!-- 95% W3C COMPLIANT, 95% CSS FREE, RAW HTML -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1">
+<title>Bigloo</title>
+ <style type="text/css">
+  <!--
+  pre { font-family: monospace }
+  tt { font-family: monospace }
+  code { font-family: monospace }
+  p.flushright { text-align: right }
+  p.flushleft { text-align: left }
+  span.sc { font-variant: small-caps }
+  span.sf { font-family: sans-serif }
+  span.skribetitle { font-family: sans-serif; font-weight: bolder; font-size: x-large; }
+  span.refscreen { }
+  span.refprint { display: none; }
+  -->
+ </style>
+</head>
+
+<body class="chapter" bgcolor="#ffffff">
+<table width="100%" class="skribetitle" cellspacing="0" cellpadding="0"><tbody>
+<tr><td align="center" bgcolor="#8381de"><div class="skribetitle"><strong><big><big><big>18. Bigloo<br/>A practical Scheme compiler (4.4a)<br/>User manual for version 4.4a<br/>November 2020 -- Database</big></big></big></strong></div><center>
+</center>
+</td></tr></tbody></table>
+<table cellpadding="3" cellspacing="0" width="100%" class="skribe-margins"><tr>
+<td align="left" valign="top" class="skribe-left-margin" width="20%" bgcolor="#dedeff"><div class="skribe-left-margin">
+<br/><center id='center35159'
+><table width="97%" border="1" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" frame="box" rules="none"><tbody>
+<tr bgcolor="#8381de"><th id="tc35149" align="center" colspan="1"><font color="#ffffff"><strong id='bold35147'
+>main page</strong></font></th></tr>
+<tr bgcolor="#ffffff"><td id="tc35156" align="center" colspan="1"><table width="100%" border="0" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc35152" align="left" valign="top" colspan="1"><strong id='bold35151'
+>top:</strong></td><td id="tc35153" align="right" valign="top" colspan="1"><a href="bigloo.html#Bigloo-A-practical-Scheme-compiler-(-4.4a-)-User-manual-for-version-4.4a-November-2020" class="inbound">Bigloo<br/>A practical Scheme compiler (4.4a)<br/>User manual for version 4.4a<br/>November 2020</a></td></tr>
+</tbody></table>
+</td></tr>
+</tbody></table>
+</center>
+<br/><br/><center id='center35169'
+><table width="97%" border="1" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" frame="box" rules="none"><tbody>
+<tr bgcolor="#8381de"><th id="tc35163" align="center" colspan="1"><font color="#ffffff"><strong id='bold35161'
+>Database</strong></font></th></tr>
+<tr bgcolor="#ffffff"><td id="tc35166" align="center" colspan="1"><table cellspacing="1" cellpadding="1" width="100%" class="toc">
+<tbody>
+ <tr><td valign="top" align="left">18.1</td><td colspan="4" width="100%"><a href="bigloo-19.html#SQLite">SQLite</a></td></tr>
+</tbody>
+</table>
+</td></tr>
+</tbody></table>
+</center>
+<br/><br/><center id='center35179'
+><table width="97%" border="1" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" frame="box" rules="none"><tbody>
+<tr bgcolor="#8381de"><th id="tc35173" align="center" colspan="1"><font color="#ffffff"><strong id='bold35171'
+>Chapters</strong></font></th></tr>
+<tr bgcolor="#ffffff"><td id="tc35176" align="center" colspan="1"><table cellspacing="1" cellpadding="1" width="100%" class="toc">
+<tbody>
+ <tr><td valign="top" align="left"></td><td colspan="4" width="100%"><a href="bigloo-1.html#Acknowledgements">Acknowledgements</a></td></tr>
+ <tr><td valign="top" align="left">1</td><td colspan="4" width="100%"><a href="bigloo-2.html#Table-of-contents">Table of contents</a></td></tr>
+ <tr><td valign="top" align="left">2</td><td colspan="4" width="100%"><a href="bigloo-3.html#Overview-of-Bigloo">Overview of Bigloo</a></td></tr>
+ <tr><td valign="top" align="left">3</td><td colspan="4" width="100%"><a href="bigloo-4.html#Modules">Modules</a></td></tr>
+ <tr><td valign="top" align="left">4</td><td colspan="4" width="100%"><a href="bigloo-5.html#Core-Language">Core Language</a></td></tr>
+ <tr><td valign="top" align="left">5</td><td colspan="4" width="100%"><a href="bigloo-6.html#DSSSL-support">DSSSL support</a></td></tr>
+ <tr><td valign="top" align="left">6</td><td colspan="4" width="100%"><a href="bigloo-7.html#Standard-Library">Standard Library</a></td></tr>
+ <tr><td valign="top" align="left">7</td><td colspan="4" width="100%"><a href="bigloo-8.html#Pattern-Matching">Pattern Matching</a></td></tr>
+ <tr><td valign="top" align="left">8</td><td colspan="4" width="100%"><a href="bigloo-9.html#Fast-search">Fast search</a></td></tr>
+ <tr><td valign="top" align="left">9</td><td colspan="4" width="100%"><a href="bigloo-10.html#Structures-and-Records">Structures and Records</a></td></tr>
+ <tr><td valign="top" align="left">10</td><td colspan="4" width="100%"><a href="bigloo-11.html#Object-System">Object System</a></td></tr>
+ <tr><td valign="top" align="left">11</td><td colspan="4" width="100%"><a href="bigloo-12.html#Regular-parsing">Regular parsing</a></td></tr>
+ <tr><td valign="top" align="left">12</td><td colspan="4" width="100%"><a href="bigloo-13.html#Lalr(1)-parsing">Lalr(1) parsing</a></td></tr>
+ <tr><td valign="top" align="left">13</td><td colspan="4" width="100%"><a href="bigloo-14.html#Posix-Regular-Expressions">Posix Regular Expressions</a></td></tr>
+ <tr><td valign="top" align="left">14</td><td colspan="4" width="100%"><a href="bigloo-15.html#Command-Line-Parsing">Command Line Parsing</a></td></tr>
+ <tr><td valign="top" align="left">15</td><td colspan="4" width="100%"><a href="bigloo-16.html#Cryptography">Cryptography</a></td></tr>
+ <tr><td valign="top" align="left">16</td><td colspan="4" width="100%"><a href="bigloo-17.html#Errors-Assertions-and-Traces">Errors, Assertions, and Traces</a></td></tr>
+ <tr><td valign="top" align="left">17</td><td colspan="4" width="100%"><a href="bigloo-18.html#Threads">Threads</a></td></tr>
+ <tr><td valign="top" align="left">18</td><td colspan="4" width="100%"><a href="bigloo-19.html#Database">Database</a></td></tr>
+ <tr><td valign="top" align="left">19</td><td colspan="4" width="100%"><a href="bigloo-20.html#Multimedia">Multimedia</a></td></tr>
+ <tr><td valign="top" align="left">20</td><td colspan="4" width="100%"><a href="bigloo-21.html#Mail">Mail</a></td></tr>
+ <tr><td valign="top" align="left">21</td><td colspan="4" width="100%"><a href="bigloo-22.html#Text">Text</a></td></tr>
+ <tr><td valign="top" align="left">22</td><td colspan="4" width="100%"><a href="bigloo-23.html#CSV">CSV</a></td></tr>
+ <tr><td valign="top" align="left">23</td><td colspan="4" width="100%"><a href="bigloo-24.html#Eval-and-code-interpretation">Eval and code interpretation</a></td></tr>
+ <tr><td valign="top" align="left">24</td><td colspan="4" width="100%"><a href="bigloo-25.html#Macro-expansion">Macro expansion</a></td></tr>
+ <tr><td valign="top" align="left">25</td><td colspan="4" width="100%"><a href="bigloo-26.html#Parameters">Parameters</a></td></tr>
+ <tr><td valign="top" align="left">26</td><td colspan="4" width="100%"><a href="bigloo-27.html#Explicit-typing">Explicit typing</a></td></tr>
+ <tr><td valign="top" align="left">27</td><td colspan="4" width="100%"><a href="bigloo-28.html#The-C-interface">The C interface</a></td></tr>
+ <tr><td valign="top" align="left">28</td><td colspan="4" width="100%"><a href="bigloo-29.html#The-Java-interface">The Java interface</a></td></tr>
+ <tr><td valign="top" align="left">29</td><td colspan="4" width="100%"><a href="bigloo-30.html#Bigloo-Libraries">Bigloo Libraries</a></td></tr>
+ <tr><td valign="top" align="left">30</td><td colspan="4" width="100%"><a href="bigloo-31.html#Extending-the-Runtime-System">Extending the Runtime System</a></td></tr>
+ <tr><td valign="top" align="left">31</td><td colspan="4" width="100%"><a href="bigloo-32.html#SRFIs">SRFIs</a></td></tr>
+ <tr><td valign="top" align="left">32</td><td colspan="4" width="100%"><a href="bigloo-33.html#Compiler-description">Compiler description</a></td></tr>
+ <tr><td valign="top" align="left">33</td><td colspan="4" width="100%"><a href="bigloo-34.html#Cross-Compilation">Cross Compilation</a></td></tr>
+ <tr><td valign="top" align="left">34</td><td colspan="4" width="100%"><a href="bigloo-35.html#User-Extensions">User Extensions</a></td></tr>
+ <tr><td valign="top" align="left">35</td><td colspan="4" width="100%"><a href="bigloo-36.html#Bigloo-Development-Environment">Bigloo Development Environment</a></td></tr>
+ <tr><td valign="top" align="left">36</td><td colspan="4" width="100%"><a href="bigloo-37.html#Global-Index">Global Index</a></td></tr>
+ <tr><td valign="top" align="left">37</td><td colspan="4" width="100%"><a href="bigloo-38.html#Library-Index">Library Index</a></td></tr>
+ <tr><td valign="top" align="left"></td><td colspan="4" width="100%"><a href="bigloo-39.html#Bibliography">Bibliography</a></td></tr>
+</tbody>
+</table>
+</td></tr>
+</tbody></table>
+</center>
+</div></td>
+<td align="left" valign="top" class="skribe-body"><div class="skribe-body">
+<a name="Database" class="mark"></a><a name="g24156" class="mark"></a>
+Bigloo supports database programming. The current version proposes
+a SQLite binding.<br/><br/>
+
+<!-- SQLite -->
+<a name="SQLite"></a>
+<div class="section-atitle"><table width="100%"><tr><td bgcolor="#dedeff"><h3><font color="black">18.1 SQLite</font>
+</h3></td></tr></table>
+</div><div class="section">
+<a name="SQLite" class="mark"></a><a name="g24159" class="mark"></a>
+The Bigloo's C back-end supports SQL queries. It relies on the SQLite
+library (<a href="http://www.sqlite.org/">http://www.sqlite.org/</a>). The SQLite binding is accessible
+to Bigloo via the <code id='code24161'
+>sqlite</code> library. Here is an example of module
+that uses this library.<br/><br/><center id='center24173'
+><table cellspacing="0" class="color" cellpadding="0" width="95%"><tbody>
+<tr><td bgcolor="#ffffcc"><pre class="prog" id='prog24171'
+>(<font color="#1919af"><strong id='bold35180'
+>module</strong></font> <font color="#1919af"><strong id='bold35182'
+>example1</strong></font>
+  (<font color="#1919af"><strong id='bold35184'
+>library</strong></font> <font color="#1919af"><strong id='bold35186'
+>sqlite</strong></font>))<br/><br/>(<strong id='bold35188'
+>let</strong> ((db (<strong id='bold35189'
+>instantiate</strong><font color="#00cf00"><strong id='bold35190'
+>::sqlite</strong></font>)))
+  ...)
+</pre>
+</td></tr>
+</tbody></table></center>
+
+<table cellspacing="0" class="frame" cellpadding="10" border="1" width="100%"><tbody>
+<tr><td><a name="g24175" class="mark"></a><a name="sqlite" class="mark"></a><table width="100%" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc24179" align="left" colspan="1"><strong id='bold24177'
+>sqlite</strong><em id='it24178'
+></em></td><td id="tc24180" align="right" colspan="1">bigloo sqlite class</td></tr>
+</tbody></table>
+<center id='center24188'
+><table cellspacing="0" class="color" cellpadding="0" width="95%"><tbody>
+<tr><td bgcolor="#ffffcc"><pre class="prog" id='prog24186'
+>(<strong id='bold35192'
+>class</strong> sqlite
+   (path<font color="#00cf00"><strong id='bold35193'
+>::bstring</strong></font> read-only (default <font color="red">&quot;:memory:&quot;</font>)))
+</pre>
+</td></tr>
+</tbody></table></center>
+
+The instances of the class <code id='code24189'
+>sqlite</code> hold SQLite databases. A database
+may be permanently stored on a disk or loaded in memory. The class attribute
+<code id='code24190'
+>path</code> is the location on the disk where the database is stored. The
+special path <code id='code24191'
+>:memory:</code> denotes in-memory databases. When an instance
+is created a SQLite database is <em id='emph24192'
+>opened</em>.<br/><br/>Example:
+<center id='center24203'
+><table cellspacing="0" class="color" cellpadding="0" width="95%"><tbody>
+<tr><td bgcolor="#ffffcc"><pre class="prog" id='prog24201'
+>(<font color="#6959cf"><strong id='bold35196'
+>define</strong></font> <font color="#6959cf"><strong id='bold35198'
+>db1</strong></font> (<strong id='bold35200'
+>instantiate</strong><font color="#00cf00"><strong id='bold35201'
+>::sqlite</strong></font> (path <font color="red">&quot;/tmp/foo.db&quot;</font>)))
+(<font color="#6959cf"><strong id='bold35204'
+>define</strong></font> <font color="#6959cf"><strong id='bold35206'
+>db2</strong></font> (<strong id='bold35208'
+>instantiate</strong><font color="#00cf00"><strong id='bold35209'
+>::sqlite</strong></font>))
+</pre>
+</td></tr>
+</tbody></table></center>
+
+Binds the global variable <code id='code24205'
+><em id='it24204'
+>db1</em></code> to a database that is stored on the file
+system at location <code id='code24206'
+>/tmp/foo.db</code>. This example also binds the global
+variable <code id='code24208'
+><em id='it24207'
+>db2</em></code> to an in-memory SQLite database.
+</td></tr>
+</tbody></table><br/>
+<table cellspacing="0" class="frame" cellpadding="10" border="1" width="100%"><tbody>
+<tr><td><a name="g24212" class="mark"></a><a name="sqlite-close" class="mark"></a><table width="100%" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc24218" align="left" colspan="1"><strong id='bold24214'
+>sqlite-close</strong><em id='it24217'
+> <code id='code24216'
+><em id='it24215'
+>sqlite</em></code></em></td><td id="tc24219" align="right" colspan="1">bigloo sqlite function</td></tr>
+</tbody></table>
+This function closes a database previously opened by creating an instance
+of the class <code id='code24222'
+>sqlite</code>.<br/><br/>Example:
+<center id='center24231'
+><table cellspacing="0" class="color" cellpadding="0" width="95%"><tbody>
+<tr><td bgcolor="#ffffcc"><pre class="prog" id='prog24229'
+>(<strong id='bold35211'
+>let</strong> ((db (<strong id='bold35212'
+>instantiate</strong><font color="#00cf00"><strong id='bold35213'
+>::sqlite</strong></font>)))
+  (sqlite-exec db <font color="red">&quot;CREATE TABLE table1 (x INTEGER, y INTEGER)&quot;</font>)
+  (sqlite-exec db <font color="red">&quot;INSERT INTO table1 VALUES( ~a, ~a )&quot;</font> 1 4)
+  (sqlite-close db))
+</pre>
+</td></tr>
+</tbody></table></center>
+</td></tr>
+</tbody></table><br/>
+<table cellspacing="0" class="frame" cellpadding="10" border="1" width="100%"><tbody>
+<tr><td><a name="g24235" class="mark"></a><a name="sqlite-format" class="mark"></a><table width="100%" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc24243" align="left" colspan="1"><strong id='bold24237'
+>sqlite-format</strong><em id='it24242'
+> <code id='code24239'
+><em id='it24238'
+>string</em></code> <code id='code24241'
+><em id='it24240'
+>arg</em></code> ...</em></td><td id="tc24244" align="right" colspan="1">bigloo sqlite function</td></tr>
+</tbody></table>
+Constructs a string of characters representing an SQLite
+commands. This function acts as <code id='code24247'
+>format</code> (see <a href="bigloo-7.html#Input-and-Output" class="inbound">Input and Output</a>). It is augmented with three additional escape sequence:
+<code id='code24248'
+>~q</code>, <code id='code24249'
+>~k</code>, and <code id='code24250'
+>~l</code>. The first one build a string of
+characters where the characters denoting SQL strings (i.e., the
+character <code id='code24251'
+>'</code>) is automatically escaped. The escape character
+<code id='code24252'
+>~k</code> introduces a list of SQL strings. The escape character
+<code id='code24253'
+>~l</code> introduces a SQL list.<br/><br/>Summary of all escape codes:
+<ul class="itemize" id='itemize24270'
+><li><code id='code24255'
+>~a</code> The corresponding value is inserted into the string 
+as if printed with display.
+</li>
+<li><code id='code24257'
+>~s</code> The corresponding value is inserted into the string 
+as if printed with write.
+</li>
+<li><code id='code24259'
+>~%</code> A newline is inserted.
+</li>
+<li><code id='code24261'
+>~~</code> A tilde <code id='code24262'
+>~</code> is inserted.
+</li>
+<li><code id='code24264'
+>~q</code> An SQL escaped string.
+</li>
+<li><code id='code24266'
+>~l</code> Introduces a list (comma separated).
+</li>
+<li><code id='code24268'
+>~k</code> Introduces a list of SQL strings.
+</li>
+</ul>
+Examples:<br/><br/><center id='center24297'
+><table cellspacing="0" class="color" cellpadding="0" width="95%"><tbody>
+<tr><td bgcolor="#ffffcc"><pre class="prog" id='prog24295'
+>(<font color="#1919af"><strong id='bold35217'
+>module</strong></font> <font color="#1919af"><strong id='bold35219'
+>example</strong></font>
+   (<font color="#1919af"><strong id='bold35221'
+>library</strong></font> <font color="#1919af"><strong id='bold35223'
+>sqlite</strong></font>))<br/><br/>(sqlite-format <font color="red">&quot;~a&quot;</font> <font color="red">&quot;foo'bar&quot;</font>) =&gt; <font color="red">&quot;foo'bar&quot;</font>
+(sqlite-format <font color="red">&quot;~q&quot;</font> <font color="red">&quot;foo'bar&quot;</font>) =&gt; <font color="red">&quot;'foo''bar'&quot;</font>
+(sqlite-format <font color="red">&quot;~a&quot;</font> '(<font color="red">&quot;foo'bar&quot;</font> <font color="red">&quot;foo&quot;</font>)) =&gt; <font color="red">&quot;(foo'bar foo)&quot;</font>
+(sqlite-format <font color="red">&quot;~k&quot;</font> '(<font color="red">&quot;foo'bar&quot;</font> <font color="red">&quot;foo&quot;</font>)) =&gt; <font color="red">&quot;'foo''bar','foo'&quot;</font>
+(sqlite-format <font color="red">&quot;~l&quot;</font> '(<font color="red">&quot;foo'bar&quot;</font> <font color="red">&quot;foo&quot;</font>)) =&gt; <font color="red">&quot;foo'bar,foo&quot;</font>
+</pre>
+</td></tr>
+</tbody></table></center>
+</td></tr>
+</tbody></table><br/>
+<table cellspacing="0" class="frame" cellpadding="10" border="1" width="100%"><tbody>
+<tr><td><a name="g24301" class="mark"></a><a name="sqlite-exec" class="mark"></a><table width="100%" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc24311" align="left" colspan="1"><strong id='bold24303'
+>sqlite-exec</strong><em id='it24310'
+> <code id='code24305'
+><em id='it24304'
+>sqlite</em></code> <code id='code24307'
+><em id='it24306'
+>string</em></code> <code id='code24309'
+><em id='it24308'
+>arg</em></code> ...</em></td><td id="tc24312" align="right" colspan="1">bigloo sqlite function</td></tr>
+</tbody></table>
+The function <code id='code24315'
+>sqlite-exec</code> <em id='emph24316'
+>executes</em> an SQLite command. The command
+is the built by implicitly invoking <code id='code24317'
+>sqlite-format</code> on <code id='code24319'
+><em id='it24318'
+>string</em></code> and
+the optional <code id='code24321'
+><em id='it24320'
+>arg</em></code> arguments. This function returns a single element,
+the first one returned by the SQL engine.<br/><br/>Example:
+<center id='center24338'
+><table cellspacing="0" class="color" cellpadding="0" width="95%"><tbody>
+<tr><td bgcolor="#ffffcc"><pre class="prog" id='prog24336'
+>(<font color="#1919af"><strong id='bold35243'
+>module</strong></font> <font color="#1919af"><strong id='bold35245'
+>example</strong></font>
+   (<font color="#1919af"><strong id='bold35247'
+>library</strong></font> <font color="#1919af"><strong id='bold35249'
+>sqlite</strong></font>))<br/><br/>(<font color="#6959cf"><strong id='bold35251'
+>define</strong></font> <font color="#6959cf"><strong id='bold35253'
+>*db*</strong></font> (<strong id='bold35255'
+>instantiate</strong><font color="#00cf00"><strong id='bold35256'
+>::sqlite</strong></font>))<br/><br/>(sqlite-exec *db* <font color="red">&quot;CREATE TABLE foo (x INTEGER, y INTEGER)&quot;</font>)
+(for-each (<strong id='bold35259'
+>lambda</strong> (x)
+		(sqlite-exec *db*  <font color="red">&quot;INSERT INTO foo VALUES(~A, ~A)&quot;</font> x (* x x)))
+	     (iota 10))
+(sqlite-exec *db* <font color="red">&quot;SELECT * FROM foo&quot;</font>)
+   =&gt; 9
+</pre>
+</td></tr>
+</tbody></table></center>
+
+</td></tr>
+</tbody></table><br/>
+<table cellspacing="0" class="frame" cellpadding="10" border="1" width="100%"><tbody>
+<tr><td><a name="g24342" class="mark"></a><a name="sqlite-eval" class="mark"></a><table width="100%" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc24354" align="left" colspan="1"><strong id='bold24344'
+>sqlite-eval</strong><em id='it24353'
+> <code id='code24346'
+><em id='it24345'
+>sqlite</em></code> <code id='code24348'
+><em id='it24347'
+>procedure</em></code> <code id='code24350'
+><em id='it24349'
+>string</em></code> <code id='code24352'
+><em id='it24351'
+>arg</em></code> ...</em></td><td id="tc24355" align="right" colspan="1">bigloo sqlite function</td></tr>
+</tbody></table>
+The function <code id='code24358'
+>sqlite-eval</code> invokes a SQLite command built by
+implicitly invoking <code id='code24359'
+>sqlite-format</code> on <code id='code24361'
+><em id='it24360'
+>string</em></code> and the optional
+<code id='code24363'
+><em id='it24362'
+>arg</em></code> arguments. The result of the function is built by applying 
+<code id='code24365'
+><em id='it24364'
+>procedure</em></code> to the first value returned by the SQLite call.<br/><br/>Note: user callback (<code id='code24368'
+><em id='it24367'
+>procedure</em></code>) <strong id='bold24369'
+>must not</strong> exit. That is they must
+not invoke a function create by <code id='code24370'
+>bind-exit</code>. Exiting from a callback will
+leave the database in a inconsistent state that prevent transactions to
+be rolled back.
+</td></tr>
+</tbody></table><br/>
+<table cellspacing="0" class="frame" cellpadding="10" border="1" width="100%"><tbody>
+<tr><td><a name="g24374" class="mark"></a><a name="sqlite-map" class="mark"></a><table width="100%" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc24386" align="left" colspan="1"><strong id='bold24376'
+>sqlite-map</strong><em id='it24385'
+> <code id='code24378'
+><em id='it24377'
+>sqlite</em></code> <code id='code24380'
+><em id='it24379'
+>procedure</em></code> <code id='code24382'
+><em id='it24381'
+>string</em></code> <code id='code24384'
+><em id='it24383'
+>arg</em></code> ...</em></td><td id="tc24387" align="right" colspan="1">bigloo sqlite function</td></tr>
+</tbody></table>
+The function <code id='code24390'
+>sqlite-map</code> invokes a SQLite command built by
+implicitly invoking <code id='code24391'
+>sqlite-format</code> on <code id='code24393'
+><em id='it24392'
+>string</em></code> and the optional
+<code id='code24395'
+><em id='it24394'
+>arg</em></code> arguments. The result is a list whose elements are built by applying 
+<code id='code24397'
+><em id='it24396'
+>procedure</em></code> to all the values returned by the SQLite call.<br/><br/>Note: user callback (<code id='code24400'
+><em id='it24399'
+>procedure</em></code>) <strong id='bold24401'
+>must not</strong> exit. That is they must
+not invoke a function create by <code id='code24402'
+>bind-exit</code>. Exiting from a callback will
+leave the database in a inconsistent state that prevent transactions to
+be rolled back.
+Example:<br/><br/><center id='center24420'
+><table cellspacing="0" class="color" cellpadding="0" width="95%"><tbody>
+<tr><td bgcolor="#ffffcc"><pre class="prog" id='prog24418'
+>(<font color="#1919af"><strong id='bold35262'
+>module</strong></font> <font color="#1919af"><strong id='bold35264'
+>example</strong></font>
+   (<font color="#1919af"><strong id='bold35266'
+>library</strong></font> <font color="#1919af"><strong id='bold35268'
+>sqlite</strong></font>))<br/><br/>(<font color="#6959cf"><strong id='bold35270'
+>define</strong></font> <font color="#6959cf"><strong id='bold35272'
+>*db*</strong></font> (<strong id='bold35274'
+>instantiate</strong><font color="#00cf00"><strong id='bold35275'
+>::sqlite</strong></font>))<br/><br/>(sqlite-exec *db* <font color="red">&quot;CREATE TABLE foo (x INTEGER, y INTEGER)&quot;</font>)
+(for-each (<strong id='bold35278'
+>lambda</strong> (x)
+		(sqlite-exec *db*  <font color="red">&quot;INSERT INTO foo VALUES(~A, ~A)&quot;</font> x (* x x)))
+	     (iota 10))
+(sqlite-map *db* 
+  (<strong id='bold35280'
+>lambda</strong> (s1 s2) (+ (string-&gt;integer s1) (string-&gt;integer s2))) 
+  <font color="red">&quot;SELECT * FROM foo&quot;</font>)
+   =&gt; (0 2 6 12 20 30 42 56 72 90)
+</pre>
+</td></tr>
+</tbody></table></center>
+</td></tr>
+</tbody></table><br/>
+Example2:
+<center id='center24458'
+><table cellspacing="0" class="color" cellpadding="0" width="95%"><tbody>
+<tr><td bgcolor="#ffffcc"><pre class="prog" id='prog24456'
+>(<font color="#1919af"><strong id='bold35282'
+>module</strong></font> <font color="#1919af"><strong id='bold35284'
+>example</strong></font>
+   (<font color="#1919af"><strong id='bold35286'
+>library</strong></font> <font color="#1919af"><strong id='bold35288'
+>sqlite</strong></font>))<br/><br/>(<font color="#6959cf"><strong id='bold35290'
+>define</strong></font> <font color="#6959cf"><strong id='bold35292'
+>*db*</strong></font> (<strong id='bold35294'
+>instantiate</strong><font color="#00cf00"><strong id='bold35295'
+>::sqlite</strong></font>))<br/><br/>(sqlite-exec *db* <font color="red">&quot;CREATE TABLE foo (x INTEGER, y INTEGER)&quot;</font>)
+(for-each (<strong id='bold35298'
+>lambda</strong> (x)
+		(sqlite-exec *db*  <font color="red">&quot;INSERT INTO foo VALUES(~A, ~A)&quot;</font> x (* x x)))
+	     (iota 10))
+(sqlite-map *db* vector <font color="red">&quot;SELECT * FROM foo&quot;</font>)
+   =&gt; '(#(<font color="red">&quot;0&quot;</font> <font color="red">&quot;0&quot;</font>)
+	#(<font color="red">&quot;1&quot;</font> <font color="red">&quot;1&quot;</font>)
+	#(<font color="red">&quot;2&quot;</font> <font color="red">&quot;4&quot;</font>)
+	#(<font color="red">&quot;3&quot;</font> <font color="red">&quot;9&quot;</font>)
+	#(<font color="red">&quot;4&quot;</font> <font color="red">&quot;16&quot;</font>)
+	#(<font color="red">&quot;5&quot;</font> <font color="red">&quot;25&quot;</font>)
+	#(<font color="red">&quot;6&quot;</font> <font color="red">&quot;36&quot;</font>)
+	#(<font color="red">&quot;7&quot;</font> <font color="red">&quot;49&quot;</font>)
+	#(<font color="red">&quot;8&quot;</font> <font color="red">&quot;64&quot;</font>)
+	#(<font color="red">&quot;9&quot;</font> <font color="red">&quot;81&quot;</font>))
+</pre>
+</td></tr>
+</tbody></table></center>
+
+<table cellspacing="0" class="frame" cellpadding="10" border="1" width="100%"><tbody>
+<tr><td><a name="g24460" class="mark"></a><a name="sqlite-name-of-tables" class="mark"></a><table width="100%" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc24466" align="left" colspan="1"><strong id='bold24462'
+>sqlite-name-of-tables</strong><em id='it24465'
+> <code id='code24464'
+><em id='it24463'
+>sqlite</em></code></em></td><td id="tc24467" align="right" colspan="1">bigloo sqlite function</td></tr>
+</tbody></table>
+Returns the name of tables in the database. This list can also be
+obtained with<br/><br/><center id='center24475'
+><table cellspacing="0" class="color" cellpadding="0" width="95%"><tbody>
+<tr><td bgcolor="#ffffcc"><pre class="prog" id='prog24473'
+>(sqlite-map db
+   (<strong id='bold35321'
+>lambda</strong> (x) x)
+   <font color="red">&quot;SELECT name FROM sqlite_master WHERE type='table'&quot;</font>)
+</pre>
+</td></tr>
+</tbody></table></center>
+</td></tr>
+</tbody></table><br/>
+<table cellspacing="0" class="frame" cellpadding="10" border="1" width="100%"><tbody>
+<tr><td><a name="g24479" class="mark"></a><a name="sqlite-table-name-of-columns" class="mark"></a><table width="100%" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc24487" align="left" colspan="1"><strong id='bold24481'
+>sqlite-table-name-of-columns</strong><em id='it24486'
+> <code id='code24483'
+><em id='it24482'
+>sqlite</em></code> <code id='code24485'
+><em id='it24484'
+>table</em></code></em></td><td id="tc24488" align="right" colspan="1">bigloo sqlite function</td></tr>
+</tbody></table>
+Returns the name of columns in the table.
+</td></tr>
+</tbody></table><br/>
+<table cellspacing="0" class="frame" cellpadding="10" border="1" width="100%"><tbody>
+<tr><td><a name="g24494" class="mark"></a><a name="sqlite-last-insert-rowid" class="mark"></a><table width="100%" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc24500" align="left" colspan="1"><strong id='bold24496'
+>sqlite-last-insert-rowid</strong><em id='it24499'
+> <code id='code24498'
+><em id='it24497'
+>sqlite</em></code></em></td><td id="tc24501" align="right" colspan="1">bigloo sqlite function</td></tr>
+</tbody></table>
+Returns the SQLite <em id='emph24504'
+>rowid</em> of the last inserted row.
+</td></tr>
+</tbody></table><br/><br/><br/><br/><br/><br/><br/><br/> 
+
+</div><br>
+</div></td>
+</tr></table><div class="skribe-ending">
+<hr> 
+<p class="ending" id='paragraph35328'
+><font size="-1">
+This <span class="sc">Html</span> page has been produced by 
+<a href="http://www-sop.inria.fr/indes/fp/Skribe" class="http">Skribe</a>.
+<br/>
+Last update <em id='it35326'
+>Thu Nov 19 07:13:49 2020</em>.</font></p></div>
+</body>
+</html>

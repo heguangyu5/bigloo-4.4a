@@ -1,0 +1,22 @@
+;; /tmp/4.4a/api/libuv/src
+;; Thu Nov 19 07:13:53 2020
+
+(
+  (__libuv_pipe "bigloo.libuv.pipe")
+  (__libuv_process "bigloo.libuv.process")
+  (__libuv_check "bigloo.libuv.check")
+  (__libuv_poll "bigloo.libuv.poll")
+  (__libuv_fs-poll "bigloo.libuv.fspoll")
+  (__libuv_fs-event "bigloo.libuv.fsevent")
+  (__libuv_idle "bigloo.libuv.idle")
+  (__libuv_net "bigloo.libuv.net")
+  (__libuv_os "bigloo.libuv.os")
+  (__libuv_fs "bigloo.libuv.fs")
+  (__libuv_async "bigloo.libuv.async")
+  (__libuv_timer "bigloo.libuv.timer")
+  (__libuv_loop "bigloo.libuv.loop")
+  (__libuv_handle "bigloo.libuv.handle")
+  (__libuv_types "bigloo.libuv.uvtypes")
+  (__libuv_makelib "bigloo.libuv.make_lib")
+)
+

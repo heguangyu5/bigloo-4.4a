@@ -1,0 +1,11 @@
+;; /tmp/4.4a/api/text/src
+;; Thu Nov 19 07:13:52 2020
+
+(
+  (__text_levenshtein "bigloo.text.levenshtein")
+  (__text_hyphenation "bigloo.text.hyphenation")
+  (__text_gb2312 "bigloo.text.gb2312")
+  (__text_bibtex "bigloo.text.bibtex")
+  (__text_makelib "bigloo.text.make_lib")
+)
+

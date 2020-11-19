@@ -1,0 +1,1069 @@
+<!-- 95% W3C COMPLIANT, 95% CSS FREE, RAW HTML -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1">
+<title>Bigloo</title>
+ <style type="text/css">
+  <!--
+  pre { font-family: monospace }
+  tt { font-family: monospace }
+  code { font-family: monospace }
+  p.flushright { text-align: right }
+  p.flushleft { text-align: left }
+  span.sc { font-variant: small-caps }
+  span.sf { font-family: sans-serif }
+  span.skribetitle { font-family: sans-serif; font-weight: bolder; font-size: x-large; }
+  span.refscreen { }
+  span.refprint { display: none; }
+  -->
+ </style>
+</head>
+
+<body class="chapter" bgcolor="#ffffff">
+<table width="100%" class="skribetitle" cellspacing="0" cellpadding="0"><tbody>
+<tr><td align="center" bgcolor="#8381de"><div class="skribetitle"><strong><big><big><big>11. Bigloo<br/>A practical Scheme compiler (4.4a)<br/>User manual for version 4.4a<br/>November 2020 -- Regular parsing</big></big></big></strong></div><center>
+</center>
+</td></tr></tbody></table>
+<table cellpadding="3" cellspacing="0" width="100%" class="skribe-margins"><tr>
+<td align="left" valign="top" class="skribe-left-margin" width="20%" bgcolor="#dedeff"><div class="skribe-left-margin">
+<br/><center id='center33373'
+><table width="97%" border="1" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" frame="box" rules="none"><tbody>
+<tr bgcolor="#8381de"><th id="tc33363" align="center" colspan="1"><font color="#ffffff"><strong id='bold33361'
+>main page</strong></font></th></tr>
+<tr bgcolor="#ffffff"><td id="tc33370" align="center" colspan="1"><table width="100%" border="0" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc33366" align="left" valign="top" colspan="1"><strong id='bold33365'
+>top:</strong></td><td id="tc33367" align="right" valign="top" colspan="1"><a href="bigloo.html#Bigloo-A-practical-Scheme-compiler-(-4.4a-)-User-manual-for-version-4.4a-November-2020" class="inbound">Bigloo<br/>A practical Scheme compiler (4.4a)<br/>User manual for version 4.4a<br/>November 2020</a></td></tr>
+</tbody></table>
+</td></tr>
+</tbody></table>
+</center>
+<br/><br/><center id='center33383'
+><table width="97%" border="1" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" frame="box" rules="none"><tbody>
+<tr bgcolor="#8381de"><th id="tc33377" align="center" colspan="1"><font color="#ffffff"><strong id='bold33375'
+>Regular parsing</strong></font></th></tr>
+<tr bgcolor="#ffffff"><td id="tc33380" align="center" colspan="1"><table cellspacing="1" cellpadding="1" width="100%" class="toc">
+<tbody>
+ <tr><td valign="top" align="left">11.1</td><td colspan="4" width="100%"><a href="bigloo-12.html#A-new-way-of-reading">A new way of reading</a></td></tr>
+ <tr><td valign="top" align="left">11.2</td><td colspan="4" width="100%"><a href="bigloo-12.html#The-syntax-of-the-regular-grammar">The syntax of the regular grammar</a></td></tr>
+ <tr><td valign="top" align="left">11.3</td><td colspan="4" width="100%"><a href="bigloo-12.html#The-semantics-actions">The semantics actions</a></td></tr>
+ <tr><td valign="top" align="left">11.4</td><td colspan="4" width="100%"><a href="bigloo-12.html#Options-and-user-definitions">Options and user definitions</a></td></tr>
+ <tr><td valign="top" align="left">11.5</td><td colspan="4" width="100%"><a href="bigloo-12.html#Examples-of-regular-grammar">Examples of regular grammar</a></td></tr>
+ <tr><td></td><td valign="top" align="left">11.5.1</td><td colspan="3" width="100%"><a href="bigloo-12.html#Word-count">Word count</a></td></tr>
+ <tr><td></td><td valign="top" align="left">11.5.2</td><td colspan="3" width="100%"><a href="bigloo-12.html#Roman-numbers">Roman numbers</a></td></tr>
+</tbody>
+</table>
+</td></tr>
+</tbody></table>
+</center>
+<br/><br/><center id='center33393'
+><table width="97%" border="1" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" frame="box" rules="none"><tbody>
+<tr bgcolor="#8381de"><th id="tc33387" align="center" colspan="1"><font color="#ffffff"><strong id='bold33385'
+>Chapters</strong></font></th></tr>
+<tr bgcolor="#ffffff"><td id="tc33390" align="center" colspan="1"><table cellspacing="1" cellpadding="1" width="100%" class="toc">
+<tbody>
+ <tr><td valign="top" align="left"></td><td colspan="4" width="100%"><a href="bigloo-1.html#Acknowledgements">Acknowledgements</a></td></tr>
+ <tr><td valign="top" align="left">1</td><td colspan="4" width="100%"><a href="bigloo-2.html#Table-of-contents">Table of contents</a></td></tr>
+ <tr><td valign="top" align="left">2</td><td colspan="4" width="100%"><a href="bigloo-3.html#Overview-of-Bigloo">Overview of Bigloo</a></td></tr>
+ <tr><td valign="top" align="left">3</td><td colspan="4" width="100%"><a href="bigloo-4.html#Modules">Modules</a></td></tr>
+ <tr><td valign="top" align="left">4</td><td colspan="4" width="100%"><a href="bigloo-5.html#Core-Language">Core Language</a></td></tr>
+ <tr><td valign="top" align="left">5</td><td colspan="4" width="100%"><a href="bigloo-6.html#DSSSL-support">DSSSL support</a></td></tr>
+ <tr><td valign="top" align="left">6</td><td colspan="4" width="100%"><a href="bigloo-7.html#Standard-Library">Standard Library</a></td></tr>
+ <tr><td valign="top" align="left">7</td><td colspan="4" width="100%"><a href="bigloo-8.html#Pattern-Matching">Pattern Matching</a></td></tr>
+ <tr><td valign="top" align="left">8</td><td colspan="4" width="100%"><a href="bigloo-9.html#Fast-search">Fast search</a></td></tr>
+ <tr><td valign="top" align="left">9</td><td colspan="4" width="100%"><a href="bigloo-10.html#Structures-and-Records">Structures and Records</a></td></tr>
+ <tr><td valign="top" align="left">10</td><td colspan="4" width="100%"><a href="bigloo-11.html#Object-System">Object System</a></td></tr>
+ <tr><td valign="top" align="left">11</td><td colspan="4" width="100%"><a href="bigloo-12.html#Regular-parsing">Regular parsing</a></td></tr>
+ <tr><td valign="top" align="left">12</td><td colspan="4" width="100%"><a href="bigloo-13.html#Lalr(1)-parsing">Lalr(1) parsing</a></td></tr>
+ <tr><td valign="top" align="left">13</td><td colspan="4" width="100%"><a href="bigloo-14.html#Posix-Regular-Expressions">Posix Regular Expressions</a></td></tr>
+ <tr><td valign="top" align="left">14</td><td colspan="4" width="100%"><a href="bigloo-15.html#Command-Line-Parsing">Command Line Parsing</a></td></tr>
+ <tr><td valign="top" align="left">15</td><td colspan="4" width="100%"><a href="bigloo-16.html#Cryptography">Cryptography</a></td></tr>
+ <tr><td valign="top" align="left">16</td><td colspan="4" width="100%"><a href="bigloo-17.html#Errors-Assertions-and-Traces">Errors, Assertions, and Traces</a></td></tr>
+ <tr><td valign="top" align="left">17</td><td colspan="4" width="100%"><a href="bigloo-18.html#Threads">Threads</a></td></tr>
+ <tr><td valign="top" align="left">18</td><td colspan="4" width="100%"><a href="bigloo-19.html#Database">Database</a></td></tr>
+ <tr><td valign="top" align="left">19</td><td colspan="4" width="100%"><a href="bigloo-20.html#Multimedia">Multimedia</a></td></tr>
+ <tr><td valign="top" align="left">20</td><td colspan="4" width="100%"><a href="bigloo-21.html#Mail">Mail</a></td></tr>
+ <tr><td valign="top" align="left">21</td><td colspan="4" width="100%"><a href="bigloo-22.html#Text">Text</a></td></tr>
+ <tr><td valign="top" align="left">22</td><td colspan="4" width="100%"><a href="bigloo-23.html#CSV">CSV</a></td></tr>
+ <tr><td valign="top" align="left">23</td><td colspan="4" width="100%"><a href="bigloo-24.html#Eval-and-code-interpretation">Eval and code interpretation</a></td></tr>
+ <tr><td valign="top" align="left">24</td><td colspan="4" width="100%"><a href="bigloo-25.html#Macro-expansion">Macro expansion</a></td></tr>
+ <tr><td valign="top" align="left">25</td><td colspan="4" width="100%"><a href="bigloo-26.html#Parameters">Parameters</a></td></tr>
+ <tr><td valign="top" align="left">26</td><td colspan="4" width="100%"><a href="bigloo-27.html#Explicit-typing">Explicit typing</a></td></tr>
+ <tr><td valign="top" align="left">27</td><td colspan="4" width="100%"><a href="bigloo-28.html#The-C-interface">The C interface</a></td></tr>
+ <tr><td valign="top" align="left">28</td><td colspan="4" width="100%"><a href="bigloo-29.html#The-Java-interface">The Java interface</a></td></tr>
+ <tr><td valign="top" align="left">29</td><td colspan="4" width="100%"><a href="bigloo-30.html#Bigloo-Libraries">Bigloo Libraries</a></td></tr>
+ <tr><td valign="top" align="left">30</td><td colspan="4" width="100%"><a href="bigloo-31.html#Extending-the-Runtime-System">Extending the Runtime System</a></td></tr>
+ <tr><td valign="top" align="left">31</td><td colspan="4" width="100%"><a href="bigloo-32.html#SRFIs">SRFIs</a></td></tr>
+ <tr><td valign="top" align="left">32</td><td colspan="4" width="100%"><a href="bigloo-33.html#Compiler-description">Compiler description</a></td></tr>
+ <tr><td valign="top" align="left">33</td><td colspan="4" width="100%"><a href="bigloo-34.html#Cross-Compilation">Cross Compilation</a></td></tr>
+ <tr><td valign="top" align="left">34</td><td colspan="4" width="100%"><a href="bigloo-35.html#User-Extensions">User Extensions</a></td></tr>
+ <tr><td valign="top" align="left">35</td><td colspan="4" width="100%"><a href="bigloo-36.html#Bigloo-Development-Environment">Bigloo Development Environment</a></td></tr>
+ <tr><td valign="top" align="left">36</td><td colspan="4" width="100%"><a href="bigloo-37.html#Global-Index">Global Index</a></td></tr>
+ <tr><td valign="top" align="left">37</td><td colspan="4" width="100%"><a href="bigloo-38.html#Library-Index">Library Index</a></td></tr>
+ <tr><td valign="top" align="left"></td><td colspan="4" width="100%"><a href="bigloo-39.html#Bibliography">Bibliography</a></td></tr>
+</tbody>
+</table>
+</td></tr>
+</tbody></table>
+</center>
+</div></td>
+<td align="left" valign="top" class="skribe-body"><div class="skribe-body">
+<a name="Regular-Parsing" class="mark"></a><a name="g17764" class="mark"></a><a name="g17766" class="mark"></a>
+Programming languages have poor reading libraries since the lexical
+information that can be specified is directly tied to the structure of
+the language. For example, in C it's hard to read a rational number
+because there is no type rational.  Programs have been written to
+circumvent this problem: Lex [Lesk75], for example, is one of them.
+We choose to incorporate in Bigloo a set of new functions to assist in
+such parsing. The syntax for regular grammar (also known as regular
+analyser) of Bigloo 2.0 (the one described in this document) is not
+compatible with former Bigloo versions.<br/><br/>
+<!-- A new way of reading -->
+<a name="A-new-way-of-reading"></a>
+<div class="section-atitle"><table width="100%"><tr><td bgcolor="#dedeff"><h3><font color="black">11.1 A new way of reading</font>
+</h3></td></tr></table>
+</div><div class="section">
+<a name="A-New-Way-of-Reading" class="mark"></a><a name="g17769" class="mark"></a>
+There is only one way in Bigloo to read text, <em id='emph17771'
+>regular reading</em>,
+which is done by the new form:<br/><br/><table cellspacing="0" class="frame" cellpadding="10" border="1" width="100%"><tbody>
+<tr><td><table width="100%" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc17775" align="left" colspan="1"><strong id='bold17773'
+>read/rp</strong><em id='it17774'
+> regular-grammar input-port</em></td><td id="tc17776" align="right" colspan="1">bigloo procedure</td></tr>
+</tbody></table>
+
+The first argument is a regular grammar (also known as regular
+analyser) and the second a Scheme port.  This way of reading is almost
+the same as the Lex's one. The reader tries to match the longest
+input, from the stream pointed to by <code id='code17780'
+><em id='it17779'
+>input-port</em></code>, with one of
+several regular expressions contained in <code id='code17782'
+><em id='it17781'
+>regular-grammar</em></code>. If
+many rules match, the reader takes the first one defined in the
+grammar. When the regular rule has been found the corresponding Scheme
+expression is evaluated.<br/><br/><em id='emph17784'
+>remark: </em> The traditional <code id='code17785'
+>read</code> Scheme function is implemented as:
+<center id='center17789'
+><table cellspacing="0" class="color" cellpadding="0" width="95%"><tbody>
+<tr><td bgcolor="#ffffcc"><pre class="prog" id='prog17787'
+>(<font color="#6959cf"><strong id='bold33394'
+>define-inline</strong></font> (<font color="#6959cf"><strong id='bold33396'
+>read</strong></font> port)
+   (read/rp scheme-grammar port))
+</pre>
+</td></tr>
+</tbody></table></center>
+</td></tr>
+</tbody></table><br/>
+</div><br>
+<!-- The syntax of the regular grammar -->
+<a name="The-syntax-of-the-regular-grammar"></a>
+<div class="section-atitle"><table width="100%"><tr><td bgcolor="#dedeff"><h3><font color="black">11.2 The syntax of the regular grammar</font>
+</h3></td></tr></table>
+</div><div class="section">
+<a name="The-Syntax-of-The-Regular-Grammar" class="mark"></a><a name="g17792" class="mark"></a>
+A regular grammar is built by the means of the form <code id='code17794'
+>regular-grammar</code>:<br/><br/><table cellspacing="0" class="frame" cellpadding="10" border="1" width="100%"><tbody>
+<tr><td><a name="g17797" class="mark"></a><a name="regular-grammar" class="mark"></a><table width="100%" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc17801" align="left" colspan="1"><strong id='bold17799'
+>regular-grammar</strong><em id='it17800'
+> (binding ...) rule ...</em></td><td id="tc17802" align="right" colspan="1">bigloo syntax</td></tr>
+</tbody></table>
+
+The <code id='code17806'
+><em id='it17805'
+>binding</em></code> and <code id='code17808'
+><em id='it17807'
+>rule</em></code> are defined by 
+the following grammar:<br/><br/><center id='center17834'
+><table cellspacing="0" class="color" cellpadding="0" width="95%"><tbody>
+<tr><td bgcolor="#ccccff"><pre class="prog" id='prog17832'
+>&lt;binding&gt;  ==&gt; (&lt;variable&gt; &lt;re&gt;)
+             | &lt;option&gt;
+&lt;option&gt;   ==&gt; &lt;variable&gt;
+&lt;rule&gt;     ==&gt; &lt;define&gt;
+             | (&lt;cre&gt; &lt;s-expression&gt; &lt;s-expression&gt; ...)
+             | (<code id='code17810'
+>else</code> &lt;s-expression&gt; &lt;s-expression&gt; ...)
+&lt;define&gt;   ==&gt; (define &lt;s-expression&gt;)
+&lt;cre&gt;      ==&gt; &lt;re&gt;
+             | (<code id='code17811'
+>context</code> &lt;symbol&gt; &lt;re&gt;)
+             | (<code id='code17812'
+>when</code> &lt;s-expr&gt; &lt;re&gt;)
+             | (<code id='code17813'
+>bol</code> &lt;re&gt;)
+             | (<code id='code17814'
+>eol</code> &lt;re&gt;)
+             | (<code id='code17815'
+>bof</code> &lt;re&gt;)
+             | (<code id='code17816'
+>eof</code> &lt;re&gt;)
+&lt;re&gt;       ==&gt; &lt;variable&gt;
+             | &lt;char&gt;
+             | &lt;string&gt;
+             | (<code id='code17817'
+>:</code> &lt;re&gt; ...)
+             | (<code id='code17818'
+>or</code> &lt;re&gt; ...)
+             | (<code id='code17819'
+>*</code> &lt;re&gt;)
+             | (<code id='code17820'
+>+</code> &lt;re&gt;)
+             | (<code id='code17821'
+>?</code> &lt;re&gt;)
+             | (<code id='code17822'
+>=</code> &lt;integer&gt; &lt;re&gt;)
+             | (<code id='code17823'
+>&gt;=</code> &lt;integer&gt; &lt;re&gt;)
+             | (<code id='code17824'
+>**</code> &lt;integer&gt; &lt;integer&gt; &lt;re&gt;)
+             | (<code id='code17825'
+>...</code> &lt;integer&gt; &lt;re&gt;)
+             | (<code id='code17826'
+>uncase</code> &lt;re&gt;)
+             | (<code id='code17827'
+>in</code> &lt;cset&gt; ...)
+             | (<code id='code17828'
+>out</code> &lt;cset&gt; ...)
+             | (<code id='code17829'
+>and</code> &lt;cset&gt; &lt;cset&gt;)
+             | (<code id='code17830'
+>but</code> &lt;cset&gt; &lt;cset&gt;)
+             | (<code id='code17831'
+>posix</code> &lt;string&gt;)
+&lt;variable&gt; ==&gt; &lt;symbol&gt;
+&lt;cset&gt;     ==&gt; &lt;string&gt;
+             | &lt;char&gt;
+             | (&lt;string&gt;)
+             | (&lt;char&gt; &lt;char&gt;)
+</pre>
+</td></tr>
+</tbody></table></center>
+
+Here is a description of each construction.<br/><br/><dl class="description" id='description18064'
+> <dt><code id='code17836'
+>(context &lt;symbol&gt; &lt;re&gt;)</code></dt> <dt><code id='code17837'
+>
+</code></dt><dd>This allows us to <em id='emph17838'
+>protect</em> an expression. A <em id='emph17839'
+>protected</em>
+expression matches (or accepts) a word only if the grammar has been set to
+the corresponding context. See <a href="bigloo-12.html#The-Semantics-Actions" class="inbound">The Semantics Actions</a>, for more details.<br/><br/></dd>
+ <dt><code id='code17842'
+>(when &lt;s-expr&gt; &lt;re&gt;)</code></dt> <dt><code id='code17843'
+>
+</code></dt><dd>This allows us to <em id='emph17844'
+>protect</em> an expression. A <em id='emph17845'
+>protected</em>
+expression matches (or accepts) a word only if the evaluation of 
+<code id='code17846'
+>&lt;s-expr&gt;</code> is <code id='code17847'
+>#t</code>. For instance,<br/><br/><center id='center17861'
+><table cellspacing="0" class="color" cellpadding="0" width="95%"><tbody>
+<tr><td bgcolor="#ffffcc"><pre class="prog" id='prog17859'
+>(<font color="#6959cf"><strong id='bold33398'
+>define</strong></font> <font color="#6959cf"><strong id='bold33400'
+>*g*</strong></font>
+   (<strong id='bold33402'
+>let</strong> ((armed #f))
+      (<strong id='bold33403'
+>regular-grammar</strong> ()
+	 ((when (not armed) (: <font color="red">&quot;#!&quot;</font> (+ (or #\/ alpha))))
+	  (<strong id='bold33405'
+>set!</strong> armed #t)
+	  (print <font color="red">&quot;start [&quot;</font> (the-string) <font color="red">&quot;]&quot;</font>)
+	  (ignore))
+	 ((+ (in #\Space #\Tab))
+	  (ignore))
+	 (else
+	  (the-failure)))))
+   
+(<font color="#6959cf"><strong id='bold33408'
+>define</strong></font> (<font color="#6959cf"><strong id='bold33410'
+>main</strong></font> argv)
+   (<strong id='bold33412'
+>let</strong> ((port (open-input-string <font color="red">&quot;#!/bin/sh #!/bin/zsh&quot;</font>)))
+      (print (read/rp *g* port))))
+</pre>
+</td></tr>
+</tbody></table></center>
+
+</dd>
+ <dt><code id='code17863'
+>(bol &lt;re&gt;)</code></dt> <dt><code id='code17864'
+>
+</code></dt><dd>Matches <code id='code17865'
+>&lt;re&gt;</code> at the beginning of line.<br/><br/></dd>
+ <dt><code id='code17868'
+>(eol &lt;re&gt;)</code></dt> <dt><code id='code17869'
+>
+</code></dt><dd>Matches <code id='code17870'
+>&lt;re&gt;</code> at the end of line.<br/><br/></dd>
+ <dt><code id='code17873'
+>(bof &lt;re&gt;)</code></dt> <dt><code id='code17874'
+>
+</code></dt><dd>Matches <code id='code17875'
+>&lt;re&gt;</code> at the beginning of file.<br/><br/></dd>
+ <dt><code id='code17878'
+>(eof &lt;re&gt;)</code></dt> <dt><code id='code17879'
+>
+</code></dt><dd>Matches <code id='code17880'
+>&lt;re&gt;</code> at the end of file.<br/><br/></dd>
+ <dt><code id='code17883'
+>&lt;variable&gt;</code></dt> <dt><code id='code17884'
+>
+</code></dt><dd>This is the name of a variable bound by a &lt;binding&gt; construction. In addition 
+to user defined variables, some already exist. These are:<br/><br/><center id='center17888'
+><table cellspacing="0" class="color" cellpadding="0" width="95%"><tbody>
+<tr><td bgcolor="#ccccff"><pre class="prog" id='prog17886'
+>all    &lt;=&gt; (out #\Newline)
+lower  &lt;=&gt; (in (&quot;az&quot;))
+upper  &lt;=&gt; (in (&quot;AZ&quot;))
+alpha  &lt;=&gt; (or lower upper)
+digit  &lt;=&gt; (in (&quot;09&quot;))
+xdigit &lt;=&gt; (uncase (in (&quot;af09&quot;)))
+alnum  &lt;=&gt; (uncase (in (&quot;az09&quot;)))
+punct  &lt;=&gt; (in &quot;.,;!?&quot;)
+blank  &lt;=&gt; (in #&quot; \t\n&quot;)
+space  &lt;=&gt; #\Space
+</pre>
+</td></tr>
+</tbody></table></center>
+<br/><br/>It is a error to reference a variable that it is not bound by a &lt;binding&gt;.
+Defining a variable that already exists is acceptable and causes the former
+variable definition to be erased. Here is an example of a grammar that binds
+two variables, one called <samp id='samp17890'
+>ident</samp> and one called <samp id='samp17891'
+>number</samp>. These
+two variables are used within the grammar to match identifiers and numbers.<br/><br/><center id='center17896'
+><table cellspacing="0" class="color" cellpadding="0" width="95%"><tbody>
+<tr><td bgcolor="#ffffcc"><pre class="prog" id='prog17894'
+>(<strong id='bold33414'
+>regular-grammar</strong> ((ident  (: alpha (* alnum)))
+                  (number (+ digit)))
+   (ident  (cons 'ident (the-string)))
+   (number (cons 'number (the-string)))
+   (else   (cons 'else (the-failure))))
+</pre>
+</td></tr>
+</tbody></table></center>
+
+</dd>
+ <dt><code id='code17898'
+>&lt;char&gt;</code></dt> <dt><code id='code17899'
+>
+</code></dt><dd>The regular language described by one unique character. Here is an example of
+a grammar that accepts either the character <code id='code17900'
+>#\a</code> or the character
+<code id='code17901'
+>#\b</code>:<br/><br/><center id='center17906'
+><table cellspacing="0" class="color" cellpadding="0" width="95%"><tbody>
+<tr><td bgcolor="#ffffcc"><pre class="prog" id='prog17904'
+>(<strong id='bold33415'
+>regular-grammar</strong> ()
+   (#\a (cons 'a (the-string)))
+   (#\b (cons 'b (the-string)))
+   (else (cons 'else (the-failure))))
+</pre>
+</td></tr>
+</tbody></table></center>
+
+</dd>
+ <dt><code id='code17908'
+>&lt;string&gt;</code></dt> <dt><code id='code17909'
+>
+</code></dt><dd>This simple form of regular expression denotes the language represented
+by the string. For instance the regular expression <code id='code17910'
+>&quot;Bigloo&quot;</code> matches
+only the string composed of <code id='code17911'
+>#\B #\i #\g #\l #\o #\o</code>. The regular 
+expression <code id='code17912'
+>&quot;.*[&quot;</code> matches the string <code id='code17913'
+>#\. #\* #\[</code>.<br/><br/></dd>
+ <dt><code id='code17916'
+>(: &lt;re&gt; ...)</code></dt> <dt><code id='code17917'
+>
+</code></dt><dd>This form constructs sequence of regular expression. That is a form
+<code id='code17918'
+>&lt;re1&gt; &lt;re2&gt; ... &lt;ren&gt;</code> matches the language construction by
+concatenation of the language described by <code id='code17919'
+>&lt;re1&gt;</code>, <code id='code17920'
+>&lt;re2&gt;</code>, 
+<code id='code17921'
+>&lt;ren&gt;</code>. Thus, <code id='code17922'
+>(: &quot;x&quot; all &quot;y&quot;)</code> matches all words of three
+letters, started by character the <code id='code17923'
+>#\x</code> and ended with the character
+<code id='code17924'
+>#\y</code>.<br/><br/></dd>
+ <dt><code id='code17927'
+>(or &lt;re&gt; ...)</code></dt> <dt><code id='code17928'
+>
+</code></dt><dd>This construction denotes conditions. The language described by
+<code id='code17929'
+>(or re1 re2)</code> accepts words accepted by either <code id='code17930'
+>re1</code> or <code id='code17931'
+>re2</code>.
+ 
+</dd>
+ <dt><code id='code17933'
+>(* &lt;re&gt;)</code></dt> <dt><code id='code17934'
+>
+</code></dt><dd>This is the Kleene operator, the language described by <code id='code17935'
+>(* &lt;re&gt;)</code> is
+the language containing, 0 or more occurrences of <code id='code17936'
+>&lt;re&gt;</code>. Thus, 
+the language described by <code id='code17937'
+>(* &quot;abc&quot;)</code> accepts the empty word and
+any word composed by a repetition of the <code id='code17938'
+>abc</code> (<code id='code17939'
+>abc</code>,
+<code id='code17940'
+>abcabc</code>, <code id='code17941'
+>abcabcabc</code>, ...).<br/><br/></dd>
+ <dt><code id='code17944'
+>(+ &lt;re&gt;)</code></dt> <dt><code id='code17945'
+>
+</code></dt><dd>This expression described non empty repetitions. The form <code id='code17946'
+>(+ re)</code> is
+equivalent to <code id='code17947'
+>(: re (* re))</code>. Thus, <code id='code17948'
+>(+ &quot;abc&quot;)</code> matches the
+words <code id='code17949'
+>abc</code>, <code id='code17950'
+>abcabc</code>, etc.<br/><br/></dd>
+ <dt><code id='code17953'
+>(? &lt;re&gt;)</code></dt> <dt><code id='code17954'
+>
+</code></dt><dd>This expression described one or zero occurrence. Thus, 
+<code id='code17955'
+>(? &quot;abc&quot;)</code> matches the empty word or the words <code id='code17956'
+>abc</code>.<br/><br/></dd>
+ <dt><code id='code17959'
+>(= &lt;integer&gt; &lt;re&gt;)</code></dt> <dt><code id='code17960'
+>
+</code></dt><dd>This expression described a fix number of repetitions. The form
+<code id='code17961'
+>(= num re)</code> is equivalent to <code id='code17962'
+>(: re re ... re)</code>. Thus,
+the expression <code id='code17963'
+>(= 3 &quot;abc&quot;)</code> matches the only word <code id='code17964'
+>abcabcabc</code>.
+In order to avoid code size explosion when compiling, <code id='code17965'
+>&lt;integer&gt;</code> 
+must be smaller than an arbitrary constant. In the current version that 
+value is <code id='code17966'
+>81</code>.<br/><br/></dd>
+ <dt><code id='code17969'
+>(&gt;= &lt;integer&gt; &lt;re&gt;)</code></dt> <dt><code id='code17970'
+>
+</code></dt><dd>The language described by the expression <code id='code17971'
+>(&gt;= int re)</code> accepts word
+that are, at least, <code id='code17972'
+>int</code> repetitions of <code id='code17973'
+>re</code>. For instance,
+<code id='code17974'
+>(&gt;= 10 #\a)</code>, accepts words compound of, at least, 10 times the
+character <code id='code17975'
+>#\a</code>. In order to avoid code size explosion when compiling, 
+<code id='code17976'
+>&lt;integer&gt;</code> must be smaller than an arbitrary constant. In the current 
+version that value is <code id='code17977'
+>81</code>.
+ 
+</dd>
+ <dt><code id='code17979'
+>(** &lt;integer&gt; &lt;integer&gt; &lt;re&gt;)</code></dt> <dt><code id='code17980'
+>
+</code></dt><dd>The language described by the expression <code id='code17981'
+>(** min max re)</code> accepts
+word that are repetitions of <code id='code17982'
+>re</code>; the number of repetition is in
+the range <code id='code17983'
+>min</code>, <code id='code17984'
+>max</code>. For instance, <code id='code17985'
+>(** 10 20 #\a)</code>.
+In order to avoid code size explosion when compiling, 
+<code id='code17986'
+>&lt;integer&gt;</code> must be smaller than an arbitrary constant. In the current 
+version that value is <code id='code17987'
+>81</code>.<br/><br/></dd>
+ <dt><code id='code17990'
+>(... &lt;integer&gt; &lt;re&gt;)</code></dt> <dt><code id='code17991'
+>
+</code></dt><dd>The subexpression <code id='code17992'
+>&lt;re&gt;</code> has to be a sequence
+of characters. Sequences are build by the operator <code id='code17993'
+>:</code> or by string
+literals. The language described by <code id='code17994'
+>(... int re)</code>, denotes, the
+first letter of <code id='code17995'
+>re</code>, or the two first letters of <code id='code17996'
+>re</code>, or the
+three first letters of <code id='code17997'
+>re</code> or the <code id='code17998'
+>int</code> first letters of
+<code id='code17999'
+>re</code>. Thus, <code id='code18000'
+>(... 3 &quot;begin&quot;)</code> is equivalent to 
+<code id='code18001'
+>(or &quot;b&quot; &quot;be&quot; &quot;beg&quot;)</code>.<br/><br/></dd>
+ <dt><code id='code18004'
+>(uncase &lt;re&gt;)</code></dt> <dt><code id='code18005'
+>
+</code></dt><dd>The subexpression <code id='code18006'
+>&lt;re&gt;</code> has to be a sequence
+construction. The language described by <code id='code18007'
+>(uncase re)</code> is the
+same as <code id='code18008'
+>re</code> where letters may be upper case or lower case. For
+instance, <code id='code18009'
+>(uncase &quot;begin&quot;)</code>, accepts the words <code id='code18010'
+>&quot;begin&quot;</code>,
+<code id='code18011'
+>&quot;beGin&quot;</code>, <code id='code18012'
+>&quot;BEGIN&quot;</code>, <code id='code18013'
+>&quot;BegiN&quot;</code>, etc.<br/><br/></dd>
+ <dt><code id='code18016'
+>(in &lt;cset&gt; ...)</code></dt> <dt><code id='code18017'
+>
+</code></dt><dd>Denotes union of characters. Characters may be described individually
+such as in <code id='code18018'
+>(in #\a #\b #\c #\d)</code>. They may be described by
+strings. The expression <code id='code18019'
+>(in &quot;abcd&quot;)</code> is equivalent to <code id='code18020'
+>(in
+#\a #\b #\c #\d)</code>.  Characters may also be described using a range
+notation that is a list of two characters. The expression <code id='code18021'
+>(in (#\a
+#\d))</code> is equivalent to <code id='code18022'
+>(in #\a #\b #\c #\d)</code>. The Ranges may be
+expresses using lists of string. The expression <code id='code18023'
+>(in (&quot;ad&quot;))</code>
+is equivalent to <code id='code18024'
+>(in #\a #\b #\c #\d)</code>.<br/><br/></dd>
+ <dt><code id='code18027'
+>(out &lt;cset&gt; ...)</code></dt> <dt><code id='code18028'
+>
+</code></dt><dd>The language described by <code id='code18029'
+>(out cset ...)</code> is opposite to
+the one described by <code id='code18030'
+>(in cset ...)</code>. For instance, 
+<code id='code18031'
+>(out (&quot;azAZ&quot;) (#\0 #\9))</code> accepts all words of one character
+that are neither letters nor digits. One should not that if the character
+numbered zero may be used inside regular grammar, the <code id='code18032'
+>out</code> 
+construction never matches it. Thus to write a rule that, for instances,
+matches every character but <code id='code18033'
+>#\Newline</code> including the character
+zero, one should write: <br/><br/><center id='center18037'
+><table cellspacing="0" class="color" cellpadding="0" width="95%"><tbody>
+<tr><td bgcolor="#ffffcc"><pre class="prog" id='prog18035'
+>(or (out #\Newline) #a000)
+</pre>
+</td></tr>
+</tbody></table></center>
+
+</dd>
+ <dt><code id='code18039'
+>(and &lt;cset&gt; &lt;cset&gt;)</code></dt> <dt><code id='code18040'
+>
+</code></dt><dd>The language described by <code id='code18041'
+>(and cset1 cset2)</code> accepts words 
+made of characters that are in both <code id='code18042'
+>cset1</code> and <code id='code18043'
+>cset2</code>. <br/><br/></dd>
+ <dt><code id='code18046'
+>(but &lt;cset&gt; &lt;cset&gt;)</code></dt> <dt><code id='code18047'
+>
+</code></dt><dd>The language described by <code id='code18048'
+>(but cset1 cset2)</code> accepts words 
+made of characters of <code id='code18049'
+>cset1</code> that are not member of <code id='code18050'
+>cset2</code>. 
+ 
+</dd>
+ <dt><code id='code18052'
+>(posix &lt;string&gt;)</code></dt> <dt><code id='code18053'
+>
+</code></dt><dd>The expression <code id='code18054'
+>(posix string)</code> allows one to use Posix string
+notation for regular expressions. So, for example, the following two
+expressions are equivalent:<br/><br/><center id='center18062'
+><table cellspacing="0" class="color" cellpadding="0" width="95%"><tbody>
+<tr><td bgcolor="#ffffcc"><pre class="prog" id='prog18060'
+>(posix &quot;[az]+|x*|y{3,5}&quot;)<br/><br/>(or (+ (in (<font color="red">&quot;az&quot;</font>))) (* <font color="red">&quot;x&quot;</font>) (** 3 5 <font color="red">&quot;y&quot;</font>))
+</pre>
+</td></tr>
+</tbody></table></center>
+
+</dd>
+</dl></td></tr>
+</tbody></table><br/>
+<table cellspacing="0" class="frame" cellpadding="10" border="1" width="100%"><tbody>
+<tr><td><a name="g18068" class="mark"></a><a name="string-case" class="mark"></a><table width="100%" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc18072" align="left" colspan="1"><strong id='bold18070'
+>string-case</strong><em id='it18071'
+> string rule ...</em></td><td id="tc18073" align="right" colspan="1">bigloo syntax</td></tr>
+</tbody></table>
+This form dispatches on strings. it opens an input on <code id='code18076'
+>string</code>
+a read into it according to the regular grammar defined by the
+<code id='code18077'
+>binding</code> and <code id='code18078'
+>rule</code>. Example:<br/><br/><center id='center18085'
+><table cellspacing="0" class="color" cellpadding="0" width="95%"><tbody>
+<tr><td bgcolor="#ffffcc"><pre class="prog" id='prog18083'
+>(<font color="#6959cf"><strong id='bold33419'
+>define</strong></font> (<font color="#6959cf"><strong id='bold33421'
+>suffix</strong></font> string)
+   (string-case string
+      ((: (* all) <font color="red">&quot;.&quot;</font>)
+       (ignore))
+      ((+ (out #\.))
+       (the-string))
+      (else
+       <font color="red">&quot;&quot;</font>)))
+</pre>
+</td></tr>
+</tbody></table></center>
+</td></tr>
+</tbody></table><br/>   
+</div><br>
+<!-- The semantics actions -->
+<a name="The-semantics-actions"></a>
+<div class="section-atitle"><table width="100%"><tr><td bgcolor="#dedeff"><h3><font color="black">11.3 The semantics actions</font>
+</h3></td></tr></table>
+</div><div class="section">
+<a name="The-Semantics-Actions" class="mark"></a><a name="g18088" class="mark"></a>
+The semantics actions are regular Scheme expressions. These expressions
+appear in an environment where some ``extra procedures'' are defined.
+These procedures are:<br/><br/><table cellspacing="0" class="frame" cellpadding="10" border="1" width="100%"><tbody>
+<tr><td><a name="g18092" class="mark"></a><a name="the-port" class="mark"></a><table width="100%" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc18096" align="left" colspan="1"><strong id='bold18094'
+>the-port</strong><em id='it18095'
+></em></td><td id="tc18097" align="right" colspan="1">bigloo rgc procedure</td></tr>
+</tbody></table>
+Returns the input port currently in used.
+</td></tr>
+</tbody></table><br/>
+<table cellspacing="0" class="frame" cellpadding="10" border="1" width="100%"><tbody>
+<tr><td><a name="g18103" class="mark"></a><a name="the-length" class="mark"></a><table width="100%" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc18107" align="left" colspan="1"><strong id='bold18105'
+>the-length</strong><em id='it18106'
+></em></td><td id="tc18108" align="right" colspan="1">bigloo rgc procedure</td></tr>
+</tbody></table>
+Get the length of the biggest matching string.
+</td></tr>
+</tbody></table><br/>
+<table cellspacing="0" class="frame" cellpadding="10" border="1" width="100%"><tbody>
+<tr><td><a name="g18114" class="mark"></a><a name="the-string" class="mark"></a><table width="100%" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc18118" align="left" colspan="1"><strong id='bold18116'
+>the-string</strong><em id='it18117'
+></em></td><td id="tc18119" align="right" colspan="1">bigloo rgc procedure</td></tr>
+</tbody></table>
+Get a copy of the last matching string. The function <code id='code18122'
+>the-string</code>
+returns a fresh copy of the matching each time it is called. In consequence,<br/><br/><center id='center18127'
+><table cellspacing="0" class="color" cellpadding="0" width="95%"><tbody>
+<tr><td bgcolor="#ffffcc"><pre class="prog" id='prog18125'
+>(<strong id='bold33425'
+>let</strong> ((l1 (the-string)) (l2 (the-string)))
+   (eq? l1 l2))
+   =&gt; #f
+</pre>
+</td></tr>
+</tbody></table></center>
+</td></tr>
+</tbody></table><br/>
+<table cellspacing="0" class="frame" cellpadding="10" border="1" width="100%"><tbody>
+<tr><td><a name="g18131" class="mark"></a><a name="the-substring" class="mark"></a><table width="100%" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc18135" align="left" colspan="1"><strong id='bold18133'
+>the-substring</strong><em id='it18134'
+> start len</em></td><td id="tc18136" align="right" colspan="1">bigloo rgc procedure</td></tr>
+</tbody></table>
+Get a copy of a substring of the last matching string. If the <code id='code18140'
+><em id='it18139'
+>len</em></code>
+is negative, it is subtracted to the whole match length.
+Here is an example of a rule extracting a part of a match:<br/><br/><center id='center18145'
+><table cellspacing="0" class="color" cellpadding="0" width="95%"><tbody>
+<tr><td bgcolor="#ffffcc"><pre class="prog" id='prog18143'
+>(<strong id='bold33426'
+>regular-grammar</strong> ()
+   ((: #\&quot; (* (out #\&quot;)) #\&quot;)
+    (the-substring 1 (-fx (the-length) 1))))
+</pre>
+</td></tr>
+</tbody></table></center>
+
+Which can also be written:<br/><br/><center id='center18150'
+><table cellspacing="0" class="color" cellpadding="0" width="95%"><tbody>
+<tr><td bgcolor="#ffffcc"><pre class="prog" id='prog18148'
+>(<strong id='bold33427'
+>regular-grammar</strong> ()
+   ((: #\&quot; (* (out #\&quot;)) #\&quot;)
+    (the-substring 1 -1)))
+</pre>
+</td></tr>
+</tbody></table></center>
+
+</td></tr>
+</tbody></table><br/>
+<table cellspacing="0" class="frame" cellpadding="10" border="1" width="100%"><tbody>
+<tr><td><a name="g18154" class="mark"></a><a name="the-character" class="mark"></a><table width="100%" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc18158" align="left" colspan="1"><strong id='bold18156'
+>the-character</strong><em id='it18157'
+></em></td><td id="tc18159" align="right" colspan="1">bigloo rgc procedure</td></tr>
+</tbody></table>
+<a name="g18163" class="mark"></a><a name="the-byte" class="mark"></a><table width="100%" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc18167" align="left" colspan="1"><strong id='bold18165'
+>the-byte</strong><em id='it18166'
+></em></td><td id="tc18168" align="right" colspan="1">bigloo rgc procedure</td></tr>
+</tbody></table>
+Returns the first character of a match (respectively, the first byte).
+</td></tr>
+</tbody></table><br/>
+<table cellspacing="0" class="frame" cellpadding="10" border="1" width="100%"><tbody>
+<tr><td><a name="g18174" class="mark"></a><a name="the-byte-ref" class="mark"></a><table width="100%" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc18178" align="left" colspan="1"><strong id='bold18176'
+>the-byte-ref</strong><em id='it18177'
+> n</em></td><td id="tc18179" align="right" colspan="1">bigloo rgc procedure</td></tr>
+</tbody></table>
+Returns the <code id='code18183'
+><em id='it18182'
+>n</em></code>-th bytes of the matching string.
+</td></tr>
+</tbody></table><br/>
+<table cellspacing="0" class="frame" cellpadding="10" border="1" width="100%"><tbody>
+<tr><td><a name="g18187" class="mark"></a><a name="the-symbol" class="mark"></a><table width="100%" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc18191" align="left" colspan="1"><strong id='bold18189'
+>the-symbol</strong><em id='it18190'
+></em></td><td id="tc18192" align="right" colspan="1">bigloo rgc procedure</td></tr>
+</tbody></table>
+<a name="g18196" class="mark"></a><a name="the-downcase-symbol" class="mark"></a><table width="100%" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc18200" align="left" colspan="1"><strong id='bold18198'
+>the-downcase-symbol</strong><em id='it18199'
+></em></td><td id="tc18201" align="right" colspan="1">bigloo rgc procedure</td></tr>
+</tbody></table>
+<a name="g18205" class="mark"></a><a name="the-upcase-symbol" class="mark"></a><table width="100%" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc18209" align="left" colspan="1"><strong id='bold18207'
+>the-upcase-symbol</strong><em id='it18208'
+></em></td><td id="tc18210" align="right" colspan="1">bigloo rgc procedure</td></tr>
+</tbody></table>
+<a name="g18214" class="mark"></a><a name="the-subsymbol" class="mark"></a><table width="100%" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc18218" align="left" colspan="1"><strong id='bold18216'
+>the-subsymbol</strong><em id='it18217'
+> start length</em></td><td id="tc18219" align="right" colspan="1">bigloo rgc procedure</td></tr>
+</tbody></table>
+Convert the last matching string into a symbol. The function 
+<code id='code18222'
+>the-subsymbol</code> obeys the same rules as <code id='code18223'
+>the-substring</code>.
+</td></tr>
+</tbody></table><br/>
+<table cellspacing="0" class="frame" cellpadding="10" border="1" width="100%"><tbody>
+<tr><td><a name="g18227" class="mark"></a><a name="the-keyword" class="mark"></a><table width="100%" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc18231" align="left" colspan="1"><strong id='bold18229'
+>the-keyword</strong><em id='it18230'
+></em></td><td id="tc18232" align="right" colspan="1">bigloo rgc procedure</td></tr>
+</tbody></table>
+<a name="g18236" class="mark"></a><a name="the-downcase-keyword" class="mark"></a><table width="100%" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc18240" align="left" colspan="1"><strong id='bold18238'
+>the-downcase-keyword</strong><em id='it18239'
+></em></td><td id="tc18241" align="right" colspan="1">bigloo rgc procedure</td></tr>
+</tbody></table>
+<a name="g18245" class="mark"></a><a name="the-upcase-keyword" class="mark"></a><table width="100%" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc18249" align="left" colspan="1"><strong id='bold18247'
+>the-upcase-keyword</strong><em id='it18248'
+></em></td><td id="tc18250" align="right" colspan="1">bigloo rgc procedure</td></tr>
+</tbody></table>
+Convert the last matching string into a keyword.
+</td></tr>
+</tbody></table><br/>
+<table cellspacing="0" class="frame" cellpadding="10" border="1" width="100%"><tbody>
+<tr><td><a name="g18256" class="mark"></a><a name="the-fixnum" class="mark"></a><table width="100%" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc18260" align="left" colspan="1"><strong id='bold18258'
+>the-fixnum</strong><em id='it18259'
+></em></td><td id="tc18261" align="right" colspan="1">bigloo rgc procedure</td></tr>
+</tbody></table>
+The conversion of the last matching string to fixnum.
+</td></tr>
+</tbody></table><br/>
+<table cellspacing="0" class="frame" cellpadding="10" border="1" width="100%"><tbody>
+<tr><td><a name="g18267" class="mark"></a><a name="the-flonum" class="mark"></a><table width="100%" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc18271" align="left" colspan="1"><strong id='bold18269'
+>the-flonum</strong><em id='it18270'
+></em></td><td id="tc18272" align="right" colspan="1">bigloo rgc procedure</td></tr>
+</tbody></table>
+The conversion of the last matching string to flonum.
+</td></tr>
+</tbody></table><br/> 
+<table cellspacing="0" class="frame" cellpadding="10" border="1" width="100%"><tbody>
+<tr><td><a name="g18278" class="mark"></a><a name="the-failure" class="mark"></a><table width="100%" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc18282" align="left" colspan="1"><strong id='bold18280'
+>the-failure</strong><em id='it18281'
+></em></td><td id="tc18283" align="right" colspan="1">bigloo rgc procedure</td></tr>
+</tbody></table>
+Returns the first char that the grammar can't match or the end of file
+object.
+</td></tr>
+</tbody></table><br/>
+<table cellspacing="0" class="frame" cellpadding="10" border="1" width="100%"><tbody>
+<tr><td><a name="g18289" class="mark"></a><a name="ignore" class="mark"></a><table width="100%" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc18293" align="left" colspan="1"><strong id='bold18291'
+>ignore</strong><em id='it18292'
+></em></td><td id="tc18294" align="right" colspan="1">bigloo rgc procedure</td></tr>
+</tbody></table>
+Ignore the parsing, keep reading. It's better to use <code id='code18297'
+>(ignore)</code>
+rather than an expression like <code id='code18302'
+>(read/rp <code id='code18299'
+><em id='it18298'
+>grammar</em></code> <code id='code18301'
+><em id='it18300'
+>port</em></code>)</code>
+in semantics actions since the <code id='code18303'
+>(ignore)</code> call will be done in a
+tail recursive way. For instance,
+ 
+<center id='center18316'
+><table cellspacing="0" class="color" cellpadding="0" width="95%"><tbody>
+<tr><td bgcolor="#ffffcc"><pre class="prog" id='prog18314'
+>(<strong id='bold33428'
+>let</strong> ((g (<strong id='bold33429'
+>regular-grammar</strong> ()
+            (<font color="red">&quot;)&quot;</font> 
+             '())
+            (<font color="red">&quot;(&quot;</font> 
+             (<strong id='bold33432'
+>let*</strong> ((car (ignore))
+                    (cdr (ignore)))
+                (cons car cdr)))
+            ((+ (out <font color="red">&quot;()&quot;</font>))
+             (the-string))))
+      (p (open-input-string <font color="red">&quot;(foo(bar(gee)))&quot;</font>)))
+   (read/rp g p))
+   =&gt; (<font color="red">&quot;foo&quot;</font> (<font color="red">&quot;bar&quot;</font> (<font color="red">&quot;gee&quot;</font>)))
+</pre>
+</td></tr>
+</tbody></table></center>
+</td></tr>
+</tbody></table><br/>
+<table cellspacing="0" class="frame" cellpadding="10" border="1" width="100%"><tbody>
+<tr><td><a name="g18320" class="mark"></a><a name="rgc-context" class="mark"></a><table width="100%" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc18324" align="left" colspan="1"><strong id='bold18322'
+>rgc-context</strong><em id='it18323'
+> [context]</em></td><td id="tc18325" align="right" colspan="1">bigloo rgc procedure</td></tr>
+</tbody></table>
+If no <code id='code18329'
+><em id='it18328'
+>context</em></code> is provide, this procedure reset the reader context
+state. That is the reader is in no context. With one argument, <code id='code18330'
+>context</code>
+set the reader in the context <code id='code18332'
+><em id='it18331'
+>context</em></code>. For instance,<br/><br/><center id='center18341'
+><table cellspacing="0" class="color" cellpadding="0" width="95%"><tbody>
+<tr><td bgcolor="#ffffcc"><pre class="prog" id='prog18339'
+>(<strong id='bold33438'
+>let</strong> ((g (<strong id='bold33439'
+>regular-grammar</strong> ()
+            ((context foo <font color="red">&quot;foo&quot;</font>) (print 'foo-bis))
+            (<font color="red">&quot;foo&quot;</font> (rgc-context 'foo) (print 'foo) (ignore))
+            (else 'done)))
+      (p (open-input-string <font color="red">&quot;foofoo&quot;</font>)))
+   (read/rp g p))
+   -| foo
+      foo-bis
+</pre>
+</td></tr>
+</tbody></table></center>
+
+Note that RGC context are preserved across different uses of <code id='code18342'
+>read/rp</code>.
+</td></tr>
+</tbody></table><br/>
+<table cellspacing="0" class="frame" cellpadding="10" border="1" width="100%"><tbody>
+<tr><td><a name="g18346" class="mark"></a><a name="the-context" class="mark"></a><table width="100%" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc18350" align="left" colspan="1"><strong id='bold18348'
+>the-context</strong><em id='it18349'
+></em></td><td id="tc18351" align="right" colspan="1">bigloo rgc procedure</td></tr>
+</tbody></table>
+Returns the value of the current Rgc context.
+</td></tr>
+</tbody></table><br/>
+<br/><br/></div><br>
+<!-- Options and user definitions -->
+<a name="Options-and-user-definitions"></a>
+<div class="section-atitle"><table width="100%"><tr><td bgcolor="#dedeff"><h3><font color="black">11.4 Options and user definitions</font>
+</h3></td></tr></table>
+</div><div class="section">
+<a name="Options-and-user-definitions" class="mark"></a>
+Options act as parameters that are transmitted to the parser on the call
+to <code id='code18357'
+>read/rp</code>. Local defines are user functions inserted in the produced
+parser, at the same level as the pre-defined <code id='code18358'
+>ignore</code> function.<br/><br/>Here is an example of grammar using both<br/><br/><center id='center18368'
+><table cellspacing="0" class="color" cellpadding="0" width="95%"><tbody>
+<tr><td bgcolor="#ffffcc"><pre class="prog" id='prog18366'
+>(<font color="#6959cf"><strong id='bold33443'
+>define</strong></font> <font color="#6959cf"><strong id='bold33445'
+>gram</strong></font>
+   (<strong id='bold33447'
+>regular-grammar</strong> (x y)
+      
+      (<font color="#6959cf"><strong id='bold33448'
+>define</strong></font> (<font color="#6959cf"><strong id='bold33450'
+>foo</strong></font> s)
+	 (cons* 'foo x s (ignore)))
+      (<font color="#6959cf"><strong id='bold33452'
+>define</strong></font> (<font color="#6959cf"><strong id='bold33454'
+>bar</strong></font> s)
+	 (cons* 'bar y s (ignore)))<br/><br/>      ((+ #\a) (foo (the-string)))
+      ((+ #\b) (bar (the-string)))
+      (else '())))
+</pre>
+</td></tr>
+</tbody></table></center>
+
+This grammar uses two options <code id='code18370'
+><em id='it18369'
+>x</em></code> and <code id='code18372'
+><em id='it18371'
+>y</em></code>. Hence when invokes it
+takes two additional values such as:<br/><br/><center id='center18378'
+><table cellspacing="0" class="color" cellpadding="0" width="95%"><tbody>
+<tr><td bgcolor="#ffffcc"><pre class="prog" id='prog18376'
+>(with-input-from-string <font color="red">&quot;aabb&quot;</font>
+   (<strong id='bold33457'
+>lambda</strong> ()
+      (read/rp gram (current-input-port) 'option-x 'option-y)))
+   =&gt; (foo option-x aa bar option-y bb)
+</pre>
+</td></tr>
+</tbody></table></center>
+<br/><br/></div><br>
+<!-- Examples of regular grammar -->
+<a name="Examples-of-regular-grammar"></a>
+<div class="section-atitle"><table width="100%"><tr><td bgcolor="#dedeff"><h3><font color="black">11.5 Examples of regular grammar</font>
+</h3></td></tr></table>
+</div><div class="section">
+<a name="Examples-of-Regular-Grammar" class="mark"></a><a name="g18380" class="mark"></a>The reader who wants to find a real example should read the code of
+Bigloo's reader. But here are small examples<br/><br/><!-- Word count -->
+<a name="Word-count"></a>
+<div class="subsection-atitle"><table width="100%"><tr><td bgcolor="#ffffff"><h3><font color="#8381de">11.5.1 Word count</font>
+</h3></td></tr></table>
+</div><div class="subsection">
+The first example presents a grammar that simulates the Unix program <code id='code18383'
+>wc</code>.
+<center id='center18393'
+><table cellspacing="0" class="color" cellpadding="0" width="95%"><tbody>
+<tr><td bgcolor="#ffffcc"><pre class="prog" id='prog18391'
+>(<strong id='bold33458'
+>let</strong> ((*char* 0)
+      (*word* 0)
+      (*line* 0))
+   (<strong id='bold33459'
+>regular-grammar</strong> ()
+      ((+ #\Newline)
+       (<strong id='bold33460'
+>set!</strong> *char* (+ *char* (the-length)))
+       (<strong id='bold33461'
+>set!</strong> *line* (+ *line* (the-length)))
+       (ignore))
+      ((+ (in #\space #\tab))
+       (<strong id='bold33462'
+>set!</strong> *char* (+ *char* (the-length)))
+       (ignore))
+      ((+ (out #\newline #\space #\tab))
+       (<strong id='bold33463'
+>set!</strong> *char* (+ *char* (the-length)))
+       (<strong id='bold33464'
+>set!</strong> *word* (+ 1 *word*))
+       (ignore))))
+</pre>
+</td></tr>
+</tbody></table></center>
+
+</div>
+<!-- Roman numbers -->
+<a name="Roman-numbers"></a>
+<div class="subsection-atitle"><table width="100%"><tr><td bgcolor="#ffffff"><h3><font color="#8381de">11.5.2 Roman numbers</font>
+</h3></td></tr></table>
+</div><div class="subsection">
+The second example presents a grammar that reads Arabic and Roman number.
+<center id='center18415'
+><table cellspacing="0" class="color" cellpadding="0" width="95%"><tbody>
+<tr><td bgcolor="#ffffcc"><pre class="prog" id='prog18413'
+>(<strong id='bold33465'
+>let</strong> ((par-open 0))
+   (<strong id='bold33466'
+>regular-grammar</strong> ((arabic (in (<font color="red">&quot;09&quot;</font>)))
+                     (roman  (uncase (in <font color="red">&quot;ivxlcdm&quot;</font>))))
+      ((+ (in <font color="red">#&quot; \t\n&quot;</font>))
+       (ignore))
+      ((+ arabic)
+       (string-&gt;integer (the-string)))
+      ((+ roman)
+       (roman-&gt;arabic (the-string)))
+      (#\(
+       (<strong id='bold33470'
+>let</strong> ((open-key par-open))
+          (<strong id='bold33471'
+>set!</strong> par-open (+ 1 par-open))
+          (context 'pair)
+          (<strong id='bold33472'
+>let</strong> loop-pair ((walk (ignore))) 
+             (<strong id='bold33473'
+>cond</strong>
+                ((= open-key par-open)
+                 '())
+                (else
+                 (cons walk (loop-pair (ignore))))))))
+      (#\)
+       (<strong id='bold33474'
+>set!</strong> par-open (- par-open 1))
+       (<strong id='bold33475'
+>if</strong> (&lt; par-open 0)
+           (<strong id='bold33476'
+>begin</strong>
+              (<strong id='bold33477'
+>set!</strong> par-open 0)
+              (ignore))
+           #f))
+      ((in <font color="red">&quot;+-*\\&quot;</font>)
+       (string-&gt;symbol (the-string)))
+      (else
+       (<strong id='bold33479'
+>let</strong> ((char (the-failure)))
+          (<strong id='bold33480'
+>if</strong> (eof-object? char)
+              char
+              (<font color="red"><strong id='bold33481'
+>error</strong></font> <font color="red">&quot;grammar-roman&quot;</font> <font color="red">&quot;Illegal char&quot;</font> char))))))
+</pre>
+</td></tr>
+</tbody></table></center>
+
+
+</div>
+</div><br>
+</div></td>
+</tr></table><div class="skribe-ending">
+<hr> 
+<p class="ending" id='paragraph33490'
+><font size="-1">
+This <span class="sc">Html</span> page has been produced by 
+<a href="http://www-sop.inria.fr/indes/fp/Skribe" class="http">Skribe</a>.
+<br/>
+Last update <em id='it33488'
+>Thu Nov 19 07:13:49 2020</em>.</font></p></div>
+</body>
+</html>

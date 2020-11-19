@@ -1,0 +1,110 @@
+
+-,0
+(meta-define define define0,0
+(meta-define define define-struct0,0
+(meta-define define define-parameter0,0
+(meta-define define define0,0
+(meta-define define define-inline0,0
+(meta-define define define-generic0,0
+(meta-define define define-macro0,0
+(meta-define define define-expander0,0
+(meta-define define module0,0
+
+Llib/ssl.scm,4277
+(module __ssl_ssl15,963
+(define (certificate?299,12887
+(define (make-certificate299,12887
+(define (fill-certificate!299,12887
+   (export (class certificate299,12887
+(define (certificate-$native::$certificate300,12917
+(define (private-key?302,12964
+(define (make-private-key302,12964
+(define (fill-private-key!302,12964
+	   (class private-key302,12964
+(define (private-key-$native::$private-key303,12987
+(define (ssl-version570,23104
+(define (ssl-clear-error578,23417
+(define (sanity-args-checks586,23747
+(define (make-ssl-client-socket606,24776
+(define (client-socket-use-ssl!629,25566
+(define-inline (ssl-socket?643,26127
+(define (make-ssl-server-socket651,26507
+(define (ssl-protocols->integer666,27134
+(define (read-private-key681,27829
+(define (read-certificate687,28135
+(define (read-pem-file693,28441
+(define (ssl-rand-status699,28745
+(define (ssl-rand-poll707,29064
+(define (ssl-rand-bytes715,29379
+(define (ssl-rand-pseudo-bytes732,29890
+(define-inline (certificate-subject749,30415
+(define-inline (certificate-issuer755,30734
+(define (%make-certificate761,31051
+(define (%make-private-key768,31359
+(define (%certificate-$native775,31667
+(define (%private-key-$native782,31986
+(define-generic (secure-context-init789,32305
+(define-generic (secure-context-close799,32681
+(define-generic (secure-context-add-root-certs!809,33059
+(define-generic (secure-context-add-ca-cert!819,33456
+(define-generic (secure-context-add-crl!829,33879
+(define-generic (secure-context-set-key!839,34315
+(define-generic (secure-context-set-cert!849,34763
+(define-generic (secure-context-set-session-id-context!859,35180
+(define-generic (secure-context-load-pkcs12869,35623
+(define-generic (secure-context-set-ciphers!879,36030
+(define-generic (secure-context-set-options!891,36490
+(define-generic (ssl-connection-init903,36946
+(define-generic (ssl-connection-start913,37325
+(define-generic (ssl-connection-close923,37705
+(define-generic (ssl-connection-shutdown933,38085
+(define-generic (ssl-connection-read943,38471
+(define-generic (ssl-connection-write953,38883
+(define-generic (ssl-connection-clear-in963,39297
+(define-generic (ssl-connection-clear-out973,39717
+(define-generic (ssl-connection-init-finished?983,40139
+(define-generic (ssl-connection-enc-pending993,40535
+(define-generic (ssl-connection-clear-pending1003,40925
+(define-generic (ssl-connection-set-session1013,41319
+(define-generic (ssl-connection-get-session1023,41727
+(define-generic (ssl-connection-get-current-cipher1033,42118
+(define-generic (ssl-connection-load-session1043,42523
+(define-generic (ssl-connection-verify-error1053,42933
+(define-generic (ssl-connection-get-peer-certificate1063,43326
+(define-generic (ssl-connection-reused?1073,43735
+(define-generic (ssl-connection-get-negotiated-protocol1084,44161
+(define-generic (dh-init1094,44576
+(define-generic (dh-size1105,44956
+(define-generic (dh-generate-parameters-ex1113,45320
+(define-generic (dh-check1129,45908
+(define-generic (dh-check-pub-key1140,46288
+(define-generic (dh-compute-key1151,46716
+(define-generic (dh-generate-key1177,47513
+(define-generic (ssl-hash-init1188,47920
+(define-generic (ssl-hash-update!1200,48375
+(define-generic (ssl-hash-digest1212,48871
+(define-generic (ssl-hmac-init1223,49317
+(define-generic (ssl-hmac-update!1235,49786
+(define-generic (ssl-hmac-digest1247,50282
+(define-generic (ssl-sign-init1258,50728
+(define-generic (ssl-sign-update!1270,51191
+(define-generic (ssl-sign-sign1282,51687
+(define-generic (ssl-verify-init1293,52164
+(define-generic (ssl-verify-update!1305,52649
+(define-generic (ssl-verify-final1317,53161
+(define-generic (ssl-cipher-init1331,53644
+(define-generic (ssl-cipher-initiv1345,54168
+(define-generic (ssl-cipher-update!1362,54737
+(define-generic (ssl-cipher-set-auto-padding1373,55279
+(define-generic (ssl-cipher-final1383,55708
+(define (bn-bin2bn1393,56140
+(define (bn-bn2bin1401,56508
+(define (bn-num-bytes1413,56928
+(define (bn-free1421,57264
+(define (bn-new1429,57591
+(define (bn-set-word1437,57907
+(define (ssl-get-ciphers1445,58243
+(define (evp-get-ciphers1453,58568
+(define (evp-get-hashes1461,58892
+(define (pkcs5-pbkdf2-hmac-sha11469,59214
+(define (ssl-op-cipher-server-preference1479,59672

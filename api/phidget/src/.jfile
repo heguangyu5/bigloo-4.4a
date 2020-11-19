@@ -1,0 +1,21 @@
+;; /tmp/4.4a/api/phidget/src
+;; Thu Nov 19 07:13:53 2020
+
+(
+  (__phidget_encoder "bigloo.phidget.pdgencoder")
+  (__phidget_motor-control "bigloo.phidget.pdgmotorcontrol")
+  (__phidget_event "bigloo.phidget.pdgevent")
+  (__phidget_advanced-servo "bigloo.phidget.pdgaservo")
+  (__phidget_servo "bigloo.phidget.pdgservo")
+  (__phidget_spatial "bigloo.phidget.pdgspatial")
+  (__phidget_ifkit "bigloo.phidget.pdgifkit")
+  (__phidget_phidget "bigloo.phidget.pdgphidget")
+  (__phidget_stepper "bigloo.phidget.pdgstepper")
+  (__phidget_manager "bigloo.phidget.pdgmanager")
+  (__phidget_logging "bigloo.phidget.pdglogging")
+  (__phidget_ctypes "bigloo.phidget.pdg")
+  (__phidget_types "bigloo.phidget.pdgtypes")
+  (__phidget "bigloo.phidget.phidget")
+  (__phidget_makelib "bigloo.phidget.make_lib")
+)
+

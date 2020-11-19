@@ -1,0 +1,169 @@
+
+-,0
+(meta-define define define0,0
+(meta-define define define-struct0,0
+(meta-define define define-parameter0,0
+(meta-define define define0,0
+(meta-define define define-inline0,0
+(meta-define define define-generic0,0
+(meta-define define define-macro0,0
+(meta-define define define-expander0,0
+(meta-define define module0,0
+
+Llib/alsa.scm,293
+(module __alsa_alsa15,963
+(define (&alsa-error?28,1208
+(define (make-&alsa-error28,1208
+(define (fill-&alsa-error!28,1208
+	   (class &alsa-error28,1208
+(define-generic (alsa-init37,1596
+(define (alsa-error43,1868
+(define (alsa-snd-version53,2219
+(define (alsa-snd-devices-list59,2498
+
+Llib/pcm.scm,1992
+(module __alsa_pcm15,963
+(define (alsa-snd-pcm?21,1033
+(define (make-alsa-snd-pcm21,1033
+(define (fill-alsa-snd-pcm!21,1033
+   (export (class alsa-snd-pcm21,1033
+(define (alsa-snd-pcm-$builtin::$snd-pcm22,1077
+(define (alsa-snd-pcm-name::bstring-set!23,1141
+(define (alsa-snd-pcm-name::bstring23,1141
+(define (alsa-snd-pcm-device::bstring24,1177
+(define (alsa-snd-pcm-stream::symbol25,1232
+(define (alsa-snd-pcm-mode::symbol26,1286
+(define (alsa-snd-pcm-hwbps::int-set!27,1337
+(define (alsa-snd-pcm-hwbps::int27,1337
+(define (alsa-snd-pcm-hwsrate::int-set!28,1370
+(define (alsa-snd-pcm-hwsrate::int28,1370
+(define-method (object-print o::alsa-snd-pcm port print-slot65,3047
+(define (%$snd-pcm-nil76,3544
+(define (alsa-snd-pcm-open82,3810
+(define (alsa-snd-pcm-close104,4596
+(define (alsa-snd-pcm-reopen113,5043
+(define (alsa-snd-pcm-get-state130,5706
+(define (alsa-snd-pcm-avail153,6642
+(define (alsa-snd-pcm-avail-update160,6994
+(define (symbol->stream167,7360
+(define (symbol->pcm-mode179,7865
+(define (symbol->format192,8350
+(define (symbol->access250,10745
+(define (alsa-snd-pcm-set-params!265,11456
+(define (alsa-snd-pcm-writei284,12169
+(define (alsa-snd-pcm-pause297,12736
+(define (alsa-snd-pcm-wait310,13279
+(define (alsa-snd-pcm-reset323,13813
+(define (alsa-snd-pcm-recover336,14337
+(define (alsa-snd-pcm-prepare349,14892
+(define (alsa-snd-pcm-start362,15422
+(define (alsa-snd-pcm-drop375,15946
+(define (alsa-snd-pcm-drain388,16467
+(define (alsa-snd-pcm-cleanup401,16991
+(define (alsa-snd-pcm-hw-card-detect!434,17961
+(define (alsa-snd-pcm-hw-free!539,21300
+(define (alsa-snd-pcm-hw-set-params!551,21824
+(define (alsa-snd-pcm-hw-test-params?642,24894
+(define (alsa-snd-pcm-hw-params-get-buffer-size674,26073
+(define (alsa-snd-pcm-hw-params-get-buffer-time689,26688
+(define (alsa-snd-pcm-hw-params-get-rates704,27291
+(define (alsa-snd-pcm-sw-set-params!722,27955
+(define (alsa-snd-pcm-write768,29560
+(define (alsa-snd-pcm-flush774,29879
+
+Llib/card.scm,344
+(module __alsa_card15,963
+(define (alsa-snd-card?21,1037
+(define (make-alsa-snd-card21,1037
+(define (fill-alsa-snd-card!21,1037
+   (export (class alsa-snd-card21,1037
+(define (alsa-snd-card-card::int22,1082
+(define (alsa-snd-card-name::bstring23,1111
+(define (alsa-snd-card-longname::bstring24,1144
+(define (alsa-snd-cards-list31,1444
+
+Llib/control.scm,1868
+(module __alsa_control15,963
+(define (alsa-snd-ctl?21,1038
+(define (make-alsa-snd-ctl21,1038
+(define (fill-alsa-snd-ctl!21,1038
+   (export  (class alsa-snd-ctl21,1038
+(define (alsa-snd-ctl-$builtin::$snd-ctl22,1083
+(define (alsa-snd-ctl-card::bstring23,1148
+(define (alsa-snd-ctl-mode::symbol24,1202
+(define (alsa-snd-ctl-card-info?26,1256
+(define (make-alsa-snd-ctl-card-info26,1256
+(define (fill-alsa-snd-ctl-card-info!26,1256
+	    (class alsa-snd-ctl-card-info26,1256
+(define (alsa-snd-ctl-card-info-ctl::alsa-snd-ctl27,1304
+(define (alsa-snd-ctl-card-info-card::int28,1342
+(define (alsa-snd-ctl-card-info-id::bstring29,1384
+(define (alsa-snd-ctl-card-info-driver::bstring30,1429
+(define (alsa-snd-ctl-card-info-name::bstring31,1478
+(define (alsa-snd-ctl-card-info-longname::bstring32,1525
+(define (alsa-snd-ctl-card-info-mixername::bstring33,1576
+(define (alsa-snd-ctl-card-info-components::bstring34,1628
+(define (alsa-snd-ctl-rawmidi-info?36,1683
+(define (make-alsa-snd-ctl-rawmidi-info36,1683
+(define (fill-alsa-snd-ctl-rawmidi-info!36,1683
+	    (class alsa-snd-ctl-rawmidi-info36,1683
+(define (alsa-snd-ctl-rawmidi-info-ctl::alsa-snd-ctl37,1734
+(define (alsa-snd-ctl-rawmidi-info-card::int38,1772
+(define (alsa-snd-ctl-rawmidi-info-id::bstring39,1814
+(define (alsa-snd-ctl-rawmidi-info-name::bstring40,1859
+(define (alsa-snd-ctl-rawmidi-info-device::int41,1906
+(define (alsa-snd-ctl-rawmidi-info-subdevice::int42,1950
+(define (alsa-snd-ctl-rawmidi-info-subdevicescount::int43,1997
+(define (%$snd-ctl-nil55,2458
+(define (%$snd-ctl-card-info-nil61,2724
+(define-method (alsa-init o::alsa-snd-ctl-card-info67,3010
+(define-method (alsa-init o::alsa-snd-ctl-rawmidi-info73,3322
+(define (alsa-snd-ctl-open79,3640
+(define (alsa-snd-ctl-close97,4337
+(define (alsa-snd-ctl-rawmidi-devices105,4722
+(define (symbol->ctl-mode118,5232
+
+Llib/mixer.scm,457
+(module __alsa_mixer15,963
+(define (alsa-snd-mixer?21,1036
+(define (make-alsa-snd-mixer21,1036
+(define (fill-alsa-snd-mixer!21,1036
+   (export  (class alsa-snd-mixer21,1036
+(define (alsa-snd-mixer-$builtin::$snd-mixer22,1083
+(define (%$snd-mixer-nil35,1658
+(define (alsa-snd-mixer-open41,1928
+(define (alsa-snd-mixer-close59,2599
+(define (alsa-snd-mixer-attach67,2998
+(define (alsa-snd-mixer-load80,3582
+(define (alsa-snd-mixer-get-count97,4263
+
+Llib/music.scm,472
+(module __alsa_music15,963
+(define (alsamusic?22,1058
+(define (make-alsamusic22,1058
+(define (fill-alsamusic!22,1058
+   (export  (class alsamusic22,1058
+(define (alsamusic-pcm::alsa-snd-pcm23,1097
+(define-method (music-close o::alsamusic28,1399
+(define-method (music-closed? o::alsamusic37,1836
+(define-method (musicbuf-init! o::alsamusic45,2227
+(define-method (musicbuf-reset! o::alsamusic53,2616
+(define-method (musicbuf-write o::alsamusic outbuf size64,3127
+
+Llib/rawmidi.scm,710
+(module __alsa_rawmidi15,963
+(define (alsa-snd-rawmidi?30,1258
+(define (make-alsa-snd-rawmidi30,1258
+(define (fill-alsa-snd-rawmidi!30,1258
+   (export (class alsa-snd-rawmidi30,1258
+(define (alsa-snd-rawmidi-$builtin::$snd-rawmidi31,1306
+(define (%$snd-rawmidi-nil51,2216
+(define (alsa-snd-rawmidi-open-output57,2490
+(define (alsa-snd-rawmidi-close73,3115
+(define-inline (alsa-snd-rawmidi-input?80,3478
+(define-inline (alsa-snd-rawmidi-output?86,3833
+(define-inline (alsa-snd-rawmidi-drain92,4190
+(define-inline (alsa-snd-rawmidi-drop99,4560
+(define-inline (alsa-snd-rawmidi-write-byte106,4928
+(define-inline (alsa-snd-rawmidi-write-bytes113,5339
+(define (alsa-snd-rawmidi-write-string121,5772

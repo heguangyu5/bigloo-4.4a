@@ -1,0 +1,11 @@
+;; automatically generated, don't edit
+;; /tmp/4.4a/api/flac/src
+;; Thu Nov 19 07:13:53 2020
+
+(
+  (__flac_flac "Llib/flac.scm")
+  (__flac_alsadec "Llib/flac_alsadec.scm")
+  (__flac_decoder "Llib/flac_decoder.scm")
+  (__flac_padec "Llib/flac_padec.scm")
+)
+

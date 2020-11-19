@@ -1,0 +1,10 @@
+;; /tmp/4.4a/api/calendar/src
+;; Thu Nov 19 07:13:52 2020
+
+(
+  (__calendar_utils "bigloo.calendar.utils")
+  (__calendar_ical "bigloo.calendar.icalendar")
+  (__calendar_types "bigloo.calendar.types")
+  (__calendar_makelib "bigloo.calendar.make_lib")
+)
+

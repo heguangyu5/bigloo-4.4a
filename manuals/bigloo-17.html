@@ -1,0 +1,1217 @@
+<!-- 95% W3C COMPLIANT, 95% CSS FREE, RAW HTML -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1">
+<title>Bigloo</title>
+ <style type="text/css">
+  <!--
+  pre { font-family: monospace }
+  tt { font-family: monospace }
+  code { font-family: monospace }
+  p.flushright { text-align: right }
+  p.flushleft { text-align: left }
+  span.sc { font-variant: small-caps }
+  span.sf { font-family: sans-serif }
+  span.skribetitle { font-family: sans-serif; font-weight: bolder; font-size: x-large; }
+  span.refscreen { }
+  span.refprint { display: none; }
+  -->
+ </style>
+</head>
+
+<body class="chapter" bgcolor="#ffffff">
+<table width="100%" class="skribetitle" cellspacing="0" cellpadding="0"><tbody>
+<tr><td align="center" bgcolor="#8381de"><div class="skribetitle"><strong><big><big><big>16. Bigloo<br/>A practical Scheme compiler (4.4a)<br/>User manual for version 4.4a<br/>November 2020 -- Errors, Assertions, and Traces</big></big></big></strong></div><center>
+</center>
+</td></tr></tbody></table>
+<table cellpadding="3" cellspacing="0" width="100%" class="skribe-margins"><tr>
+<td align="left" valign="top" class="skribe-left-margin" width="20%" bgcolor="#dedeff"><div class="skribe-left-margin">
+<br/><center id='center34224'
+><table width="97%" border="1" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" frame="box" rules="none"><tbody>
+<tr bgcolor="#8381de"><th id="tc34214" align="center" colspan="1"><font color="#ffffff"><strong id='bold34212'
+>main page</strong></font></th></tr>
+<tr bgcolor="#ffffff"><td id="tc34221" align="center" colspan="1"><table width="100%" border="0" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc34217" align="left" valign="top" colspan="1"><strong id='bold34216'
+>top:</strong></td><td id="tc34218" align="right" valign="top" colspan="1"><a href="bigloo.html#Bigloo-A-practical-Scheme-compiler-(-4.4a-)-User-manual-for-version-4.4a-November-2020" class="inbound">Bigloo<br/>A practical Scheme compiler (4.4a)<br/>User manual for version 4.4a<br/>November 2020</a></td></tr>
+</tbody></table>
+</td></tr>
+</tbody></table>
+</center>
+<br/><br/><center id='center34234'
+><table width="97%" border="1" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" frame="box" rules="none"><tbody>
+<tr bgcolor="#8381de"><th id="tc34228" align="center" colspan="1"><font color="#ffffff"><strong id='bold34226'
+>Errors, Assertions, and Traces</strong></font></th></tr>
+<tr bgcolor="#ffffff"><td id="tc34231" align="center" colspan="1"><table cellspacing="1" cellpadding="1" width="100%" class="toc">
+<tbody>
+ <tr><td valign="top" align="left">16.1</td><td colspan="4" width="100%"><a href="bigloo-17.html#Errors-and-Warnings">Errors and Warnings</a></td></tr>
+ <tr><td valign="top" align="left">16.2</td><td colspan="4" width="100%"><a href="bigloo-17.html#Exceptions">Exceptions</a></td></tr>
+ <tr><td valign="top" align="left">16.3</td><td colspan="4" width="100%"><a href="bigloo-17.html#Deprecated-try-form">Deprecated try form</a></td></tr>
+ <tr><td valign="top" align="left">16.4</td><td colspan="4" width="100%"><a href="bigloo-17.html#Assertions">Assertions</a></td></tr>
+ <tr><td valign="top" align="left">16.5</td><td colspan="4" width="100%"><a href="bigloo-17.html#Tracing">Tracing</a></td></tr>
+</tbody>
+</table>
+</td></tr>
+</tbody></table>
+</center>
+<br/><br/><center id='center34244'
+><table width="97%" border="1" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" frame="box" rules="none"><tbody>
+<tr bgcolor="#8381de"><th id="tc34238" align="center" colspan="1"><font color="#ffffff"><strong id='bold34236'
+>Chapters</strong></font></th></tr>
+<tr bgcolor="#ffffff"><td id="tc34241" align="center" colspan="1"><table cellspacing="1" cellpadding="1" width="100%" class="toc">
+<tbody>
+ <tr><td valign="top" align="left"></td><td colspan="4" width="100%"><a href="bigloo-1.html#Acknowledgements">Acknowledgements</a></td></tr>
+ <tr><td valign="top" align="left">1</td><td colspan="4" width="100%"><a href="bigloo-2.html#Table-of-contents">Table of contents</a></td></tr>
+ <tr><td valign="top" align="left">2</td><td colspan="4" width="100%"><a href="bigloo-3.html#Overview-of-Bigloo">Overview of Bigloo</a></td></tr>
+ <tr><td valign="top" align="left">3</td><td colspan="4" width="100%"><a href="bigloo-4.html#Modules">Modules</a></td></tr>
+ <tr><td valign="top" align="left">4</td><td colspan="4" width="100%"><a href="bigloo-5.html#Core-Language">Core Language</a></td></tr>
+ <tr><td valign="top" align="left">5</td><td colspan="4" width="100%"><a href="bigloo-6.html#DSSSL-support">DSSSL support</a></td></tr>
+ <tr><td valign="top" align="left">6</td><td colspan="4" width="100%"><a href="bigloo-7.html#Standard-Library">Standard Library</a></td></tr>
+ <tr><td valign="top" align="left">7</td><td colspan="4" width="100%"><a href="bigloo-8.html#Pattern-Matching">Pattern Matching</a></td></tr>
+ <tr><td valign="top" align="left">8</td><td colspan="4" width="100%"><a href="bigloo-9.html#Fast-search">Fast search</a></td></tr>
+ <tr><td valign="top" align="left">9</td><td colspan="4" width="100%"><a href="bigloo-10.html#Structures-and-Records">Structures and Records</a></td></tr>
+ <tr><td valign="top" align="left">10</td><td colspan="4" width="100%"><a href="bigloo-11.html#Object-System">Object System</a></td></tr>
+ <tr><td valign="top" align="left">11</td><td colspan="4" width="100%"><a href="bigloo-12.html#Regular-parsing">Regular parsing</a></td></tr>
+ <tr><td valign="top" align="left">12</td><td colspan="4" width="100%"><a href="bigloo-13.html#Lalr(1)-parsing">Lalr(1) parsing</a></td></tr>
+ <tr><td valign="top" align="left">13</td><td colspan="4" width="100%"><a href="bigloo-14.html#Posix-Regular-Expressions">Posix Regular Expressions</a></td></tr>
+ <tr><td valign="top" align="left">14</td><td colspan="4" width="100%"><a href="bigloo-15.html#Command-Line-Parsing">Command Line Parsing</a></td></tr>
+ <tr><td valign="top" align="left">15</td><td colspan="4" width="100%"><a href="bigloo-16.html#Cryptography">Cryptography</a></td></tr>
+ <tr><td valign="top" align="left">16</td><td colspan="4" width="100%"><a href="bigloo-17.html#Errors-Assertions-and-Traces">Errors, Assertions, and Traces</a></td></tr>
+ <tr><td valign="top" align="left">17</td><td colspan="4" width="100%"><a href="bigloo-18.html#Threads">Threads</a></td></tr>
+ <tr><td valign="top" align="left">18</td><td colspan="4" width="100%"><a href="bigloo-19.html#Database">Database</a></td></tr>
+ <tr><td valign="top" align="left">19</td><td colspan="4" width="100%"><a href="bigloo-20.html#Multimedia">Multimedia</a></td></tr>
+ <tr><td valign="top" align="left">20</td><td colspan="4" width="100%"><a href="bigloo-21.html#Mail">Mail</a></td></tr>
+ <tr><td valign="top" align="left">21</td><td colspan="4" width="100%"><a href="bigloo-22.html#Text">Text</a></td></tr>
+ <tr><td valign="top" align="left">22</td><td colspan="4" width="100%"><a href="bigloo-23.html#CSV">CSV</a></td></tr>
+ <tr><td valign="top" align="left">23</td><td colspan="4" width="100%"><a href="bigloo-24.html#Eval-and-code-interpretation">Eval and code interpretation</a></td></tr>
+ <tr><td valign="top" align="left">24</td><td colspan="4" width="100%"><a href="bigloo-25.html#Macro-expansion">Macro expansion</a></td></tr>
+ <tr><td valign="top" align="left">25</td><td colspan="4" width="100%"><a href="bigloo-26.html#Parameters">Parameters</a></td></tr>
+ <tr><td valign="top" align="left">26</td><td colspan="4" width="100%"><a href="bigloo-27.html#Explicit-typing">Explicit typing</a></td></tr>
+ <tr><td valign="top" align="left">27</td><td colspan="4" width="100%"><a href="bigloo-28.html#The-C-interface">The C interface</a></td></tr>
+ <tr><td valign="top" align="left">28</td><td colspan="4" width="100%"><a href="bigloo-29.html#The-Java-interface">The Java interface</a></td></tr>
+ <tr><td valign="top" align="left">29</td><td colspan="4" width="100%"><a href="bigloo-30.html#Bigloo-Libraries">Bigloo Libraries</a></td></tr>
+ <tr><td valign="top" align="left">30</td><td colspan="4" width="100%"><a href="bigloo-31.html#Extending-the-Runtime-System">Extending the Runtime System</a></td></tr>
+ <tr><td valign="top" align="left">31</td><td colspan="4" width="100%"><a href="bigloo-32.html#SRFIs">SRFIs</a></td></tr>
+ <tr><td valign="top" align="left">32</td><td colspan="4" width="100%"><a href="bigloo-33.html#Compiler-description">Compiler description</a></td></tr>
+ <tr><td valign="top" align="left">33</td><td colspan="4" width="100%"><a href="bigloo-34.html#Cross-Compilation">Cross Compilation</a></td></tr>
+ <tr><td valign="top" align="left">34</td><td colspan="4" width="100%"><a href="bigloo-35.html#User-Extensions">User Extensions</a></td></tr>
+ <tr><td valign="top" align="left">35</td><td colspan="4" width="100%"><a href="bigloo-36.html#Bigloo-Development-Environment">Bigloo Development Environment</a></td></tr>
+ <tr><td valign="top" align="left">36</td><td colspan="4" width="100%"><a href="bigloo-37.html#Global-Index">Global Index</a></td></tr>
+ <tr><td valign="top" align="left">37</td><td colspan="4" width="100%"><a href="bigloo-38.html#Library-Index">Library Index</a></td></tr>
+ <tr><td valign="top" align="left"></td><td colspan="4" width="100%"><a href="bigloo-39.html#Bibliography">Bibliography</a></td></tr>
+</tbody>
+</table>
+</td></tr>
+</tbody></table>
+</center>
+</div></td>
+<td align="left" valign="top" class="skribe-body"><div class="skribe-body">
+<a name="Errors-Assertions-and-Traces" class="mark"></a><a name="g21262" class="mark"></a><a name="g21264" class="mark"></a><a name="g21266" class="mark"></a><a name="g21268" class="mark"></a>
+
+<!-- Errors and Warnings -->
+<a name="Errors-and-Warnings"></a>
+<div class="section-atitle"><table width="100%"><tr><td bgcolor="#dedeff"><h3><font color="black">16.1 Errors and Warnings</font>
+</h3></td></tr></table>
+</div><div class="section">
+<a name="Errors-and-Warnings" class="mark"></a>
+Bigloo permits to signal an error via the <code id='code21270'
+>error</code> function. Errors
+are implemented by the means of exceptions (see <code id='code21271'
+>with-exception-handler</code>,
+<code id='code21272'
+>with-handler</code>, and <code id='code21273'
+>raise</code> forms). Assertions allow the checking
+of predicates at certain points in programs.  <br/><br/><table cellspacing="0" class="frame" cellpadding="10" border="1" width="100%"><tbody>
+<tr><td><a name="g21276" class="mark"></a><a name="typeof" class="mark"></a><table width="100%" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc21280" align="left" colspan="1"><strong id='bold21278'
+>typeof</strong><em id='it21279'
+> obj</em></td><td id="tc21281" align="right" colspan="1">bigloo procedure</td></tr>
+</tbody></table>
+Returns a string which is the name of the dynamic type of <code id='code21285'
+><em id='it21284'
+>obj</em></code>.
+</td></tr>
+</tbody></table><br/>
+<table cellspacing="0" class="frame" cellpadding="10" border="1" width="100%"><tbody>
+<tr><td><a name="g21289" class="mark"></a><a name="error" class="mark"></a><table width="100%" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc21293" align="left" colspan="1"><strong id='bold21291'
+>error</strong><em id='it21292'
+> proc msg obj</em></td><td id="tc21294" align="right" colspan="1">bigloo procedure</td></tr>
+</tbody></table>
+This form signals an error by calling the current error handler with
+<code id='code21298'
+><em id='it21297'
+>proc</em></code>, <code id='code21300'
+><em id='it21299'
+>msg</em></code> and <code id='code21302'
+><em id='it21301'
+>obj</em></code> as arguments.<br/><br/><center id='center21314'
+><table cellspacing="0" class="color" cellpadding="0" width="95%"><tbody>
+<tr><td bgcolor="#ffffcc"><pre class="prog" id='prog21312'
+>(<font color="#6959cf"><strong id='bold34245'
+>define</strong></font> (<font color="#6959cf"><strong id='bold34247'
+>foo</strong></font> l)
+   (<strong id='bold34249'
+>if</strong> (not (pair? l))
+       (<font color="red"><strong id='bold34250'
+>error</strong></font> <font color="red">&quot;foo&quot;</font> <font color="red">&quot;argument not a pair&quot;</font> l)
+       (car l)))<br/><br/>(foo 4)
+error--&gt; *** ERROR<strong id='bold34254'
+>:bigloo</strong><strong id='bold34256'
+>:foo</strong>:
+         argument not a pair -- 4
+</pre>
+</td></tr>
+</tbody></table></center>
+
+Switching on the <code id='code21315'
+>-g</code> compilation switch enables stack dumping
+when the <code id='code21316'
+>error</code> function is invoked. That is, when a program is
+compiled with <code id='code21317'
+>-g</code> and when, at runtime, the shell variable
+<code id='code21318'
+>BIGLOOSTACKDEPTH</code> is set and contains a number, an execution
+stack of depth <code id='code21319'
+>BIGLOOSTACKDEPTH</code> is printed when an error is
+raised.
+</td></tr>
+</tbody></table><br/>
+<table cellspacing="0" class="frame" cellpadding="10" border="1" width="100%"><tbody>
+<tr><td><a name="g21323" class="mark"></a><a name="error/location" class="mark"></a><table width="100%" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc21327" align="left" colspan="1"><strong id='bold21325'
+>error/location</strong><em id='it21326'
+> proc msg obj file location</em></td><td id="tc21328" align="right" colspan="1">bigloo procedure</td></tr>
+</tbody></table>
+This form signals an error by calling the current error handler with
+<code id='code21332'
+><em id='it21331'
+>proc</em></code>, <code id='code21334'
+><em id='it21333'
+>msg</em></code> and <code id='code21336'
+><em id='it21335'
+>obj</em></code> as arguments. The error is prompted
+in <code id='code21338'
+><em id='it21337'
+>file</em></code>, at character position <code id='code21340'
+><em id='it21339'
+>location</em></code>.<br/><br/><center id='center21353'
+><table cellspacing="0" class="color" cellpadding="0" width="95%"><tbody>
+<tr><td bgcolor="#ffffcc"><pre class="prog" id='prog21351'
+>(<font color="#6959cf"><strong id='bold34258'
+>define</strong></font> (<font color="#6959cf"><strong id='bold34260'
+>foo</strong></font> l)
+   (<strong id='bold34262'
+>if</strong> (not (pair? l))
+       (error/location
+         <font color="red">&quot;foo&quot;</font> <font color="red">&quot;argument not a pair&quot;</font> l <font color="red">&quot;foo.scm&quot;</font> 115)
+       (car l)))<br/><br/>(foo 4)
+error--&gt; File <font color="red">&quot;foo.scm&quot;</font>, line 4, character 115:
+         #       (car l)))
+         #       ^
+         # *** ERROR<strong id='bold34267'
+>:bigloo</strong><strong id='bold34269'
+>:foo</strong>
+         # argument not a pair -- 4
+             0. FOO
+             1. DYNAMIC-WIND
+             2. INTERP
+             3. ENGINE
+             4. MAIN
+</pre>
+</td></tr>
+</tbody></table></center>
+</td></tr>
+</tbody></table><br/>
+<table cellspacing="0" class="frame" cellpadding="10" border="1" width="100%"><tbody>
+<tr><td><a name="g21357" class="mark"></a><a name="get-trace-stack" class="mark"></a><table width="100%" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc21361" align="left" colspan="1"><strong id='bold21359'
+>get-trace-stack</strong><em id='it21360'
+> size</em></td><td id="tc21362" align="right" colspan="1">bigloo procedure</td></tr>
+</tbody></table>
+<a name="g21366" class="mark"></a><a name="dump-trace-stack" class="mark"></a><table width="100%" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc21370" align="left" colspan="1"><strong id='bold21368'
+>dump-trace-stack</strong><em id='it21369'
+> output-port size</em></td><td id="tc21371" align="right" colspan="1">bigloo procedure</td></tr>
+</tbody></table>
+Switching on the <code id='code21374'
+>-g</code> compilation switch enables stack dumping
+<a href="bigloo-33.html#Compiler-Description" class="inbound">Compiler Description</a>. That is, the list of the pending calls
+can be dumped by the runtime-system. The function <code id='code21375'
+>get-trace-stack</code>
+builds such a trace. The list built by <code id='code21376'
+>get-trace-stack</code> only
+contains the <code id='code21378'
+><em id='it21377'
+>size</em></code> top most pending calls. The function
+<code id='code21379'
+>dump-trace-stack</code> displays a representation of this stack on the
+<code id='code21381'
+><em id='it21380'
+>output-port</em></code>.<br/><br/></td></tr>
+</tbody></table><br/>
+<table cellspacing="0" class="frame" cellpadding="10" border="1" width="100%"><tbody>
+<tr><td><a name="g21386" class="mark"></a><a name="warning/location" class="mark"></a><table width="100%" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc21390" align="left" colspan="1"><strong id='bold21388'
+>warning/location</strong><em id='it21389'
+> file location [arg]...</em></td><td id="tc21391" align="right" colspan="1">bigloo procedure</td></tr>
+</tbody></table>
+This form signals a warning. That is, is <code id='code21395'
+><em id='it21394'
+>arg</em></code> are displayed
+on the standard error port. The warning is prompted in <code id='code21397'
+><em id='it21396'
+>file</em></code> at
+character position <code id='code21399'
+><em id='it21398'
+>location</em></code>.<br/><br/><center id='center21413'
+><table cellspacing="0" class="color" cellpadding="0" width="95%"><tbody>
+<tr><td bgcolor="#ffffcc"><pre class="prog" id='prog21411'
+>(<font color="#6959cf"><strong id='bold34271'
+>define</strong></font> (<font color="#6959cf"><strong id='bold34273'
+>foo</strong></font> l)
+   (<strong id='bold34275'
+>if</strong> (not (pair? l))
+       (<strong id='bold34276'
+>begin</strong>
+          (warning/location
+            <font color="red">&quot;foo.scm&quot;</font> 154 <font color="red">&quot;foo:&quot;</font> <font color="red">&quot;argument not a pair -- &quot;</font> l)
+          '())
+       (car l)))<br/><br/>(foo 4)
+-| File <font color="red">&quot;foo.scm&quot;</font>, line 6, character 154:
+   #       (car l)))
+   #       ^
+   # *** WARNING<strong id='bold34281'
+>:bigloo</strong><strong id='bold34283'
+>:foo</strong>:
+   argument not a pair -- 4
+=&gt; '()
+</pre>
+</td></tr>
+</tbody></table></center>
+</td></tr>
+</tbody></table><br/>
+<table cellspacing="0" class="frame" cellpadding="10" border="1" width="100%"><tbody>
+<tr><td><a name="g21417" class="mark"></a><a name="exception-notify" class="mark"></a><table width="100%" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc21421" align="left" colspan="1"><strong id='bold21419'
+>exception-notify</strong><em id='it21420'
+> exc</em></td><td id="tc21422" align="right" colspan="1">bigloo procedure</td></tr>
+</tbody></table>
+<a name="g21426" class="mark"></a><a name="error-notify" class="mark"></a><table width="100%" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc21430" align="left" colspan="1"><strong id='bold21428'
+>error-notify</strong><em id='it21429'
+> err</em></td><td id="tc21431" align="right" colspan="1">bigloo procedure</td></tr>
+</tbody></table>
+<a name="g21435" class="mark"></a><a name="warning-notify" class="mark"></a><table width="100%" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc21439" align="left" colspan="1"><strong id='bold21437'
+>warning-notify</strong><em id='it21438'
+> err</em></td><td id="tc21440" align="right" colspan="1">bigloo procedure</td></tr>
+</tbody></table>
+Display a message describing the error or warning on the default error port.
+</td></tr>
+</tbody></table><br/>
+</div><br>
+<!-- Exceptions -->
+<a name="Exceptions"></a>
+<div class="section-atitle"><table width="100%"><tr><td bgcolor="#dedeff"><h3><font color="black">16.2 Exceptions</font>
+</h3></td></tr></table>
+</div><div class="section">
+<a name="Exceptions" class="mark"></a><a name="g21445" class="mark"></a><a name="g21447" class="mark"></a><a name="g21449" class="mark"></a>
+<table cellspacing="0" class="frame" cellpadding="10" border="1" width="100%"><tbody>
+<tr><td><a name="g21452" class="mark"></a><a name="current-exception-handler" class="mark"></a><table width="100%" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc21456" align="left" colspan="1"><strong id='bold21454'
+>current-exception-handler</strong><em id='it21455'
+></em></td><td id="tc21457" align="right" colspan="1">SRFI-18 function</td></tr>
+</tbody></table>
+Returns the current exception handler with is a 0-ary procedure.
+</td></tr>
+</tbody></table><br/>
+<table cellspacing="0" class="frame" cellpadding="10" border="1" width="100%"><tbody>
+<tr><td><a name="g21463" class="mark"></a><a name="with-exception-handler" class="mark"></a><table width="100%" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc21467" align="left" colspan="1"><strong id='bold21465'
+>with-exception-handler</strong><em id='it21466'
+> handler thunk</em></td><td id="tc21468" align="right" colspan="1">SRFI-18 function</td></tr>
+</tbody></table>
+Returns the result(s) of calling <code id='code21472'
+><em id='it21471'
+>thunk</em></code> with no arguments. The
+<code id='code21474'
+><em id='it21473'
+>handler</em></code>, which must be a procedure, is installed as the current
+exception handler in the dynamic environment in effect during the call
+to <code id='code21476'
+><em id='it21475'
+>thunk</em></code>. When possible, prefer <code id='code21477'
+>with-handler</code> to 
+<code id='code21478'
+>with-exception-handler</code> because the former provides better debugging
+support and because its semantics is more intuitive.
+</td></tr>
+</tbody></table><br/>
+<table cellspacing="0" class="frame" cellpadding="10" border="1" width="100%"><tbody>
+<tr><td><a name="g21482" class="mark"></a><a name="with-handler" class="mark"></a><table width="100%" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc21486" align="left" colspan="1"><strong id='bold21484'
+>with-handler</strong><em id='it21485'
+> handler body</em></td><td id="tc21487" align="right" colspan="1">bigloo form</td></tr>
+</tbody></table>
+Returns the result(s) of evaluating <code id='code21491'
+><em id='it21490'
+>body</em></code>. The
+<code id='code21493'
+><em id='it21492'
+>handler</em></code>, which must be a procedure, is installed as the current
+exception handler in the dynamic environment in effect during the evaluation
+of <code id='code21495'
+><em id='it21494'
+>body</em></code>. Contrarily to <code id='code21496'
+>with-exception-handler</code>, if an exception
+is raised, the <code id='code21498'
+><em id='it21497'
+>handler</em></code> is invoked and the value of the 
+<code id='code21499'
+>with-handler</code> form is the value produced by invoking the <code id='code21501'
+><em id='it21500'
+>handler</em></code>.
+The handler is executed in the continuation of the <code id='code21502'
+>with-handler</code>
+form.<br/><br/>JVM note: When executed within a JVM, the form <code id='code21504'
+>with-handler</code>
+also catches Java exceptions.<br/><br/>Important note: Since Bigloo version 3.2c, error handlers are executed
+<em id='emph21506'
+>after</em> the execution stack is unwound. Hence, error handlers are
+executed <em id='emph21507'
+>after</em> protected blocks.  For instance in the following
+code:<br/><br/><center id='center21514'
+><table cellspacing="0" class="color" cellpadding="0" width="95%"><tbody>
+<tr><td bgcolor="#ffffcc"><pre class="prog" id='prog21512'
+>(<font color="red"><strong id='bold34285'
+>with-handler</strong></font> 
+   (<strong id='bold34287'
+>lambda</strong> (e) action)
+   (<font color="red"><strong id='bold34288'
+>unwind-protect</strong></font>
+      body
+      protect))
+</pre>
+</td></tr>
+</tbody></table></center>
+
+The <code id='code21516'
+><em id='it21515'
+>action</em></code> is executed <em id='emph21517'
+>after</em> <code id='code21519'
+><em id='it21518'
+>protect</em></code>.<br/><br/></td></tr>
+</tbody></table><br/>
+<table cellspacing="0" class="frame" cellpadding="10" border="1" width="100%"><tbody>
+<tr><td><a name="g21524" class="mark"></a><a name="raise" class="mark"></a><table width="100%" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc21528" align="left" colspan="1"><strong id='bold21526'
+>raise</strong><em id='it21527'
+> obj</em></td><td id="tc21529" align="right" colspan="1">SRFI-18 function</td></tr>
+</tbody></table>
+
+Calls the current exception handler with obj as the single
+argument. obj may be any Scheme object. Note that invoking the current
+handler does not escape from the current computation. It is up the to
+handler to perform the escape. It an error, signaled by the runtime
+system, if the current exception handler returns.<br/><br/><center id='center21549'
+><table cellspacing="0" class="color" cellpadding="0" width="95%"><tbody>
+<tr><td bgcolor="#ffffcc"><pre class="prog" id='prog21547'
+>(<font color="#6959cf"><strong id='bold34290'
+>define</strong></font> (<font color="#6959cf"><strong id='bold34292'
+>f</strong></font> n)
+  (<strong id='bold34294'
+>if</strong> (&lt; n 0) (<font color="red"><strong id='bold34295'
+>raise</strong></font> <font color="red">&quot;negative arg&quot;</font>) (sqrt n))))<br/><br/>(<font color="#6959cf"><strong id='bold34298'
+>define</strong></font> (<font color="#6959cf"><strong id='bold34300'
+>g</strong></font>)
+  (<font color="red"><strong id='bold34302'
+>bind-exit</strong></font> (return)
+    (with-exception-handler
+      (<strong id='bold34304'
+>lambda</strong> (exc)
+        (return
+          (<strong id='bold34305'
+>if</strong> (string? exc)
+              (string-append <font color="red">&quot;error: &quot;</font> exc)
+              <font color="red">&quot;unknown error&quot;</font>)))
+      (<strong id='bold34308'
+>lambda</strong> ()
+        (write (f 4.))
+        (write (f -1.))
+        (write (f 9.))))))<br/><br/>(g)  -| 2. and returns <font color="red">&quot;error: negative arg&quot;</font>
+</pre>
+</td></tr>
+</tbody></table></center>
+</td></tr>
+</tbody></table><br/>
+The standard Bigloo runtime system uses the following classes for
+signaling errors and warnings.<br/><br/><table cellspacing="0" class="frame" cellpadding="10" border="1" width="100%"><tbody>
+<tr><td><a name="g21554" class="mark"></a><a name="&exception" class="mark"></a><table width="100%" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc21558" align="left" colspan="1"><strong id='bold21556'
+>&amp;exception</strong><em id='it21557'
+></em></td><td id="tc21559" align="right" colspan="1">class</td></tr>
+</tbody></table>
+<a name="g21562" class="mark"></a><center id='center21567'
+><table cellspacing="0" class="color" cellpadding="0" width="95%"><tbody>
+<tr><td bgcolor="#ffffcc"><pre class="prog" id='prog21565'
+>(<strong id='bold34310'
+>class</strong> &amp;exception
+   (fname read-only (default #f))
+   (location read-only (default #f)))
+</pre>
+</td></tr>
+</tbody></table></center>
+</td></tr>
+</tbody></table><br/>
+<table cellspacing="0" class="frame" cellpadding="10" border="1" width="100%"><tbody>
+<tr><td><a name="g21571" class="mark"></a><a name="&error::&exception" class="mark"></a><table width="100%" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc21575" align="left" colspan="1"><strong id='bold21573'
+>&amp;error::&amp;exception</strong><em id='it21574'
+></em></td><td id="tc21576" align="right" colspan="1">class</td></tr>
+</tbody></table>
+<a name="g21579" class="mark"></a><center id='center21585'
+><table cellspacing="0" class="color" cellpadding="0" width="95%"><tbody>
+<tr><td bgcolor="#ffffcc"><pre class="prog" id='prog21583'
+>(<strong id='bold34311'
+>class</strong> &amp;error<font color="#00cf00"><strong id='bold34312'
+>::&amp;exception</strong></font>
+   (proc read-only)
+   (msg read-only)
+   (obj read-only))
+</pre>
+</td></tr>
+</tbody></table></center>
+</td></tr>
+</tbody></table><br/>
+<table cellspacing="0" class="frame" cellpadding="10" border="1" width="100%"><tbody>
+<tr><td><a name="g21589" class="mark"></a><a name="&type-error::&error" class="mark"></a><table width="100%" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc21593" align="left" colspan="1"><strong id='bold21591'
+>&amp;type-error::&amp;error</strong><em id='it21592'
+></em></td><td id="tc21594" align="right" colspan="1">class</td></tr>
+</tbody></table>
+<a name="g21597" class="mark"></a>
+<center id='center21604'
+><table cellspacing="0" class="color" cellpadding="0" width="95%"><tbody>
+<tr><td bgcolor="#ffffcc"><pre class="prog" id='prog21602'
+>(<strong id='bold34314'
+>class</strong> &amp;type-error<font color="#00cf00"><strong id='bold34315'
+>::&amp;error</strong></font>
+   (<strong id='bold34317'
+>type</strong> read-only))
+</pre>
+</td></tr>
+</tbody></table></center>
+</td></tr>
+</tbody></table><br/>
+<table cellspacing="0" class="frame" cellpadding="10" border="1" width="100%"><tbody>
+<tr><td><a name="g21608" class="mark"></a><a name="&io-error::&error" class="mark"></a><table width="100%" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc21612" align="left" colspan="1"><strong id='bold21610'
+>&amp;io-error::&amp;error</strong><em id='it21611'
+></em></td><td id="tc21613" align="right" colspan="1">class</td></tr>
+</tbody></table>
+<a name="g21616" class="mark"></a>
+<center id='center21622'
+><table cellspacing="0" class="color" cellpadding="0" width="95%"><tbody>
+<tr><td bgcolor="#ffffcc"><pre class="prog" id='prog21620'
+>(<strong id='bold34318'
+>class</strong> &amp;io-error<font color="#00cf00"><strong id='bold34319'
+>::&amp;error</strong></font>)
+</pre>
+</td></tr>
+</tbody></table></center>
+</td></tr>
+</tbody></table><br/>
+<table cellspacing="0" class="frame" cellpadding="10" border="1" width="100%"><tbody>
+<tr><td><a name="g21626" class="mark"></a><a name="&io-port-error::&io-error" class="mark"></a><table width="100%" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc21630" align="left" colspan="1"><strong id='bold21628'
+>&amp;io-port-error::&amp;io-error</strong><em id='it21629'
+></em></td><td id="tc21631" align="right" colspan="1">class</td></tr>
+</tbody></table>
+<a name="g21634" class="mark"></a>
+<center id='center21640'
+><table cellspacing="0" class="color" cellpadding="0" width="95%"><tbody>
+<tr><td bgcolor="#ffffcc"><pre class="prog" id='prog21638'
+>(<strong id='bold34321'
+>class</strong> &amp;io-port-error<font color="#00cf00"><strong id='bold34322'
+>::&amp;io-error</strong></font>)
+</pre>
+</td></tr>
+</tbody></table></center>
+</td></tr>
+</tbody></table><br/>
+<table cellspacing="0" class="frame" cellpadding="10" border="1" width="100%"><tbody>
+<tr><td><a name="g21644" class="mark"></a><a name="&io-read-error::&io-error" class="mark"></a><table width="100%" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc21648" align="left" colspan="1"><strong id='bold21646'
+>&amp;io-read-error::&amp;io-error</strong><em id='it21647'
+></em></td><td id="tc21649" align="right" colspan="1">class</td></tr>
+</tbody></table>
+<a name="g21652" class="mark"></a>
+<center id='center21658'
+><table cellspacing="0" class="color" cellpadding="0" width="95%"><tbody>
+<tr><td bgcolor="#ffffcc"><pre class="prog" id='prog21656'
+>(<strong id='bold34324'
+>class</strong> &amp;io-read-error<font color="#00cf00"><strong id='bold34325'
+>::&amp;io-port-error</strong></font>)
+</pre>
+</td></tr>
+</tbody></table></center>
+</td></tr>
+</tbody></table><br/>
+<table cellspacing="0" class="frame" cellpadding="10" border="1" width="100%"><tbody>
+<tr><td><a name="g21662" class="mark"></a><a name="&io-write-error::&io-port-error" class="mark"></a><table width="100%" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc21666" align="left" colspan="1"><strong id='bold21664'
+>&amp;io-write-error::&amp;io-port-error</strong><em id='it21665'
+></em></td><td id="tc21667" align="right" colspan="1">class</td></tr>
+</tbody></table>
+<a name="g21670" class="mark"></a>
+<center id='center21676'
+><table cellspacing="0" class="color" cellpadding="0" width="95%"><tbody>
+<tr><td bgcolor="#ffffcc"><pre class="prog" id='prog21674'
+>(<strong id='bold34327'
+>class</strong> &amp;io-write-error<font color="#00cf00"><strong id='bold34328'
+>::&amp;io-port-error</strong></font>)
+</pre>
+</td></tr>
+</tbody></table></center>
+</td></tr>
+</tbody></table><br/>
+<table cellspacing="0" class="frame" cellpadding="10" border="1" width="100%"><tbody>
+<tr><td><a name="g21680" class="mark"></a><a name="&io-closed-error::&io-port-error" class="mark"></a><table width="100%" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc21684" align="left" colspan="1"><strong id='bold21682'
+>&amp;io-closed-error::&amp;io-port-error</strong><em id='it21683'
+></em></td><td id="tc21685" align="right" colspan="1">class</td></tr>
+</tbody></table>
+<a name="g21688" class="mark"></a>
+<center id='center21694'
+><table cellspacing="0" class="color" cellpadding="0" width="95%"><tbody>
+<tr><td bgcolor="#ffffcc"><pre class="prog" id='prog21692'
+>(<strong id='bold34330'
+>class</strong> &amp;io-closed-error<font color="#00cf00"><strong id='bold34331'
+>::&amp;io-port-error</strong></font>)
+</pre>
+</td></tr>
+</tbody></table></center>
+</td></tr>
+</tbody></table><br/>
+<table cellspacing="0" class="frame" cellpadding="10" border="1" width="100%"><tbody>
+<tr><td><a name="g21698" class="mark"></a><a name="&io-file-not-found-error::&io-error" class="mark"></a><table width="100%" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc21702" align="left" colspan="1"><strong id='bold21700'
+>&amp;io-file-not-found-error::&amp;io-error</strong><em id='it21701'
+></em></td><td id="tc21703" align="right" colspan="1">class</td></tr>
+</tbody></table>
+<a name="g21706" class="mark"></a>
+<center id='center21712'
+><table cellspacing="0" class="color" cellpadding="0" width="95%"><tbody>
+<tr><td bgcolor="#ffffcc"><pre class="prog" id='prog21710'
+>(<strong id='bold34333'
+>class</strong> &amp;io-file-not-found-error<font color="#00cf00"><strong id='bold34334'
+>::&amp;io-error</strong></font>)
+</pre>
+</td></tr>
+</tbody></table></center>
+</td></tr>
+</tbody></table><br/>
+<table cellspacing="0" class="frame" cellpadding="10" border="1" width="100%"><tbody>
+<tr><td><a name="g21716" class="mark"></a><a name="&io-parse-error::&io-error" class="mark"></a><table width="100%" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc21720" align="left" colspan="1"><strong id='bold21718'
+>&amp;io-parse-error::&amp;io-error</strong><em id='it21719'
+></em></td><td id="tc21721" align="right" colspan="1">class</td></tr>
+</tbody></table>
+<a name="g21724" class="mark"></a>
+<center id='center21730'
+><table cellspacing="0" class="color" cellpadding="0" width="95%"><tbody>
+<tr><td bgcolor="#ffffcc"><pre class="prog" id='prog21728'
+>(<strong id='bold34336'
+>class</strong> &amp;io-parse-error<font color="#00cf00"><strong id='bold34337'
+>::&amp;io-error</strong></font>)
+</pre>
+</td></tr>
+</tbody></table></center>
+</td></tr>
+</tbody></table><br/>
+<table cellspacing="0" class="frame" cellpadding="10" border="1" width="100%"><tbody>
+<tr><td><a name="g21734" class="mark"></a><a name="&io-unknown-host-error::&io-error" class="mark"></a><table width="100%" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc21738" align="left" colspan="1"><strong id='bold21736'
+>&amp;io-unknown-host-error::&amp;io-error</strong><em id='it21737'
+></em></td><td id="tc21739" align="right" colspan="1">class</td></tr>
+</tbody></table>
+<a name="g21742" class="mark"></a>
+<center id='center21748'
+><table cellspacing="0" class="color" cellpadding="0" width="95%"><tbody>
+<tr><td bgcolor="#ffffcc"><pre class="prog" id='prog21746'
+>(<strong id='bold34339'
+>class</strong> &amp;io-unknown-host-error<font color="#00cf00"><strong id='bold34340'
+>::&amp;io-error</strong></font>)
+</pre>
+</td></tr>
+</tbody></table></center>
+</td></tr>
+</tbody></table><br/>
+<table cellspacing="0" class="frame" cellpadding="10" border="1" width="100%"><tbody>
+<tr><td><a name="g21752" class="mark"></a><a name="&io-malformed-url-error::&io-error" class="mark"></a><table width="100%" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc21756" align="left" colspan="1"><strong id='bold21754'
+>&amp;io-malformed-url-error::&amp;io-error</strong><em id='it21755'
+></em></td><td id="tc21757" align="right" colspan="1">class</td></tr>
+</tbody></table>
+<a name="g21760" class="mark"></a>
+<center id='center21766'
+><table cellspacing="0" class="color" cellpadding="0" width="95%"><tbody>
+<tr><td bgcolor="#ffffcc"><pre class="prog" id='prog21764'
+>(<strong id='bold34342'
+>class</strong> &amp;io-malformed-url-error<font color="#00cf00"><strong id='bold34343'
+>::&amp;io-error</strong></font>)
+</pre>
+</td></tr>
+</tbody></table></center>
+</td></tr>
+</tbody></table><br/>
+<table cellspacing="0" class="frame" cellpadding="10" border="1" width="100%"><tbody>
+<tr><td><a name="g21770" class="mark"></a><a name="&http-error::&error" class="mark"></a><table width="100%" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc21774" align="left" colspan="1"><strong id='bold21772'
+>&amp;http-error::&amp;error</strong><em id='it21773'
+></em></td><td id="tc21775" align="right" colspan="1">class</td></tr>
+</tbody></table>
+<a name="g21778" class="mark"></a>
+<center id='center21784'
+><table cellspacing="0" class="color" cellpadding="0" width="95%"><tbody>
+<tr><td bgcolor="#ffffcc"><pre class="prog" id='prog21782'
+>(<strong id='bold34345'
+>class</strong> &amp;http-error<font color="#00cf00"><strong id='bold34346'
+>::&amp;error</strong></font>)
+</pre>
+</td></tr>
+</tbody></table></center>
+</td></tr>
+</tbody></table><br/>
+<table cellspacing="0" class="frame" cellpadding="10" border="1" width="100%"><tbody>
+<tr><td><a name="g21788" class="mark"></a><a name="&http-redirection-error::&http-error" class="mark"></a><table width="100%" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc21792" align="left" colspan="1"><strong id='bold21790'
+>&amp;http-redirection-error::&amp;http-error</strong><em id='it21791'
+></em></td><td id="tc21793" align="right" colspan="1">class</td></tr>
+</tbody></table>
+<a name="g21796" class="mark"></a>
+<center id='center21802'
+><table cellspacing="0" class="color" cellpadding="0" width="95%"><tbody>
+<tr><td bgcolor="#ffffcc"><pre class="prog" id='prog21800'
+>(<strong id='bold34348'
+>class</strong> &amp;http-redirection-error<font color="#00cf00"><strong id='bold34349'
+>::&amp;http-error</strong></font>)
+</pre>
+</td></tr>
+</tbody></table></center>
+</td></tr>
+</tbody></table><br/>
+<table cellspacing="0" class="frame" cellpadding="10" border="1" width="100%"><tbody>
+<tr><td><a name="g21806" class="mark"></a><a name="&http-status-error::&http-error" class="mark"></a><table width="100%" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc21810" align="left" colspan="1"><strong id='bold21808'
+>&amp;http-status-error::&amp;http-error</strong><em id='it21809'
+></em></td><td id="tc21811" align="right" colspan="1">class</td></tr>
+</tbody></table>
+<a name="g21814" class="mark"></a>
+<center id='center21820'
+><table cellspacing="0" class="color" cellpadding="0" width="95%"><tbody>
+<tr><td bgcolor="#ffffcc"><pre class="prog" id='prog21818'
+>(<strong id='bold34351'
+>class</strong> &amp;http-status-error<font color="#00cf00"><strong id='bold34352'
+>::&amp;http-error</strong></font>)
+</pre>
+</td></tr>
+</tbody></table></center>
+</td></tr>
+</tbody></table><br/>
+<table cellspacing="0" class="frame" cellpadding="10" border="1" width="100%"><tbody>
+<tr><td><a name="g21824" class="mark"></a><a name="&http-redirection::&http-error" class="mark"></a><table width="100%" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc21828" align="left" colspan="1"><strong id='bold21826'
+>&amp;http-redirection::&amp;http-error</strong><em id='it21827'
+></em></td><td id="tc21829" align="right" colspan="1">class</td></tr>
+</tbody></table>
+<a name="g21832" class="mark"></a>
+<center id='center21840'
+><table cellspacing="0" class="color" cellpadding="0" width="95%"><tbody>
+<tr><td bgcolor="#ffffcc"><pre class="prog" id='prog21838'
+>(<strong id='bold34354'
+>class</strong> &amp;http-redirection<font color="#00cf00"><strong id='bold34355'
+>::&amp;exception</strong></font>
+  (port<font color="#00cf00"><strong id='bold34357'
+>::input-port</strong></font> read-only)
+  (url<font color="#00cf00"><strong id='bold34359'
+>::bstring</strong></font> read-only))
+</pre>
+</td></tr>
+</tbody></table></center>
+</td></tr>
+</tbody></table><br/>
+<table cellspacing="0" class="frame" cellpadding="10" border="1" width="100%"><tbody>
+<tr><td><a name="g21844" class="mark"></a><a name="process-exception::&error" class="mark"></a><table width="100%" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc21848" align="left" colspan="1"><strong id='bold21846'
+>process-exception::&amp;error</strong><em id='it21847'
+></em></td><td id="tc21849" align="right" colspan="1">class</td></tr>
+</tbody></table>
+<a name="g21852" class="mark"></a>
+<center id='center21858'
+><table cellspacing="0" class="color" cellpadding="0" width="95%"><tbody>
+<tr><td bgcolor="#ffffcc"><pre class="prog" id='prog21856'
+>(<strong id='bold34361'
+>class</strong> &amp;process-exception<font color="#00cf00"><strong id='bold34362'
+>::&amp;error</strong></font>)
+</pre>
+</td></tr>
+</tbody></table></center>
+</td></tr>
+</tbody></table><br/>
+<table cellspacing="0" class="frame" cellpadding="10" border="1" width="100%"><tbody>
+<tr><td><a name="g21862" class="mark"></a><a name="&warning::&exception" class="mark"></a><table width="100%" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc21866" align="left" colspan="1"><strong id='bold21864'
+>&amp;warning::&amp;exception</strong><em id='it21865'
+></em></td><td id="tc21867" align="right" colspan="1">class</td></tr>
+</tbody></table>
+<a name="g21870" class="mark"></a>
+<center id='center21876'
+><table cellspacing="0" class="color" cellpadding="0" width="95%"><tbody>
+<tr><td bgcolor="#ffffcc"><pre class="prog" id='prog21874'
+>(<strong id='bold34364'
+>class</strong> &amp;warning<font color="#00cf00"><strong id='bold34365'
+>::&amp;exception</strong></font>
+   (args read-only))
+</pre>
+</td></tr>
+</tbody></table></center>
+</td></tr>
+</tbody></table><br/>
+<table cellspacing="0" class="frame" cellpadding="10" border="1" width="100%"><tbody>
+<tr><td><a name="g21880" class="mark"></a><a name="&eval-warning::&warning" class="mark"></a><table width="100%" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc21884" align="left" colspan="1"><strong id='bold21882'
+>&amp;eval-warning::&amp;warning</strong><em id='it21883'
+></em></td><td id="tc21885" align="right" colspan="1">class</td></tr>
+</tbody></table>
+<a name="g21888" class="mark"></a>
+<center id='center21894'
+><table cellspacing="0" class="color" cellpadding="0" width="95%"><tbody>
+<tr><td bgcolor="#ffffcc"><pre class="prog" id='prog21892'
+>(<strong id='bold34367'
+>class</strong> &amp;warning<font color="#00cf00"><strong id='bold34368'
+>::&amp;warning</strong></font>)
+</pre>
+</td></tr>
+</tbody></table></center>
+</td></tr>
+</tbody></table><br/>
+</div><br>
+<!-- Deprecated try form -->
+<a name="Deprecated-try-form"></a>
+<div class="section-atitle"><table width="100%"><tr><td bgcolor="#dedeff"><h3><font color="black">16.3 Deprecated try form</font>
+</h3></td></tr></table>
+</div><div class="section">
+<a name="Try" class="mark"></a>
+<table cellspacing="0" class="frame" cellpadding="10" border="1" width="100%"><tbody>
+<tr><td><table width="100%" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc21899" align="left" colspan="1"><strong id='bold21897'
+>try</strong><em id='it21898'
+> exp handler</em></td><td id="tc21900" align="right" colspan="1">bigloo syntax</td></tr>
+</tbody></table>
+
+This form is deprecated. As much as possible, it should be replaced with
+true exceptions (i.e., <code id='code21903'
+>with-exception-handler</code> and <code id='code21904'
+>raise</code>). 
+The argument <code id='code21906'
+><em id='it21905'
+>exp</em></code> is evaluated. If an error is raised, the
+<code id='code21908'
+><em id='it21907'
+>handler</em></code> is called. The argument <code id='code21910'
+><em id='it21909'
+>handler</em></code> is a procedure of
+four arguments. Its first argument is the continuation of <code id='code21912'
+><em id='it21911'
+>try</em></code>. The
+other arguments are <code id='code21914'
+><em id='it21913'
+>proc</em></code>, <code id='code21916'
+><em id='it21915'
+>mes</em></code> and <code id='code21918'
+><em id='it21917'
+>obj</em></code>. Invoking the
+first argument will resume after the error.<br/><br/><center id='center21929'
+><table cellspacing="0" class="color" cellpadding="0" width="95%"><tbody>
+<tr><td bgcolor="#ffffcc"><pre class="prog" id='prog21927'
+>(<strong id='bold34370'
+>let</strong> ((handler (<strong id='bold34371'
+>lambda</strong> (escape proc mes obj)
+                  (print <font color="red">&quot;***ERROR:&quot;</font> proc <font color="red">&quot;:&quot;</font> mes <font color="red">&quot; -- &quot;</font> obj)
+                  (escape #f))))
+   (try (car 1) handler))
+   -| ***ERROR<strong id='bold34375'
+>:CAR</strong><strong id='bold34377'
+>:not</strong> a pair -- 1
+   =&gt; #f
+</pre>
+</td></tr>
+</tbody></table></center>
+
+The argument <code id='code21931'
+><em id='it21930'
+>handler</em></code> is not evaluated in the dynamic scope of its
+<code id='code21932'
+>try</code> form. That is:<br/><br/><center id='center21940'
+><table cellspacing="0" class="color" cellpadding="0" width="95%"><tbody>
+<tr><td bgcolor="#ffffcc"><pre class="prog" id='prog21938'
+>(<strong id='bold34379'
+>let</strong> ((handler (<strong id='bold34380'
+>lambda</strong> (escape proc mes obj)
+                  (escape (car obj)))))
+   (try (car 1) handler))
+   error--&gt; *** ERROR<strong id='bold34381'
+>:bigloo</strong><strong id='bold34383'
+>:CAR</strong>
+            Type `PAIR' expected, `BINT' provided -- 1
+</pre>
+</td></tr>
+</tbody></table></center>
+</td></tr>
+</tbody></table><br/>
+Some library functions exist to help in writing handlers:<br/><br/><table cellspacing="0" class="frame" cellpadding="10" border="1" width="100%"><tbody>
+<tr><td><a name="g21945" class="mark"></a><a name="warning" class="mark"></a><table width="100%" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc21949" align="left" colspan="1"><strong id='bold21947'
+>warning</strong><em id='it21948'
+> [arg]...</em></td><td id="tc21950" align="right" colspan="1">bigloo procedure</td></tr>
+</tbody></table>
+This form signals a warning. That is, is <code id='code21954'
+><em id='it21953'
+>arg</em></code> are displayed
+on the standard error port.<br/><br/><center id='center21967'
+><table cellspacing="0" class="color" cellpadding="0" width="95%"><tbody>
+<tr><td bgcolor="#ffffcc"><pre class="prog" id='prog21965'
+>(<font color="#6959cf"><strong id='bold34385'
+>define</strong></font> (<font color="#6959cf"><strong id='bold34387'
+>foo</strong></font> l)
+   (<strong id='bold34389'
+>if</strong> (not (pair? l))
+       (<strong id='bold34390'
+>begin</strong>
+          (<font color="red"><strong id='bold34391'
+>warning</strong></font> <font color="red">&quot;foo:&quot;</font> <font color="red">&quot;argument not a pair -- &quot;</font> l)
+          '())
+       (car l)))<br/><br/>(foo 4)
+-| *** WARNING<strong id='bold34395'
+>:bigloo</strong><strong id='bold34397'
+>:foo</strong>:
+   argument not a pair -- 4
+=&gt; '()
+</pre>
+</td></tr>
+</tbody></table></center>
+</td></tr>
+</tbody></table><br/>
+</div><br>
+<!-- Assertions -->
+<a name="Assertions"></a>
+<div class="section-atitle"><table width="100%"><tr><td bgcolor="#dedeff"><h3><font color="black">16.4 Assertions</font>
+</h3></td></tr></table>
+</div><div class="section">
+<a name="Assertions" class="mark"></a>
+<table cellspacing="0" class="frame" cellpadding="10" border="1" width="100%"><tbody>
+<tr><td><a name="g21971" class="mark"></a><a name="assert" class="mark"></a><table width="100%" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc21975" align="left" colspan="1"><strong id='bold21973'
+>assert</strong><em id='it21974'
+> (var...) s-expression</em></td><td id="tc21976" align="right" colspan="1">bigloo syntax</td></tr>
+</tbody></table>
+
+Assertions can be enabled or disabled using Bigloo's compilation flags
+<code id='code21979'
+>-g</code> flag to enable them). If the assertions are disabled they are
+not evaluated. If an assertion is evaluated, if the expression <code id='code21981'
+><em id='it21980'
+>exp</em></code>
+does not evaluate to <code id='code21982'
+>#t</code>, an error is signaled and the interpreter
+is launched in an environment where <code id='code21984'
+><em id='it21983'
+>var</em></code>... are bound to their
+current values.<br/><br/>Assertion forms are legal expressions which <em id='emph21986'
+>always</em> evaluate
+to the <code id='code21987'
+>unspecified</code> object.<br/><br/>Here is an example of assertion usage:<br/><br/><center id='center22002'
+><table cellspacing="0" class="color" cellpadding="0" width="95%"><tbody>
+<tr><td bgcolor="#ffffcc"><pre class="prog" id='prog22000'
+>(<font color="#1919af"><strong id='bold34399'
+>module</strong></font> <font color="#1919af"><strong id='bold34401'
+>foo</strong></font>
+   (eval (<font color="#1919af"><strong id='bold34403'
+>export</strong></font> <font color="#1919af"><strong id='bold34405'
+>foo</strong></font>)))<br/><br/>(<font color="#6959cf"><strong id='bold34407'
+>define</strong></font> (<font color="#6959cf"><strong id='bold34409'
+>foo</strong></font> x y)
+   [assert (x y) (&lt; x y)]
+   (<strong id='bold34411'
+>labels</strong> ((gee (t)
+                 [assert (t) (&gt;= t 0)]
+                 (<strong id='bold34412'
+>let</strong> ((res (+ x t)))
+                    [assert (res t) (&gt; res 10)]
+                    res)))
+      (<strong id='bold34413'
+>set!</strong> x (gee y))
+      [assert (x) (&gt; x 10)]
+      x))<br/><br/>(repl)
+</pre>
+</td></tr>
+</tbody></table></center>
+
+This module is compiled with the <code id='code22003'
+>-g</code> flag to enable assertions, then
+the produced executable is run:<br/><br/><center id='center22011'
+><table cellspacing="0" class="color" cellpadding="0" width="95%"><tbody>
+<tr><td bgcolor="#ccffcc"><pre class="prog" id='prog22009'
+>$ a.out<br/><br/>1:=&gt; (foo 1 2)<br/><br/>File &quot;foo.scm&quot;, line 9, character 158:
+#                   [assert (res t) (&gt; res 10)]
+#                   ^
+# *** ERROR:bigloo:assert
+# assertion failed -- (BEGIN (&gt; RES 10))
+    0. GEE
+    1. FOO
+-----------------------
+Variables' value are : 
+   RES : 3
+   T : 2
+-----------------------
+*:=&gt; ^D
+File &quot;foo.scm&quot;, line 12, character 228:
+#      [assert (x) (&gt; x 10)]
+#      ^
+# *** ERROR:bigloo:assert
+# assertion failed -- (BEGIN (&gt; X 10))
+    0. FOO
+-----------------------
+Variables' value are : 
+   X : 3
+-----------------------<br/><br/>*:=&gt; 3
+1:=&gt; (foo 1 2)
+File &quot;foo.scm&quot;, line 9, character 158:
+#                   [assert (res t) (&gt; res 10)]
+#                   ^
+# *** ERROR:bigloo:assert
+# assertion failed -- (BEGIN (&gt; RES 10))
+    0. GEE
+    1. FOO
+-----------------------
+Variables' value are : 
+   RES : 3
+   T : 2
+-----------------------<br/><br/>*:=&gt; 
+</pre>
+</td></tr>
+</tbody></table></center>
+</td></tr>
+</tbody></table><br/>
+</div><br>
+<!-- Tracing -->
+<a name="Tracing"></a>
+<div class="section-atitle"><table width="100%"><tr><td bgcolor="#dedeff"><h3><font color="black">16.5 Tracing</font>
+</h3></td></tr></table>
+</div><div class="section">
+<a name="Tracing" class="mark"></a><a name="g22014" class="mark"></a><a name="g22016" class="mark"></a>
+Bigloo provides a trace facility whose is intended for simple
+debugging tasks. It is a replacement for user <code id='code22018'
+>display</code>s that
+clutters the source code. Here is a typical example using it:<br/><br/><center id='center22028'
+><table cellspacing="0" class="color" cellpadding="0" width="95%"><tbody>
+<tr><td bgcolor="#ffffcc"><pre class="prog" id='prog22026'
+>(<font color="#6959cf"><strong id='bold34414'
+>define</strong></font> (<font color="#6959cf"><strong id='bold34416'
+>foo</strong></font> x)
+   (with-trace 1 'foo
+      (<strong id='bold34418'
+>let</strong> loop ((n x))
+	 (with-trace 2 'loop
+	    (trace-item <font color="red">&quot;n=&quot;</font> n)
+	    (when (&gt; n 0)
+	       (<strong id='bold34420'
+>let</strong> liip ((m n))
+		  (with-trace 2 'liip
+		     (trace-item <font color="red">&quot;m=&quot;</font> m))
+		  (when (&gt; m 0)
+		     (liip (- m 1))))
+	       (loop (- n 1)))))))<br/><br/>(foo 3)
+</pre>
+</td></tr>
+</tbody></table></center>
+
+which produces the following output:<br/><br/><center id='center22032'
+><table cellspacing="0" class="color" cellpadding="0" width="95%"><tbody>
+<tr><td bgcolor="#ccccff"><pre class="prog" id='prog22030'
+>+ foo
+  |--+ loop
+  |  |- n=3
+  |  |--+ liip
+  |  |  |- m=3
+  |  |--+ liip
+  |  |  |- m=2
+  |  |--+ liip
+  |  |  |- m=1
+  |  |--+ liip
+  |  |  |- m=0
+  |  |--+ loop
+  |  |  |- n=2
+  |  |  |--+ liip
+  |  |  |  |- m=2
+  |  |  |--+ liip
+  |  |  |  |- m=1
+  |  |  |--+ liip
+  |  |  |  |- m=0
+  |  |  |--+ loop
+  |  |  |  |- n=1
+  |  |  |  |--+ liip
+  |  |  |  |  |- m=1
+  |  |  |  |--+ liip
+  |  |  |  |  |- m=0
+  |  |  |  |--+ loop
+  |  |  |  |  |- n=0
+</pre>
+</td></tr>
+</tbody></table></center>
+
+Traces generation is controlled by a set of functions and parameters
+(see <a href="bigloo-26.html#Parameters" class="inbound">Parameters</a>). The functions are described in this chapter.<br/><br/><table cellspacing="0" class="frame" cellpadding="10" border="1" width="100%"><tbody>
+<tr><td><a name="g22035" class="mark"></a><a name="with-trace" class="mark"></a><table width="100%" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc22039" align="left" colspan="1"><strong id='bold22037'
+>with-trace</strong><em id='it22038'
+> level label . body</em></td><td id="tc22040" align="right" colspan="1">bigloo syntax</td></tr>
+</tbody></table>
+
+The variable <code id='code22044'
+><em id='it22043'
+>level</em></code> is the level of a trace. It is a positive
+integer. It enables simple filtering for traces. A trace is displayed
+if and only if the debugging level used to compile or to execute the
+program is greater than the trace level. The variable <code id='code22046'
+><em id='it22045'
+>label</em></code> is a
+label, .e.i., an identifier denoting the trace. This identifier will
+be displayed in debug mode.  The variable <code id='code22048'
+><em id='it22047'
+>body</em></code> is the body of
+the form, that is, the expression to be evaluated.<br/><br/>Unless a trace is activated <code id='code22050'
+>(with-trace lv la body)</code> (when its
+level <code id='code22052'
+><em id='it22051'
+>lv</em></code> is greater than the current debug level) is equivalent
+to <code id='code22053'
+>(begin body)</code>. When traces are activated, before executing
+<code id='code22055'
+><em id='it22054'
+>body</em></code>.<br/><br/>The debugging level is controlled by two parameters:
+<code id='code22057'
+>bigloo-debug</code> and <code id='code22058'
+>bigloo-compiler-debug</code> (see <a href="bigloo-26.html#Parameters" class="inbound">Parameters</a>).<br/><br/></td></tr>
+</tbody></table><br/>
+<table cellspacing="0" class="frame" cellpadding="10" border="1" width="100%"><tbody>
+<tr><td><a name="g22063" class="mark"></a><a name="trace-item" class="mark"></a><table width="100%" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc22067" align="left" colspan="1"><strong id='bold22065'
+>trace-item</strong><em id='it22066'
+> . args</em></td><td id="tc22068" align="right" colspan="1">bigloo function</td></tr>
+</tbody></table>
+This function displays all its arguments. It has to be used nested in
+a <code id='code22072'
+><em id='it22071'
+>with-trace</em></code> form. 
+</td></tr>
+</tbody></table><br/>
+<table cellspacing="0" class="frame" cellpadding="10" border="1" width="100%"><tbody>
+<tr><td><a name="g22076" class="mark"></a><a name="trace-bold" class="mark"></a><table width="100%" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc22080" align="left" colspan="1"><strong id='bold22078'
+>trace-bold</strong><em id='it22079'
+> s</em></td><td id="tc22081" align="right" colspan="1">bigloo function</td></tr>
+</tbody></table>
+<a name="g22085" class="mark"></a><a name="trace-string" class="mark"></a><table width="100%" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc22089" align="left" colspan="1"><strong id='bold22087'
+>trace-string</strong><em id='it22088'
+> s</em></td><td id="tc22090" align="right" colspan="1">bigloo function</td></tr>
+</tbody></table>
+These two functions are provided for convenience. They returns strings
+made of their parameters.
+</td></tr>
+</tbody></table><br/>
+<table cellspacing="0" class="frame" cellpadding="10" border="1" width="100%"><tbody>
+<tr><td><a name="g22096" class="mark"></a><a name="trace-color" class="mark"></a><table width="100%" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc22100" align="left" colspan="1"><strong id='bold22098'
+>trace-color</strong><em id='it22099'
+> color . args</em></td><td id="tc22101" align="right" colspan="1">bigloo function</td></tr>
+</tbody></table>
+The <code id='code22105'
+><em id='it22104'
+>color</em></code> argument is a positive integer. 
+This function returns a string which is the representation of <code id='code22107'
+><em id='it22106'
+>args</em></code>
+and that appears on the terminal in color <code id='code22109'
+><em id='it22108'
+>color</em></code>.<br/><br/>Colors can be enable or disabled using the <code id='code22111'
+>bigloo-trace-color</code>
+parameter (see <a href="bigloo-26.html#Parameters" class="inbound">Parameters</a>).
+</td></tr>
+</tbody></table><br/>
+<table cellspacing="0" class="frame" cellpadding="10" border="1" width="100%"><tbody>
+<tr><td><a name="g22115" class="mark"></a><a name="trace-margin" class="mark"></a><table width="100%" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc22119" align="left" colspan="1"><strong id='bold22117'
+>trace-margin</strong><em id='it22118'
+></em></td><td id="tc22120" align="right" colspan="1">bigloo function</td></tr>
+</tbody></table>
+<a name="g22124" class="mark"></a><a name="trace-margin-set!" class="mark"></a><table width="100%" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc22128" align="left" colspan="1"><strong id='bold22126'
+>trace-margin-set!</strong><em id='it22127'
+></em></td><td id="tc22129" align="right" colspan="1">bigloo function</td></tr>
+</tbody></table>
+The <code id='code22133'
+><em id='it22132'
+>trace-margin</em></code> parameter is used to control the characters
+that are displayed in the margin of a trace. Usual applications should
+not use this. However, it may be convenient to set the margin by hands
+in some context. For instance, it can be used to distinguished threads
+in a multi-threaded application such as:<br/><br/><center id='center22143'
+><table cellspacing="0" class="color" cellpadding="0" width="95%"><tbody>
+<tr><td bgcolor="#ffffcc"><pre class="prog" id='prog22141'
+>(<font color="#ad4386"><strong id='bold34422'
+>make-thread</strong></font> (<strong id='bold34424'
+>lambda</strong> () 
+                (trace-margin-set! (trace-color 1 <font color="red">&quot;=&quot;</font>))
+                ...))
+(<font color="#ad4386"><strong id='bold34426'
+>make-thread</strong></font> (<strong id='bold34428'
+>lambda</strong> () 
+                (trace-margin-set! (trace-color 2 <font color="red">&quot;=&quot;</font>))
+                ...))
+</pre>
+</td></tr>
+</tbody></table></center>
+</td></tr>
+</tbody></table><br/>
+<table cellspacing="0" class="frame" cellpadding="10" border="1" width="100%"><tbody>
+<tr><td><a name="g22147" class="mark"></a><a name="trace-port" class="mark"></a><table width="100%" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc22151" align="left" colspan="1"><strong id='bold22149'
+>trace-port</strong><em id='it22150'
+></em></td><td id="tc22152" align="right" colspan="1">bigloo function</td></tr>
+</tbody></table>
+<a name="g22156" class="mark"></a><a name="trace-port-set!" class="mark"></a><table width="100%" style="border-collapse: collapse;" frame="void" rules="none"><tbody>
+<tr><td id="tc22160" align="left" colspan="1"><strong id='bold22158'
+>trace-port-set!</strong><em id='it22159'
+></em></td><td id="tc22161" align="right" colspan="1">bigloo function</td></tr>
+</tbody></table>
+These functions return and set the output port used by traces.
+</td></tr>
+</tbody></table><br/><br/><br/>
+
+</div><br>
+</div></td>
+</tr></table><div class="skribe-ending">
+<hr> 
+<p class="ending" id='paragraph34435'
+><font size="-1">
+This <span class="sc">Html</span> page has been produced by 
+<a href="http://www-sop.inria.fr/indes/fp/Skribe" class="http">Skribe</a>.
+<br/>
+Last update <em id='it34433'
+>Thu Nov 19 07:13:49 2020</em>.</font></p></div>
+</body>
+</html>

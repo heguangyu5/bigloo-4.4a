@@ -1,0 +1,74 @@
+
+-,0
+(meta-define define define0,0
+(meta-define define define-struct0,0
+(meta-define define define-parameter0,0
+(meta-define define define0,0
+(meta-define define define-inline0,0
+(meta-define define define-generic0,0
+(meta-define define define-macro0,0
+(meta-define define define-expander0,0
+(meta-define define module0,0
+
+Llib/wav.scm,762
+(module __wav_wav15,963
+(define (wavinfo?21,1050
+(define (make-wavinfo21,1050
+(define (fill-wavinfo!21,1050
+   (export (class wavinfo21,1050
+(define (wavinfo-audiofmt::symbol-set!22,1087
+(define (wavinfo-audiofmt::symbol22,1087
+(define (wavinfo-byterate::int-set!23,1132
+(define (wavinfo-byterate::int23,1132
+(define (wavinfo-blockalign::int-set!24,1168
+(define (wavinfo-blockalign::int24,1168
+(define (wavinfo-chunksize::elong-set!25,1206
+(define (wavinfo-chunksize::elong25,1206
+(define (&wav-error?27,1250
+(define (make-&wav-error27,1250
+(define (fill-&wav-error!27,1250
+	   (class &wav-error27,1250
+(define (wav-header-size35,1569
+(define (integer->audio-format40,1831
+(define (read-wav-musicinfo48,2142
+(define (wav-parse-header57,2553
+
+Llib/wav_decoder.scm,1426
+(module __wav_decoder15,963
+(define (wavmusicdecoder?21,1037
+(define (make-wavmusicdecoder21,1037
+(define (fill-wavmusicdecoder!21,1037
+   (export (class wavmusicdecoder21,1037
+(define (wavmusicdecoder-outbuf::bstring22,1085
+(define (wavmusicdecoder-%header::obj-set!23,1157
+(define (wavmusicdecoder-%header::obj23,1157
+(define (wavmusicdecoder-%cursor::int-set!24,1192
+(define (wavmusicdecoder-%cursor::int24,1192
+(define (wavmusicdecoder-%size::int-set!25,1226
+(define (wavmusicdecoder-%size::int25,1226
+(define (wavmusicdecoder-%position::int-set!26,1258
+(define (wavmusicdecoder-%position::int26,1258
+(define-macro ($compiler-debug31,1523
+(define (wav-debug37,1806
+(define-method (object-print o::wavmusicdecoder port print-slot45,2115
+(define-method (musicdecoder-init dec::wavmusicdecoder51,2443
+(define-method (musicdecoder-reset! dec::wavmusicdecoder59,2877
+(define-method (musicdecoder-position dec::wavmusicdecoder b67,3256
+(define $wav-status-new-format74,3608
+(define $wav-status-done75,3642
+(define $wav-status-need-more76,3670
+(define $wav-status-ok77,3703
+(define (wav-decode-status->symbol82,3952
+(define-method (musicdecoder-decode dec::wavmusicdecoder93,4452
+(define (wav-decode267,9887
+(define-method (musicdecoder-volume-set! dec::wavmusicdecoder vol306,11383
+(define *debug-port*312,11680
+(define (debug-init!317,11928
+(define (debug-stop!324,12306
+(define (debug331,12666
+
+Llib/wav_alsadec.scm,29
+(module __wav_alsadec15,963
+
+Llib/wav_padec.scm,27
+(module __wav_padec15,963

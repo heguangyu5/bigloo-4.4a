@@ -1,0 +1,448 @@
+
+-,0
+(meta-define define define0,0
+(meta-define define define-struct0,0
+(meta-define define define-parameter0,0
+(meta-define define define0,0
+(meta-define define define-inline0,0
+(meta-define define define-generic0,0
+(meta-define define define-macro0,0
+(meta-define define define-expander0,0
+(meta-define define module0,0
+
+Llib/gstbin.scm,466
+(module __gstreamer_gstbin15,963
+(define (gst-bin?29,1265
+(define (make-gst-bin29,1265
+(define (fill-gst-bin!29,1265
+   (export  (class gst-bin29,1265
+(define (gst-bin-elements::pair-nil-set!30,1305
+(define (gst-bin-elements::pair-nil30,1305
+(define-method (%gst-object-init o::gst-bin45,1926
+(define ($make-gst-bin54,2367
+(define ($gst-bin-elements-set!62,2734
+(define (gst-bin-add!69,3060
+(define (gst-bin-remove!102,4279
+(define (gst-bin-get130,5266
+
+Llib/gstbus.scm,402
+(module __gstreamer_gstbus15,963
+(define (gst-bus?24,1127
+(define (make-gst-bus24,1127
+(define (fill-gst-bus!24,1127
+   (export  (class gst-bus24,1127
+(define-method (%gst-object-init o::gst-bus43,1806
+(define ($make-gst-bus52,2238
+(define (gst-bus-post60,2605
+(define (gst-bus-peek69,3067
+(define (gst-bus-pop79,3519
+(define (gst-bus-poll99,4645
+(define (gst-bus-sync-handler-set!119,5353
+
+Llib/gstbuffer.scm,813
+(module __gstreamer_gstbuffer15,963
+(define (gst-buffer?27,1257
+(define (make-gst-buffer27,1257
+(define (fill-gst-buffer!27,1257
+   (export  (class gst-buffer27,1257
+(define (gst-buffer-%gst-buffer-init-set!28,1287
+(define (gst-buffer-%gst-buffer-init28,1287
+(define (gst-buffer-$builtin::$gst-buffer-set!29,1314
+(define (gst-buffer-$builtin::$gst-buffer29,1314
+(define (gst-buffer-$finalizer::obj30,1374
+(define (gst-buffer-size::long32,1443
+(define (gst-buffer-data::string-set!39,1639
+(define (gst-buffer-data::string39,1639
+(define (gst-buffer-dts::llong45,1816
+(define (gst-buffer-pts::llong50,1945
+(define (gst-buffer-timestamp::llong55,2080
+(define (gst-buffer-duration::llong60,2221
+(define ($make-gst-buffer71,2648
+(define (%gst-buffer-init79,3011
+(define (gst-buffer->string100,3771
+
+Llib/gstcaps.scm,945
+(module __gstreamer_gstcaps15,963
+(define (gst-caps?23,1099
+(define (make-gst-caps23,1099
+(define (fill-gst-caps!23,1099
+   (export  (class gst-caps23,1099
+(define (gst-caps-%gst-caps-init-set!24,1127
+(define (gst-caps-%gst-caps-init24,1127
+(define (gst-caps-$builtin::$gst-caps-set!25,1152
+(define (gst-caps-$builtin::$gst-caps25,1152
+(define (gst-caps-$finalizer::obj26,1208
+(define (gst-caps-size::long31,1370
+(define (%gst-caps-init56,2430
+(define ($make-gst-caps76,3130
+(define-method (object-display o::gst-caps . port84,3483
+(define (gst-caps-new-simple98,4095
+(define (gst-caps-structure117,4832
+(define (gst-caps-always-compatible?125,5228
+(define (gst-caps-append!133,5677
+(define (gst-caps-merge!142,6101
+(define (gst-caps-append-structure!150,6534
+(define (gst-caps-merge-structure!159,6975
+(define (gst-caps-remove-structure!167,7425
+(define (gst-caps-to-string175,7804
+(define (gst-caps-from-string182,8142
+
+Llib/gstelement.scm,1077
+(module __gstreamer_gstelement15,963
+(define (gst-element?34,1479
+(define (make-gst-element34,1479
+(define (fill-gst-element!34,1479
+   (export  (class gst-element34,1479
+(define (gst-element-element-factory::gst-element-factory36,1568
+(define (gst-element-interface-list::pair-nil45,1801
+(define (gst-element-name::string-set!56,2079
+(define (gst-element-name::string56,2079
+(define ($make-gst-element85,3333
+(define-method (object-display o::gst-element . port93,3729
+(define (gst-element-query-position108,4346
+(define (gst-element-query-duration115,4727
+(define (gst-element-seek122,5108
+(define (gst-element-link!131,5555
+(define (gst-element-link-filtered!160,6552
+(define (gst-element-link-mime!175,7271
+(define (gst-element-unlink!182,7660
+(define ($gst-state202,8366
+(define ($gst-state->obj217,8960
+(define ($gst-state-change-return->obj229,9506
+(define (gst-element-state-set!240,10061
+(define (gst-element-state253,10570
+(define (gst-element-pad265,11058
+(define (gst-element-add-pad!287,12036
+(define (gst-element-compatible-pad300,12638
+
+Llib/gstelementfactory.scm,1002
+(module __gstreamer_gstelementfactory15,963
+(define (gst-element-factory?28,1247
+(define (make-gst-element-factory28,1247
+(define (fill-gst-element-factory!28,1247
+   (export  (class gst-element-factory28,1247
+(define (gst-element-factory-longname::string30,1332
+(define (gst-element-factory-klass::string37,1562
+(define (gst-element-factory-description::string44,1794
+(define (gst-element-factory-author::string51,2027
+(define (gst-element-factory-uri-protocols::pair-nil58,2264
+(define (gst-element-factory-static-pad-templates::pair-nil65,2487
+(define ($make-gst-element-factory86,3492
+(define-method (object-display o::gst-element-factory . port94,3915
+(define (gst-element-init109,4560
+(define (gst-element-factory-make133,5365
+(define (gst-element-factory-create147,5945
+(define (gst-element-factory-find162,6666
+(define (gst-element-factory-has-interface?172,7175
+(define (gst-element-factory-can-sink-all-caps?181,7599
+(define (gst-element-factory-can-src-all-caps?191,8102
+
+Llib/gstghostpad.scm,321
+(module __gstreamer_gstghostpad15,963
+(define (gst-ghost-pad?26,1178
+(define (make-gst-ghost-pad26,1178
+(define (fill-gst-ghost-pad!26,1178
+   (export  (class gst-ghost-pad26,1178
+(define (gst-ghost-pad-target::gst-pad-set!31,1347
+(define (gst-ghost-pad-target::gst-pad31,1347
+(define ($make-gst-ghost-pad50,2109
+
+Llib/gstmessage.scm,2009
+(module __gstreamer_gstmessage15,963
+(define (gst-message?24,1126
+(define (make-gst-message24,1126
+(define (fill-gst-message!24,1126
+   (export  (class gst-message24,1126
+(define (gst-message-%gst-message-init-set!25,1157
+(define (gst-message-%gst-message-init25,1157
+(define (gst-message-$builtin::$gst-message-set!26,1185
+(define (gst-message-$builtin::$gst-message26,1185
+(define (gst-message-$finalizer::obj27,1247
+(define (gst-message-type::$gst-message-type29,1329
+(define (gst-message-type-name::string34,1480
+(define (gst-message-src::obj39,1627
+(define (%gst-message-init85,3843
+(define-method (object-display o::gst-message . port106,4679
+(define ($gst-state->obj120,5315
+(define ($make-gst-message132,5841
+(define (gst-message-error-string140,6209
+(define (gst-message-info-string149,6691
+(define (gst-message-warning-string158,7173
+(define (gst-message-tag-list167,7670
+(define (gst-message-new-state176,8133
+(define (gst-message-old-state185,8637
+(define (gst-message-pending-state194,9141
+(define (gst-message-structure203,9657
+(define (gst-message-stream-status-type212,10079
+(define (gst-message-tag?228,10905
+(define (gst-message-async-start?235,11248
+(define (gst-message-async-done?242,11607
+(define (gst-message-eos?249,11964
+(define (gst-message-error?256,12307
+(define (gst-message-unknown?263,12654
+(define (gst-message-warning?270,13005
+(define (gst-message-buffering?277,13356
+(define (gst-message-state-changed?284,13711
+(define (gst-message-state-dirty?291,14074
+(define (gst-message-stream-status?298,14433
+(define (gst-message-info?305,14796
+(define (gst-message-application?312,15141
+(define (gst-message-new-application319,15500
+(define (gst-message-new-custom329,16004
+(define (gst-message-new-element340,16511
+(define (gst-message-new-eos350,17007
+(define (gst-message-new-state-changed357,17382
+(define (gst-message-new-state-dirty366,17818
+(define (gst-message-new-async-done373,18209
+(define (gst-message-new-latency382,18623
+
+Llib/gstobject.scm,878
+(module __gstreamer_gstobject15,963
+(define-inline (gst-object?62,2488
+(define (%$gst-object-nil68,2772
+(define (%gst-object->gobject74,3057
+(define *gst-object-debug-mutex*81,3383
+(define *gst-object-debug-count*82,3430
+(define (%gst-object-init-debug87,3689
+(define (%gst-object-finalize-debug100,4513
+(define-generic (%gst-object-init115,5467
+(define-method (object-display o::gst-object . port135,6232
+(define (%gst-object-unref!147,6781
+(define (%gst-object-ref!154,7114
+(define (%gst-object-finalize-closures!161,7443
+(define (%gst-object-finalize!168,7798
+(define (gst-object-property-list176,8198
+(define (gst-object-property183,8553
+(define (gst-object-property-set!190,8931
+(define (gst-object-connect!197,9326
+(define *gcmark-mutex*206,9768
+(define *gcmark-closure*211,10028
+(define (closure-gcmark!216,10281
+(define (closure-gcunmark!226,10777
+
+Llib/gstpipeline.scm,377
+(module __gstreamer_gstpipeline15,963
+(define (gst-pipeline?31,1323
+(define (make-gst-pipeline31,1323
+(define (fill-gst-pipeline!31,1323
+   (export  (class gst-pipeline31,1323
+(define (gst-pipeline-bus33,1377
+(define-method (%gst-object-init o::gst-pipeline51,2056
+(define ($make-gst-pipeline62,2547
+(define (gst-pipeline-new72,3092
+(define (gst-pipeline-play80,3499
+
+Llib/gstpluginfeature.scm,510
+(module __gstreamer_gstpluginfeature15,963
+(define (gst-plugin-feature?21,1070
+(define (make-gst-plugin-feature21,1070
+(define (fill-gst-plugin-feature!21,1070
+   (export  (class gst-plugin-feature21,1070
+(define (gst-plugin-feature-name::string-set!26,1248
+(define (gst-plugin-feature-name::string26,1248
+(define (gst-plugin-feature-plugin-name::string33,1478
+(define (gst-plugin-feature-rank::uint-set!42,1775
+(define (gst-plugin-feature-rank::uint42,1775
+(define ($make-gst-plugin-feature56,2345
+
+Llib/gstregistry.scm,484
+(module __gstreamer_gstregistry15,963
+(define (gst-registry?29,1268
+(define (make-gst-registry29,1268
+(define (fill-gst-registry!29,1268
+   (export  (class gst-registry29,1268
+(define default-registry41,1938
+(define (gst-registry-default46,2200
+(define (gst-registry-element-factory-list57,2655
+(define (gst-registry-plugin-list67,3129
+(define (gst-registry-feature-list-by-plugin77,3580
+(define (gst-registry-find-plugin96,4296
+(define (gst-registry-find-feature109,4880
+
+Llib/gstpad.scm,906
+(module __gstreamer_gstpad15,963
+(define (gst-pad?28,1241
+(define (make-gst-pad28,1241
+(define (fill-gst-pad!28,1241
+   (export  (class gst-pad28,1241
+(define (gst-pad-name::string30,1302
+(define (gst-pad-direction::symbol36,1460
+(define (gst-pad-parent43,1645
+(define (gst-pad-caps::gst-caps-set!58,2080
+(define (gst-pad-caps::gst-caps58,2080
+(define (gst-pad-allowed-caps65,2306
+(define (gst-pad-current-caps73,2543
+(define (gst-pad-pad-template-caps81,2785
+(define ($make-gst-pad106,3754
+(define-method (object-display o::gst-pad . port114,4121
+(define ($gst-pad-link-return->obj130,4757
+(define ($gst-pad-direction->obj144,5460
+(define ($gst-pad-presence->obj154,5901
+(define (gst-pad-link!164,6356
+(define (gst-pad-can-link?180,7039
+(define (gst-pad-is-linked?188,7485
+(define (gst-pad-unlink!195,7831
+(define (gst-pad-add-probe!203,8273
+(define (gst-pad-remove-probe!212,8736
+
+Llib/gstpadtemplate.scm,1037
+(module __gstreamer_gstpadtemplate15,963
+(define (gst-pad-template?24,1155
+(define (make-gst-pad-template24,1155
+(define (fill-gst-pad-template!24,1155
+   (export  (class gst-pad-template24,1155
+(define (gst-static-pad-template?26,1210
+(define (make-gst-static-pad-template26,1210
+(define (fill-gst-static-pad-template!26,1210
+	    (class gst-static-pad-template26,1210
+(define (gst-static-pad-template-%gst-static-pad-template-init-set!27,1246
+(define (gst-static-pad-template-%gst-static-pad-template-init27,1246
+(define (gst-static-pad-template-$builtin::$gst-static-pad-template-set!28,1286
+(define (gst-static-pad-template-$builtin::$gst-static-pad-template28,1286
+(define (gst-static-pad-template-name-template::string30,1362
+(define (gst-static-pad-template-direction::symbol36,1546
+(define (gst-static-pad-template-presence::symbol43,1758
+(define (%gst-pad-template-init62,2576
+(define ($make-gst-pad-template74,3100
+(define ($make-gst-static-pad-template82,3508
+(define (%gst-static-pad-template-init89,3870
+
+Llib/gstplugin.scm,557
+(module __gstreamer_gstplugin15,963
+(define (gst-plugin?21,1063
+(define (make-gst-plugin21,1063
+(define (fill-gst-plugin!21,1063
+   (export  (class gst-plugin21,1063
+(define (gst-plugin-name::string23,1127
+(define (gst-plugin-description::string29,1296
+(define (gst-plugin-filename::string35,1469
+(define (gst-plugin-license::string41,1638
+(define (gst-plugin-package::string47,1806
+(define (gst-plugin-origin::string53,1973
+(define (gst-plugin-source::string59,2139
+(define (gst-plugin-version::string65,2306
+(define ($make-gst-plugin78,2791
+
+Llib/gstreamer.scm,334
+(module __gstreamer_gstreamer15,963
+(define *gst-mutex*51,2047
+(define *gst-condv*52,2092
+(define (%gst-lock!57,2373
+(define (%gst-unlock!63,2647
+(define (%gst-signal69,2925
+(define *gst-thread*75,3215
+(define gst-initializedp80,3473
+(define (%gst-thread-init!85,3725
+(define (gst-init103,4383
+(define (gst-version116,4987
+
+Llib/gsterror.scm,359
+(module __gstreamer_gsterror15,963
+(define (&gst-error?17,993
+(define (make-&gst-error17,993
+(define (fill-&gst-error!17,993
+   (export (class &gst-error17,993
+(define (&gst-create-error?18,1031
+(define (make-&gst-create-error18,1031
+(define (fill-&gst-create-error!18,1031
+	   (class &gst-create-error18,1031
+(define-inline (gst-debug-level25,1328
+
+Llib/gststructure.scm,717
+(module __gstreamer_gststructure15,963
+(define (gst-structure?21,1065
+(define (make-gst-structure21,1065
+(define (fill-gst-structure!21,1065
+   (export  (class gst-structure21,1065
+(define (gst-structure-%gst-structure-init-set!22,1098
+(define (gst-structure-%gst-structure-init22,1098
+(define (gst-structure-$builtin::$gst-structure-set!24,1162
+(define (gst-structure-$builtin::$gst-structure24,1162
+(define (gst-structure-$finalizer::obj25,1198
+(define (gst-structure-name::string-set!32,1438
+(define (gst-structure-name::string32,1438
+(define (%gst-structure-init47,2069
+(define (gst-structure-property-list67,2807
+(define (gst-structure-property74,3177
+(define (gst-structure-property-set!81,3570
+
+Llib/gsttypefind.scm,483
+(module __gstreamer_gsttypefind15,963
+(define (gst-type-find?21,1058
+(define (make-gst-type-find21,1058
+(define (fill-gst-type-find!21,1058
+   (export  (class gst-type-find21,1058
+(define (gst-type-find-%gst-type-find-init-set!22,1091
+(define (gst-type-find-%gst-type-find-init22,1091
+(define (gst-type-find-$builtin::$gst-type-find-set!23,1121
+(define (gst-type-find-$builtin::$gst-type-find23,1121
+(define ($make-gst-type-find33,1578
+(define (%gst-type-find-init40,1917
+
+Llib/gstparse.scm,105
+(module __gstreamer_gstparse15,963
+(define (gst-parse-launch34,1564
+(define (gst-parse-launchv42,1935
+
+Llib/gstplugin_bglports.scm,192
+(module __gstreamer_plugin_bglports15,963
+(define *registered-ports*28,1524
+(define ($gst-register-port!33,1779
+(define ($gst-unregister-port!39,2098
+(define ($gst-open-input-file45,2420
+
+Llib/gstmm_music.scm,2419
+(module __gstreamer_multimedia_music16,1037
+(define (gstmusic?37,1526
+(define (make-gstmusic37,1526
+(define (fill-gstmusic!37,1526
+   (export  (class gstmusic37,1526
+(define (gstmusic-%audiosrc-set!39,1570
+(define (gstmusic-%audiosrc39,1570
+(define (gstmusic-%audiosink-set!40,1613
+(define (gstmusic-%audiosink40,1613
+(define (gstmusic-%audiomixer-set!41,1657
+(define (gstmusic-%audiomixer41,1657
+(define (gstmusic-%audiodecode-set!42,1702
+(define (gstmusic-%audiodecode42,1702
+(define (gstmusic-%audioconvert-set!43,1748
+(define (gstmusic-%audioconvert43,1748
+(define (gstmusic-%audioresample-set!44,1795
+(define (gstmusic-%audioresample44,1795
+(define (gstmusic-%pipeline-set!45,1843
+(define (gstmusic-%pipeline45,1843
+(define (gstmusic-%playlist::pair-nil-set!47,1885
+(define (gstmusic-%playlist::pair-nil47,1885
+(define (gstmusic-%meta::pair-nil-set!48,1929
+(define (gstmusic-%meta::pair-nil48,1929
+(define (gstmusic-%tag::obj-set!49,1969
+(define (gstmusic-%tag::obj49,1969
+(define (gstmusic-%gcondv::condvar50,2003
+(define (gstmusic-%gready::bool-set!51,2076
+(define (gstmusic-%gready::bool51,2076
+(define (gstmusic-%!gabort::bool-set!52,2113
+(define (gstmusic-%!gabort::bool52,2113
+(define-method (music-init o::gstmusic57,2377
+(define (find-best-ranked-audio-sink123,5151
+(define-method (music-close o::gstmusic143,6018
+(define-method (music-closed? o::gstmusic155,6550
+(define-method (music-reset! o::gstmusic162,6899
+(define-method (music-playlist-get gstmusic::gstmusic168,7187
+(define-method (music-playlist-add! gstmusic::gstmusic n175,7530
+(define-method (music-playlist-delete! gstmusic::gstmusic n187,8128
+(define-method (music-playlist-clear! gstmusic::gstmusic200,8830
+(define (set-song!211,9332
+(define-macro (gstmm-charset-convert231,9944
+(define-method (music-play o::gstmusic . s245,10406
+(define (gstmusic-wait-ready!323,13230
+(define (music-play-loop342,13948
+(define-method (music-seek o::gstmusic pos . song436,17086
+(define-method (music-stop o::gstmusic450,17707
+(define-method (music-pause o::gstmusic460,18180
+(define (music-position472,18743
+(define (music-duration482,19239
+(define-method (music-song o::gstmusic492,19735
+(define-method (music-songpos o::gstmusic500,20121
+(define-method (music-meta o::gstmusic510,20633
+(define-method (music-volume-get o::gstmusic517,20946
+(define-method (music-volume-set! o::gstmusic vol530,21486

@@ -1,0 +1,8 @@
+;; /tmp/4.4a/bdb/blib
+;; Thu Nov 19 07:13:47 2020
+
+(
+  (__bdb_env "bigloo.bdb.env")
+  (__bdb "bigloo.bdb.bdb")
+)
+

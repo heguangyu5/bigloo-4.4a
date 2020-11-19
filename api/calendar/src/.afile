@@ -1,0 +1,10 @@
+;; automatically generated, don't edit
+;; /tmp/4.4a/api/calendar/src
+;; Thu Nov 19 07:13:52 2020
+
+(
+  (__calendar_ical "Llib/icalendar.scm")
+  (__calendar_types "Llib/types.scm")
+  (__calendar_utils "Llib/utils.scm")
+)
+

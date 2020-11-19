@@ -1,0 +1,11 @@
+;; /tmp/4.4a/api/wav/src
+;; Thu Nov 19 07:13:53 2020
+
+(
+  (__wav_padec "bigloo.wav.wav_padec")
+  (__wav_alsadec "bigloo.wav.wav_alsadec")
+  (__wav_decoder "bigloo.wav.wav_decoder")
+  (__wav_wav "bigloo.wav.wav")
+  (__wav_makelib "bigloo.wav.make_lib")
+)
+

@@ -1,0 +1,11 @@
+;; /tmp/4.4a/api/mpg123/src
+;; Thu Nov 19 07:13:53 2020
+
+(
+  (__mpg123_padec "bigloo.mpg123.mpg123_padec")
+  (__mpg123_alsadec "bigloo.mpg123.mpg123_alsadec")
+  (__mpg123_decoder "bigloo.mpg123.mpg123_decoder")
+  (__mpg123_mpg123 "bigloo.mpg123.mpg123")
+  (__mpg123_makelib "bigloo.mpg123.make_lib")
+)
+

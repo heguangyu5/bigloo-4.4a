@@ -1,0 +1,10 @@
+;; /tmp/4.4a/api/upnp/src
+;; Thu Nov 19 07:13:53 2020
+
+(
+  (__upnp_ssdp "bigloo.upnp.ssdp")
+  (__upnp_content-directory "bigloo.upnp.content")
+  (__upnp_soap "bigloo.upnp.soap")
+  (__upnp_makelib "bigloo.upnp.make_lib")
+)
+

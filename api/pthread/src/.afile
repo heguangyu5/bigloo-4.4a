@@ -1,0 +1,12 @@
+;; automatically generated, don't edit
+;; /tmp/4.4a/api/pthread/src
+;; Thu Nov 19 07:13:52 2020
+
+(
+  (__pth_backend "Llib/pbackend.scm")
+  (__pth_condvar "Llib/pcondvar.scm")
+  (__pth_mutex "Llib/pmutex.scm")
+  (__pth_semaphore "Llib/psemaphore.scm")
+  (__pth_thread "Llib/pthread.scm")
+)
+

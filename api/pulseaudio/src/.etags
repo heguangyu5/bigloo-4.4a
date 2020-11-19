@@ -1,0 +1,66 @@
+
+-,0
+(meta-define define define0,0
+(meta-define define define-struct0,0
+(meta-define define define-parameter0,0
+(meta-define define define0,0
+(meta-define define define-inline0,0
+(meta-define define define-generic0,0
+(meta-define define define-macro0,0
+(meta-define define define-expander0,0
+(meta-define define module0,0
+
+Llib/pulseaudio.scm,312
+(module __pulseaudio_pulseaudio15,963
+(define (&pulseaudio-error?28,1272
+(define (make-&pulseaudio-error28,1272
+(define (fill-&pulseaudio-error!28,1272
+	   (class &pulseaudio-error28,1272
+(define-generic (pulseaudio-init36,1634
+(define (pulseaudio-error42,1918
+(define (pulseaudio-headers-version53,2275
+
+Llib/music.scm,753
+(module __pulseaudio_music15,963
+(define (pulseaudiomusic?22,1085
+(define (make-pulseaudiomusic22,1085
+(define (fill-pulseaudiomusic!22,1085
+   (export (class pulseaudiomusic22,1085
+(define (pulseaudiomusic-simple::pulseaudio-simple-set!23,1129
+(define (pulseaudiomusic-simple::pulseaudio-simple23,1129
+(define (pulseaudiomusic-name::bstring-set!24,1207
+(define (pulseaudiomusic-name::bstring24,1207
+(define-method (music-close o::pulseaudiomusic31,1548
+(define-method (music-closed? o::pulseaudiomusic39,1936
+(define-method (musicbuf-write o::pulseaudiomusic outbuf size47,2340
+(define-method (musicbuf-drain o::pulseaudiomusic54,2723
+(define-method (musicbuf-reset! o::pulseaudiomusic61,3085
+(define (pulseaudiomusic-simple-set!69,3489
+
+Llib/simple.scm,1180
+(module __pulseaudio_simple15,963
+(define (pulseaudio-simple?21,1070
+(define (make-pulseaudio-simple21,1070
+(define (fill-pulseaudio-simple!21,1070
+   (export  (class pulseaudio-simple21,1070
+(define (pulseaudio-simple-pulseaudio-simple-init-set!22,1107
+(define (pulseaudio-simple-pulseaudio-simple-init22,1107
+(define (pulseaudio-simple-$builtin::$pa-simple-set!23,1140
+(define (pulseaudio-simple-$builtin::$pa-simple23,1140
+(define (pulseaudio-simple-srvname24,1196
+(define (pulseaudio-simple-name::bstring25,1237
+(define (pulseaudio-simple-stream26,1290
+(define (pulseaudio-simple-rate::long27,1330
+(define (pulseaudio-simple-channels::long28,1377
+(define (pulseaudio-simple-bps::int-set!29,1424
+(define (pulseaudio-simple-bps::int29,1424
+(define (pulseaudio-simple-format::symbol30,1455
+(define (pulseaudio-simple-init43,2151
+(define (pulseaudio-simple-state63,2878
+(define (pulseaudio-simple-close72,3266
+(define (pulseaudio-simple-get-latency80,3635
+(define (bps-format93,4176
+(define (pa-format104,4592
+(define-inline (pulseaudio-simple-write136,5558
+(define-inline (pulseaudio-simple-drain149,6108
+(define-inline (pulseaudio-simple-flush161,6621

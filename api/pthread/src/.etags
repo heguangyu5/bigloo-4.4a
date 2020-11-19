@@ -1,0 +1,89 @@
+
+-,0
+(meta-define define define0,0
+(meta-define define define-struct0,0
+(meta-define define define-parameter0,0
+(meta-define define define0,0
+(meta-define define define-inline0,0
+(meta-define define define-generic0,0
+(meta-define define define-macro0,0
+(meta-define define define-expander0,0
+(meta-define define module0,0
+
+Llib/pmutex.scm,125
+(module __pth_mutex15,963
+(define (make-pmutex26,1381
+(define (mutex-specific32,1684
+(define (mutex-specific-set!38,1959
+
+Llib/pcondvar.scm,155
+(module __pth_condvar15,963
+(define (make-pcondvar26,1415
+(define (condition-variable-specific32,1724
+(define (condition-variable-specific-set!38,2014
+
+Llib/pthread.scm,1865
+(module __pth_thread15,963
+(define (pthread?25,1156
+(define (make-pthread25,1156
+(define (fill-pthread!25,1156
+   (export (class pthread25,1156
+(define (pthread-body::procedure27,1215
+(define (pthread-detachedp::bool-set!29,1283
+(define (pthread-detachedp::bool29,1283
+(define (pthread-end-result-set!31,1356
+(define (pthread-end-result31,1356
+(define (pthread-end-exception-set!33,1447
+(define (pthread-end-exception33,1447
+(define (pthread-$builtin::$pthread-set!35,1528
+(define (pthread-$builtin::$pthread35,1528
+(define (&thread-error?37,1583
+(define (make-&thread-error37,1583
+(define (fill-&thread-error!37,1583
+	   (class &thread-error37,1583
+(define (uncaught-exception?39,1622
+(define (make-uncaught-exception39,1622
+(define (fill-uncaught-exception!39,1622
+	   (class uncaught-exception39,1622
+(define (uncaught-exception-reason::obj40,1664
+(define (terminated-thread-exception?42,1697
+(define (make-terminated-thread-exception42,1697
+(define (fill-terminated-thread-exception!42,1697
+	   (class terminated-thread-exception42,1697
+(define-method (object-write o::uncaught-exception . port61,2588
+(define-method (object-display o::uncaught-exception . port68,2958
+(define-method (object-print o::uncaught-exception port print-slot75,3332
+(define-method (%user-thread-yield! o::pthread82,3716
+(define-method (thread-initialize! o::pthread88,4014
+(define-method (thread-start! t::pthread . scd128,5322
+(define-method (thread-start-joinable! t::pthread137,5712
+(define-method (thread-join! t::pthread . timeout146,6105
+(define-method (thread-terminate! t::pthread163,6743
+(define-method (thread-specific t::pthread172,7184
+(define-method (thread-specific-set! t::pthread v179,7526
+(define-method (thread-cleanup t::pthread187,7887
+(define-method (thread-cleanup-set! t::pthread p194,8227
+(define ($pthread-nil205,8693
+
+Llib/pbackend.scm,424
+(module __pth_backend15,963
+(define (pthread-backend?21,1046
+(define (make-pthread-backend21,1046
+(define (fill-pthread-backend!21,1046
+   (export (class pthread-backend21,1046
+(define *pthread-backend*29,1389
+(define (pthread-setup-backend!34,1652
+(define (get-pthread-backend45,2151
+(define-method (tb-make-thread tb::pthread-backend body name51,2426
+(define-method (tb-current-thread tb::pthread-backend59,2774
+
+Llib/psemaphore.scm,295
+(module __pth_semaphore15,963
+(define (open-semaphore36,1724
+(define (scheme->mode45,2168
+(define (close-semaphore78,3417
+(define (delete-semaphore84,3713
+(define (semaphore-wait90,4009
+(define (semaphore-trywait101,4600
+(define (semaphore-value107,4900
+(define (semaphore-post113,5188

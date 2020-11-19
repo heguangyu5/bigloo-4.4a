@@ -1,0 +1,11 @@
+;; /tmp/4.4a/api/srfi18/src
+;; Thu Nov 19 07:13:52 2020
+
+(
+  (__srfi18_backend "bigloo.srfi18.backend")
+  (__srfi18_thread "bigloo.srfi18.thread")
+  (__srfi18_condvar "bigloo.srfi18.condvar")
+  (__srfi18_mutex "bigloo.srfi18.mutex")
+  (__srfi18_makelib "bigloo.srfi18.make_lib")
+)
+

@@ -1,0 +1,12 @@
+;; /tmp/4.4a/bdl/src
+;; Thu Nov 19 07:13:53 2020
+
+(
+  (__bdl_env "bigloo.bdl.env")
+  (__bdl_types "bigloo.bdl.types")
+  (__bdl_prgm "bigloo.bdl.prgm")
+  (__bdl_misc "bigloo.bdl.misc")
+  (__bdl_etags "bigloo.bdl.etags")
+  (__bdlread_makelib "bigloo.bdl.make_lib")
+)
+

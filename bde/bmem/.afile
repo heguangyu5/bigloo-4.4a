@@ -1,0 +1,15 @@
+;; automatically generated, don't edit
+;; /tmp/4.4a/bde/bmem
+;; Thu Nov 19 07:13:47 2020
+
+(
+  (bmem "bmem/bmem.scm")
+  (bmem_function "bmem/function.scm")
+  (bmem_gc "bmem/gc.scm")
+  (html "bmem/html.scm")
+  (bmem_param "bmem/param.scm")
+  (bmem_thread "bmem/thread.scm")
+  (bmem_tools "bmem/tools.scm")
+  (bmem_type "bmem/type.scm")
+)
+

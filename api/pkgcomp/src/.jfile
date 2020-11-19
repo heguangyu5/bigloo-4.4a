@@ -1,0 +1,9 @@
+;; /tmp/4.4a/api/pkgcomp/src
+;; Thu Nov 19 07:13:52 2020
+
+(
+  (@interface "bigloo.pkgcomp.interface")
+  (@configure "bigloo.pkgcomp.configure")
+  (@makelib "bigloo.pkgcomp.make_lib")
+)
+

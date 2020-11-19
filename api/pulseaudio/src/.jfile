@@ -1,0 +1,10 @@
+;; /tmp/4.4a/api/pulseaudio/src
+;; Thu Nov 19 07:13:53 2020
+
+(
+  (__pulseaudio_simple "bigloo.pulseaudio.simple")
+  (__pulseaudio_music "bigloo.pulseaudio.music")
+  (__pulseaudio_pulseaudio "bigloo.pulseaudio.pulseaudio")
+  (__pulseaudio_makelib "bigloo.pulseaudio.make_lib")
+)
+

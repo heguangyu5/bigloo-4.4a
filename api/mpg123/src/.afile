@@ -1,0 +1,11 @@
+;; automatically generated, don't edit
+;; /tmp/4.4a/api/mpg123/src
+;; Thu Nov 19 07:13:53 2020
+
+(
+  (__mpg123_mpg123 "Llib/mpg123.scm")
+  (__mpg123_alsadec "Llib/mpg123_alsadec.scm")
+  (__mpg123_decoder "Llib/mpg123_decoder.scm")
+  (__mpg123_padec "Llib/mpg123_padec.scm")
+)
+

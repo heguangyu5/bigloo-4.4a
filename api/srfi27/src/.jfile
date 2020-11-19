@@ -1,0 +1,8 @@
+;; /tmp/4.4a/api/srfi27/src
+;; Thu Nov 19 07:13:52 2020
+
+(
+  (__srfi27 "bigloo.srfi27.srfi27")
+  (__srfi27_makelib "bigloo.srfi27.make_lib")
+)
+

@@ -1,0 +1,11 @@
+;; automatically generated, don't edit
+;; /tmp/4.4a/api/text/src
+;; Thu Nov 19 07:13:52 2020
+
+(
+  (__text_bibtex "Llib/bibtex.scm")
+  (__text_gb2312 "Llib/gb2312.scm")
+  (__text_hyphenation "Llib/hyphenation.scm")
+  (__text_levenshtein "Llib/levenshtein.scm")
+)
+

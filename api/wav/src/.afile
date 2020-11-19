@@ -1,0 +1,11 @@
+;; automatically generated, don't edit
+;; /tmp/4.4a/api/wav/src
+;; Thu Nov 19 07:13:53 2020
+
+(
+  (__wav_wav "Llib/wav.scm")
+  (__wav_alsadec "Llib/wav_alsadec.scm")
+  (__wav_decoder "Llib/wav_decoder.scm")
+  (__wav_padec "Llib/wav_padec.scm")
+)
+

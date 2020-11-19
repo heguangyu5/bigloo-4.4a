@@ -1,0 +1,13 @@
+;; /tmp/4.4a/api/pkglib/src
+;; Thu Nov 19 07:13:52 2020
+
+(
+  (__pkglib_repo "bigloo.pkglib.repo")
+  (__pkglib_misc "bigloo.pkglib.misc")
+  (__pkglib_interface "bigloo.pkglib.interface")
+  (__pkglib_package "bigloo.pkglib.package")
+  (__pkglib_param "bigloo.pkglib.param")
+  (__pkglib_database "bigloo.pkglib.database")
+  (__pkglib_makelib "bigloo.pkglib.make_lib")
+)
+

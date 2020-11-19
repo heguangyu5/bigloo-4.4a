@@ -1,0 +1,11 @@
+;; automatically generated, don't edit
+;; /tmp/4.4a/api/srfi18/src
+;; Thu Nov 19 07:13:52 2020
+
+(
+  (__srfi18_backend "Llib/backend.scm")
+  (__srfi18_condvar "Llib/condvar.scm")
+  (__srfi18_mutex "Llib/mutex.scm")
+  (__srfi18_thread "Llib/thread.scm")
+)
+

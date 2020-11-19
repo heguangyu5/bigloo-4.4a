@@ -1,0 +1,21 @@
+;; automatically generated, don't edit
+;; /tmp/4.4a/api/phidget/src
+;; Thu Nov 19 07:13:53 2020
+
+(
+  (__phidget_ctypes "Llib/pdg.scm")
+  (__phidget_advanced-servo "Llib/pdgaservo.scm")
+  (__phidget_encoder "Llib/pdgencoder.scm")
+  (__phidget_event "Llib/pdgevent.scm")
+  (__phidget_ifkit "Llib/pdgifkit.scm")
+  (__phidget_logging "Llib/pdglogging.scm")
+  (__phidget_manager "Llib/pdgmanager.scm")
+  (__phidget_motor-control "Llib/pdgmotorcontrol.scm")
+  (__phidget_phidget "Llib/pdgphidget.scm")
+  (__phidget_servo "Llib/pdgservo.scm")
+  (__phidget_spatial "Llib/pdgspatial.scm")
+  (__phidget_stepper "Llib/pdgstepper.scm")
+  (__phidget_types "Llib/pdgtypes.scm")
+  (__phidget "Llib/phidget.scm")
+)
+

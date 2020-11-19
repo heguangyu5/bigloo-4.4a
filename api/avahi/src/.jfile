@@ -1,0 +1,8 @@
+;; /tmp/4.4a/api/avahi/src
+;; Thu Nov 19 07:13:53 2020
+
+(
+  (__avahi_avahi "bigloo.avahi.avahi")
+  (__avahi_makelib "bigloo.avahi.make_lib")
+)
+

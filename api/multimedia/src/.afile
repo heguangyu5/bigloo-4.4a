@@ -1,0 +1,23 @@
+;; automatically generated, don't edit
+;; /tmp/4.4a/api/multimedia/src
+;; Thu Nov 19 07:13:52 2020
+
+(
+  (__multimedia-color "Llib/color.scm")
+  (__multimedia-exif "Llib/exif.scm")
+  (__multimedia-flac "Llib/flac.scm")
+  (__multimedia-id3 "Llib/id3.scm")
+  (__multimedia-m3u "Llib/m3u.scm")
+  (__multimedia-midi "Llib/midi.scm")
+  (__multimedia-mixer "Llib/mixer.scm")
+  (__multimedia-mp3 "Llib/mp3.scm")
+  (__multimedia-mpc "Llib/mpc.scm")
+  (__multimedia-mpd "Llib/mpd.scm")
+  (__multimedia-mpg123 "Llib/mpg123.scm")
+  (__multimedia-mplayer "Llib/mplayer.scm")
+  (__multimedia-music "Llib/music.scm")
+  (__multimedia-musicbuf "Llib/musicbuf.scm")
+  (__multimedia-musicproc "Llib/musicproc.scm")
+  (__multimedia-soundcard "Llib/soundcard.scm")
+)
+

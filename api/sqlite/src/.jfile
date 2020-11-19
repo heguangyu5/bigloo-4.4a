@@ -1,0 +1,12 @@
+;; /tmp/4.4a/api/sqlite/src
+;; Thu Nov 19 07:13:52 2020
+
+(
+  (__sqlite_engine "bigloo.sqlite.engine")
+  (__sqlite_lexer "bigloo.sqlite.lexer")
+  (__sqlite_parser "bigloo.sqlite.parser")
+  (__sqlite_sqltiny "bigloo.sqlite.sqltiny")
+  (__sqlite_sqlite "bigloo.sqlite.sqlite")
+  (__sqlite_makelib "bigloo.sqlite.make_lib")
+)
+
