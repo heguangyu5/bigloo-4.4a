@@ -13,17 +13,17 @@
 ;*---------------------------------------------------------------------*/
 (module command_print
    (import command_expr
-	   tools_error
-	   tools_tools
-	   tools_io
-	   patient_mangling
-	   patient_invoke
-	   patient_value
-	   gdb_tools
-	   gdb_invoke
-	   gdb_annotate
-	   engine_param
-	   command_command)
+           tools_error
+           tools_tools
+           tools_io
+           patient_mangling
+           patient_invoke
+           patient_value
+           gdb_tools
+           gdb_invoke
+           gdb_annotate
+           engine_param
+           command_command)
    (export (gdb-value->bdb-value value)))
 
 ;*---------------------------------------------------------------------*/
@@ -33,27 +33,27 @@
    (if (null? cmd-list)
        (console-echo (gdb-call->string source))
        (let* ((bdb-expr (string-from-at source 1 #\space 1))
-	      (gdb-expr (bdb-expr->gdb-expr
-			 bdb-expr
-			 (gdb-annotate-current-function))))
-	  ;; if bdb-expr and gdb-expr are the same it is a real printing...
-	  (gdb-enable-print!)
-	  (if (string=? bdb-expr gdb-expr)
-	      (let ((cmd (string-append "print " gdb-expr)))
-		 (console-echo (gdb-call->string cmd)))
-	      ;; they differ, it is a Bigloo print
-	      (begin
-		 (gdb-enable-bigloo-print!)
-		 (let* ((cmd (string-append "print (char *)bdb_print( "
-					    gdb-expr
-					    (if *write-circle?*
-						", 1"
-						", 0")
-					    " )"))
-			(out (gdb-call->string cmd)))
-		    (console-echo out))))
-	  (gdb-disable-print!))))
-   
+              (gdb-expr (bdb-expr->gdb-expr
+                         bdb-expr
+                         (gdb-annotate-current-function))))
+          ;; if bdb-expr and gdb-expr are the same it is a real printing...
+          (gdb-enable-print!)
+          (if (string=? bdb-expr gdb-expr)
+              (let ((cmd (string-append "print " gdb-expr)))
+                 (console-echo (gdb-call->string cmd)))
+              ;; they differ, it is a Bigloo print
+              (begin
+                 (gdb-enable-bigloo-print!)
+                 (let* ((cmd (string-append "print (char *)bdb_print( "
+                                            gdb-expr
+                                            (if *write-circle?*
+                                                ", 1"
+                                                ", 0")
+                                            " )"))
+                        (out (gdb-server->string cmd)))
+                    (console-echo out))))
+          (gdb-disable-print!))))
+
 ;*---------------------------------------------------------------------*/
 ;*    bprint-parser ...                                                */
 ;*---------------------------------------------------------------------*/
@@ -61,22 +61,22 @@
    (if (null? cmd-list)
        (console-echo (gdb-call->string source))
        (let* ((bdb-expr (string-from-at source 1 #\space 1))
-	      (gdb-expr (bdb-expr->gdb-expr
-			 bdb-expr
-			 (gdb-annotate-current-function))))
-	  ;; if bdb-expr and gdb-expr are the same it is a real printing...
-	  (gdb-enable-print!)
-	  (gdb-enable-bigloo-print!)
-	  (let* ((cmd (string-append "print (char *)bdb_print( "
-				     gdb-expr
-				     (if *write-circle?*
-					 ", 1"
-					 ", 0")
-				     " )"))
-		 (out (gdb-call->string cmd)))
-	     (console-echo out))
-	  (gdb-disable-print!))))
-   
+              (gdb-expr (bdb-expr->gdb-expr
+                         bdb-expr
+                         (gdb-annotate-current-function))))
+          ;; if bdb-expr and gdb-expr are the same it is a real printing...
+          (gdb-enable-print!)
+          (gdb-enable-bigloo-print!)
+          (let* ((cmd (string-append "print (char *)bdb_print( "
+                                     gdb-expr
+                                     (if *write-circle?*
+                                         ", 1"
+                                         ", 0")
+                                     " )"))
+                 (out (gdb-server->string cmd)))
+             (console-echo out))
+          (gdb-disable-print!))))
+
 ;*---------------------------------------------------------------------*/
 ;*    gdb-value->bdb-value ...                                         */
 ;*    -------------------------------------------------------------    */
@@ -87,13 +87,13 @@
 ;*---------------------------------------------------------------------*/
 (define (gdb-value->bdb-value value)
    (let* ((value (string-from value #\Space 1))
-	  (port  (open-input-string value))
-	  (obj   (read port)))
+          (port  (open-input-string value))
+          (obj   (read port)))
       (close-input-port port)
       (let ((port (open-output-string)))
-	 (display obj port)
-	 (close-output-port port))))
-   
+         (display obj port)
+         (close-output-port port))))
+
 ;*---------------------------------------------------------------------*/
 ;*    *print-help* ...                                                 */
 ;*---------------------------------------------------------------------*/
@@ -135,32 +135,32 @@ resides in memory.
 
 EXP may be preceded with /FMT, where FMT is a format letter
 but no count or size letter (see \"x\" command).")
-   
+
 ;*---------------------------------------------------------------------*/
 ;*    The print command                                                */
 ;*---------------------------------------------------------------------*/
 (bind-toplevel-command! "print"
-			1
-			print-parser
-			*print-help*)
+                        1
+                        print-parser
+                        *print-help*)
 
 ;*---------------------------------------------------------------------*/
 ;*    The print command                                                */
 ;*---------------------------------------------------------------------*/
 (bind-toplevel-command! "bprint"
-			2
-			bprint-parser
-			*bprint-help*)
+                        2
+                        bprint-parser
+                        *bprint-help*)
 
 ;*---------------------------------------------------------------------*/
 ;*    The cprint command                                               */
 ;*---------------------------------------------------------------------*/
 (bind-toplevel-command! "cprint"
-			2
-			(lambda (cmd source level env)
-			   (gdb-enable-print!)
-			   (console-echo
-			    (gdb-call->string
-			     (substring source 1 (string-length source))))
-			   (gdb-disable-print!))
-			*cprint-help*)
+                        2
+                        (lambda (cmd source level env)
+                           (gdb-enable-print!)
+                           (console-echo
+                            (gdb-call->string
+                             (substring source 1 (string-length source))))
+                           (gdb-disable-print!))
+                        *cprint-help*)
