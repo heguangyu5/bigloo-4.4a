@@ -17,12 +17,12 @@
 (module bee_etags
    (library bdl)
    (import  engine_param
-	    tools_speek
-	    tools_error
-	    (console-prompt tools_io)
-	    (bdb-repl-prompt engine_repl))
+            tools_speek
+            tools_error
+            (console-prompt tools_io)
+            (bdb-repl-prompt engine_repl))
    (export  (read-etags-file)
-	    (bigloo-symbol-etags-source-location ::bstring)))
+            (bigloo-symbol-etags-source-location ::bstring)))
 
 ;*---------------------------------------------------------------------*/
 ;*    *prgm* ...                                                       */
@@ -33,28 +33,28 @@
 ;*    read-etags-file ...                                              */
 ;*---------------------------------------------------------------------*/
 (define (read-etags-file)
-   (let ((file (find-file/path *etags* (list "." *root-directory*))))
-      (if (and (string? file) (file-exists? file))
-	  ;; we really have to read the etags file
-	  (begin
-	     (verbose 4 "reading etags file \"" file "\"...")
-	     (let ((prgm (new-program #f file '())))
-		(set! *prgm* prgm)
-		(read-etags! prgm '()))
-	     (verbose 4 #"done.\n"))
-	  (error 'read-etags-file
-	     (format "Can't find .etags file in path ~a, please generate one with bgltags"
-		*etags* (list "." *root-directory*))
-	     *etags*))))
+    (let* ((dirs (list "." *root-directory*))
+          (afile (find-file/path *afile* dirs))
+          (etags (find-file/path *etags* dirs)))
+        (if (and (string? afile) (string? etags))
+            (set! *prgm* (read-program afile etags))
+            (error 'read-etags-file
+                (format "Can't find ~a file in path ~a, please generate one with ~a"
+                    (if (string? afile) *etags* *afile*)
+                    dirs
+                    (if (string? afile)
+                        (format"`bgltags *.scm -o ~a`" *etags*)
+                        (format"`bglafile *.scm -o ~a`" *afile*)))
+                (if (string? afile) *etags* *afile*)))))
 
 ;*---------------------------------------------------------------------*/
 ;*    bigloo-symbol-etags-source-location ...                          */
 ;*---------------------------------------------------------------------*/
 (define (bigloo-symbol-etags-source-location id)
-   (let ((e (find-bdl-ident *prgm* id)))
-      (if (isa? e bdl-entity)
-          (let ((e::bdl-entity e))
-	     (with-access::bdl-location (-> e loc) (file line)
-		(string-append file ":" 
-		   (integer->string line))))
-	  #f)))
+   (let ((idents (find-bdl-regexp-ident *prgm* id)))
+      (if (and (= (length idents) 1)
+               (isa? (car idents) bdl-entity))
+          (let ((e::bdl-entity (car idents)))
+             (with-access::bdl-location (-> e loc) (file line)
+                (string-append file ":" (integer->string line))))
+          #f)))
