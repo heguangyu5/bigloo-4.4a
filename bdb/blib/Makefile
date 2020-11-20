@@ -35,7 +35,7 @@ BFLAGS		+= -lib-dir $(LIB)
 # C flags
 CFLAGS		= -I$(BGL_INC_DIR) -I. -I$(BOOTLIBDIR) $(CPICFLAGS) $(GCINCLUDE)
 # Bigloo flags
-BDBFLAGS	= $(BFLAGS) -farithmetic -init-lib
+BDBFLAGS	= $(BFLAGS) -farithmetic -init-lib -g -cg
 
 #*---------------------------------------------------------------------*/
 #*    Scheme extended objects                                          */
@@ -43,7 +43,7 @@ BDBFLAGS	= $(BFLAGS) -farithmetic -init-lib
 _BGL_OBJECTS	= bdb env
 
 _C_OBJECTS	= stat table
-_JAVA_CLASSES	= 
+_JAVA_CLASSES	=
 
 _OBJECTS	= $(_C_OBJECTS) $(_BGL_OBJECTS)
 OBJECTS		= $(_OBJECTS:%=objs/%.o)
@@ -53,12 +53,12 @@ JAVA_CLASSES	= $(_JAVA_CLASSES:%=$(CLASS_DIR)/%.class)
 JAVA_CLASSES_SRC= $(_JAVA_CLASSES:%=$(CLASS_DIR)/%.java)
 CLASSES		= $(_BGL_CLASSES) $(JAVA_CLASSES)
 
-_BGL_SOURCES	= $(_BGL_OBJECTS:%=%.scm) 
-_C_SOURCES	= $(_C_OBJECTS:%=%.c) 
-_JAVA_SOURCES	= $(_JAVA_CLASSES:%=%.java) 
+_BGL_SOURCES	= $(_BGL_OBJECTS:%=%.scm)
+_C_SOURCES	= $(_C_OBJECTS:%=%.c)
+_JAVA_SOURCES	= $(_JAVA_CLASSES:%=%.java)
 
 SOURCES		= $(_BGL_SOURCES) $(_C_SOURCES) $(_JAVA_SOURCES)
-INCLUDES	= 
+INCLUDES	=
 
 #*---------------------------------------------------------------------*/
 #*    Sources                                                          */
@@ -145,7 +145,7 @@ $(LIB)/lib$(LIBNAME)_s-$(RELEASE).a: .afile $(OBJECTS)
 #*--- lib-jvm ---------------------------------------------------------*/
 lib-jvm: $(TAGS) $(CLASS_DIR) lib.zip
 
-$(CLASS_DIR): 
+$(CLASS_DIR):
 	mkdir -p $(CLASS_DIR)
 
 lib.zip: .afile .jfile $(BGL_CLASSES) $(JAVA_CLASSES_SRC) dojavac
@@ -157,7 +157,7 @@ lib.zip: .afile .jfile $(BGL_CLASSES) $(JAVA_CLASSES_SRC) dojavac
 	@ echo "$(LIB)/lib$(TARGETNAME)_s.zip done..."
 	@ echo "-------------------------------"
 
-dojavac: 
+dojavac:
 	if [ "$(JAVA_CLASSES_SRC) " != " " ]; then \
 	   echo $(JAVA_CLASSES_SRC); \
 	   (CLASSPATH=$(LIB)/bigloo.zip:$$CLASSPATH; export CLASSPATH; \
@@ -173,10 +173,10 @@ ude:
 	@ $(MAKE) -f Makefile .afile .etags .jfile
 
 .afile: $(SOURCES)
-	@ $(BGLAFILE) -o .afile $(_BGL_SOURCES) 
+	@ $(BGLAFILE) -o .afile $(_BGL_SOURCES)
 
 .jfile: $(SOURCES)
-	@ $(BGLJFILE) -o .jfile -pbase $(PBASE) $(SOURCES) 
+	@ $(BGLJFILE) -o .jfile -pbase $(PBASE) $(SOURCES)
 
 .etags: $(SOURCES)
 	@ $(BGLTAGS) -o .etags $(_BGL_SOURCES)
