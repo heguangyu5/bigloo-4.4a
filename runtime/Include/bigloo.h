@@ -7,7 +7,7 @@
 /*    -------------------------------------------------------------    */
 /*    Bigloo's stuff                                                   */
 /*=====================================================================*/
-#ifndef BIGLOO_H 
+#ifndef BIGLOO_H
 #define BIGLOO_H
 
 /*---------------------------------------------------------------------*/
@@ -33,7 +33,7 @@ extern "C" {
 #  define BGL_EXPORTED_DECL extern
 #endif
 #if( !defined( BGL_EXPORTED_DEF ) )
-#  define BGL_EXPORTED_DEF 
+#  define BGL_EXPORTED_DEF
 #endif
 #if( !defined( BGL_RUNTIME_DECL ) )
 #  define BGL_RUNTIME_DECL extern
@@ -67,7 +67,7 @@ extern "C" {
 #else
 #  include <winsock2.h>
 #  include <mswsock.h>
-#  include <ws2tcpip.h>   
+#  include <ws2tcpip.h>
 #endif
 
 /*---------------------------------------------------------------------*/
@@ -89,7 +89,7 @@ extern "C" {
 /*    compiler and the blib library.                                   */
 /*---------------------------------------------------------------------*/
 #define BDB_LIBRARY_MAGIC_NUMBER (0x1024)
-       
+
 /*---------------------------------------------------------------------*/
 /*    BIGLOO_EXIT                                                      */
 /*---------------------------------------------------------------------*/
@@ -105,7 +105,7 @@ extern "C" {
 /*---------------------------------------------------------------------*/
 /*    constant alignment                                               */
 /*---------------------------------------------------------------------*/
-#define __CNST_ALIGN double _;   
+#define __CNST_ALIGN double _;
 #define __CNST_FILLER 0.0,
 
 /*---------------------------------------------------------------------*/
@@ -219,7 +219,7 @@ extern "C" {
 #  define BGL_CNST_TO_BCNST( o, mask, header, shift, type )	\
      ((obj_t)(header + ((unsigned long)((type)(o)) << shift)))
 #  define BGL_BCNST_TO_CNST( o, mask, shift, type ) \
-     ((type)CCNST_MASK((unsigned long)(o) >> shift))  
+     ((type)CCNST_MASK((unsigned long)(o) >> shift))
 #endif  /* BGL_NAN_TAGGING */
 
 #define BGL_CNST_SHIFT_CHAR 8
@@ -246,13 +246,13 @@ extern "C" {
 #  define TAG_NANOBJECT (0xffffUL<<48)/*  Object tagging    111...1110 */
 #  define TAG_STRING (0xfff9UL<<48)   /*  Object tagging    111...1000 */
 #  define TAG_SYMBOL (0xfffaUL<<48)   /*  Symbol tagging    111...1001 */
-#elif( BGL_GC == BGL_SAW_GC )    
+#elif( BGL_GC == BGL_SAW_GC )
 #  define TAG_QNAN 0
 #  define TAG_INT 0                   /*  Integers tagging      ....00 */
 #  define TAG_STRUCT 1                /*  Pointers tagging      ....01 */
 #  define TAG_YOUNG 2                 /*  Pointers tagging      ....10 */
 #  define TAG_CNST 3                  /*  Constants tagging     ....11 */
-#elif( BGL_GC == BGL_BOEHM_GC ) 
+#elif( BGL_GC == BGL_BOEHM_GC )
 #  define TAG_QNAN 0
 #  define TAG_INT 0                   /*  Integers tagging      ....00 */
 #  define TAG_STRUCT 1                /*  Pointers tagging      ....01 */
@@ -309,7 +309,7 @@ error "Unknown garbage collector type"
 /*    +--------+--------+--------+--------+                            */
 /*      ?: the three least significant bit are ignored                 */
 /*      s: 16 bit size                                                 */
-/*      t: 12 bit type                                                 */   
+/*      t: 12 bit type                                                 */
 /*---------------------------------------------------------------------*/
 #define HEADER_SHIFT 3
 #define SIZE_MASK ((1 << HEADER_SIZE_BIT_SIZE) - 1)
@@ -324,7 +324,7 @@ error "Unknown garbage collector type"
 #define HEADER_SIZE( _h ) (((_h) >> HEADER_SHIFT) & SIZE_MASK)
 
 #define TYPE( _o ) HEADER_TYPE( CREF( _o )->header )
-       
+
 #define OBJ_SIZE ((long)(sizeof( obj_t )))
 
 #if( TAG_YOUNG )
@@ -351,7 +351,7 @@ error "Unknown garbage collector type"
 #define PAIR_TYPE 1
 #if( !defined( TAG_STRING ) )
 #  define STRING_TYPE 2
-#endif   
+#endif
 #define VECTOR_TYPE 3
 #define PROCEDURE_TYPE 4
 #define UCS2_STRING_TYPE 5
@@ -360,19 +360,19 @@ error "Unknown garbage collector type"
 #define KEYWORD_TYPE 8
 #if( !defined( TAG_SYMBOL ) )
 #  define SYMBOL_TYPE 9
-#endif       
+#endif
 #define STACK_TYPE 10
 #define INPUT_PORT_TYPE 11
 #define OUTPUT_PORT_TYPE 12
 #define DATE_TYPE 13
 #if( !defined( TAG_CELL ) )
 #  define CELL_TYPE 14
-#endif   
+#endif
 #define SOCKET_TYPE 15
 #define STRUCT_TYPE 16
 #if( !defined( TAG_REAL ) && !BGL_NAN_TAGGING )
 #  define REAL_TYPE 17
-#endif   
+#endif
 #define PROCESS_TYPE 18
 #define FOREIGN_TYPE 19
 #define OUTPUT_STRING_PORT_TYPE 20
@@ -410,7 +410,7 @@ error "Unknown garbage collector type"
 #define INT64_TYPE 50
 #define UINT64_TYPE 51
 #define SEMAPHORE_TYPE 52
-       
+
 /* OBJECT must be the last defined type because new classes   */
 /* will be allocated TYPE number starting at OBJECT_TYPE + 1. */
 #define OBJECT_TYPE 100
@@ -441,9 +441,10 @@ typedef union scmobj *obj_t;
 #include <bigloo_cell.h>
 #include <bigloo_object.h>
 #include <bigloo_exit.h>
+#include <bigloo_bdb.h>
 
 /* stream (input and output) */
-typedef union bgl_stream {                    
+typedef union bgl_stream {
    void *channel;
    FILE *file;
    int fd;
@@ -454,8 +455,8 @@ typedef union bgl_stream {
 #define BGL_STREAM_TYPE_CHANNEL 3
 
 /* debug traces */
-struct bgl_dframe {              
-   obj_t name;                 
+struct bgl_dframe {
+   obj_t name;
    obj_t location;
    struct bgl_dframe *link;
 };
@@ -464,19 +465,19 @@ struct bgl_dframe {
 union scmobj {
    /* integer */
    long integer;
-   
+
    /* common header, repeated for every type allocated object */
    header_t header;
-   
+
    /* pairs */
    struct bgl_pair pair;
    struct bgl_epair epair;
-   
+
    /* strings */
    struct bgl_string string;
 
    /* ucs2/utf16 strings */
-   struct bgl_ucs2_string ucs2_string; 
+   struct bgl_ucs2_string ucs2_string;
 
    /* vectors */
    struct bgl_vector vector;
@@ -485,7 +486,7 @@ union scmobj {
 
    /* procedure (closures) */
    struct procedure {
-      header_t header;    
+      header_t header;
       union scmobj *(*entry)();
       union scmobj *(*va_entry)();
       union scmobj *attr;
@@ -503,7 +504,7 @@ union scmobj {
    struct symbol {
 #if( !defined( TAG_SYMBOL ) )
       header_t header;
-#endif      
+#endif
       union scmobj *string;
       union scmobj *cval;
    } symbol;
@@ -513,11 +514,11 @@ union scmobj {
       union scmobj *string;
       union scmobj *cval;
    } keyword;
-   
+
    /* common ports structure (output, input, procedure, gzip) */
    struct port {
       header_t header;
-      /* kindof = console | file | pipe | string */ 
+      /* kindof = console | file | pipe | string */
       union scmobj *kindof;
       /* port name */
       union scmobj *name;
@@ -602,7 +603,7 @@ union scmobj {
       /* offset */
       long offset;
    } input_string_port;
-	 
+
    /* procedure input ports */
    struct input_procedure_port {
       /* common port */
@@ -614,7 +615,7 @@ union scmobj {
       /* the procedure */
       union scmobj *proc;
    } input_procedure_port;
-   
+
    /* gzipped input ports */
    struct input_gzip_port {
       /* common port */
@@ -633,8 +634,8 @@ union scmobj {
       /* type 0=input, 1=output, 2=close */
       int io;
    } binary_port;
-   
-   /* cells (compiler and user values) */	
+
+   /* cells (compiler and user values) */
    struct bgl_cell cell;
 
    /* structures */
@@ -643,7 +644,7 @@ union scmobj {
    /* floating point numbers */
 #if( !BGL_NAN_TAGGING )
    struct bgl_real real;
-#endif   
+#endif
 
    /* call/cc stack */
    struct stack {
@@ -665,14 +666,14 @@ union scmobj {
       /* heap allocated copy of the stack */
       void *stack;
    } stack;
-   
+
    /* boxed foreign values */
    struct foreign {
-      header_t header;    
+      header_t header;
       union scmobj *id;
       void *cobj;
    } foreign;
-   
+
    /* exact longs (i.e., boxed C longs) */
    struct elong {
       header_t header;
@@ -691,31 +692,31 @@ union scmobj {
       header_t header;
       int32_t val;
    } sint32;
-      
+
    /* uint32 */
    struct bgl_uint32 {
       header_t header;
       uint32_t val;
    } uint32;
 #endif
-   
+
    /* sint64 */
    struct bgl_sint64 {
       header_t header;
       int64_t val;
    } sint64;
-      
+
    /* uint64 */
    struct bgl_uint64 {
       header_t header;
       uint64_t val;
    } uint64;
-   
+
    /* arbitrary precision integers */
    struct bgl_bignum bignum;
 
    /* processes */
-   struct process { 
+   struct process {
       header_t header;
       /* OS pid */
       int pid;
@@ -762,7 +763,7 @@ union scmobj {
       /* the server accept procedure */
       union scmobj *(*accept)();
       /* user data */
-      void *userdata; 
+      void *userdata;
    } socket;
 
    /* UDP sockets */
@@ -900,13 +901,13 @@ union scmobj {
 #if !BGL_HAVE_MMAP
       /* alternate file descriptor */
       int afd;
-      /* alternate read position */ 
+      /* alternate read position */
       long ar;
-      /* alternate write position */ 
+      /* alternate write position */
       long aw;
 #endif
    } mmap;
-   
+
    /* weak pointers */
    struct bgl_weakptr {
       header_t header;
@@ -995,9 +996,9 @@ union scmobj {
       /* thread backend */
       union scmobj *thread_backend;
       /* saw specific */
-#if( BGL_SAW == 1 ) 
+#if( BGL_SAW == 1 )
       bgl_saw_frame_header_t *saw_sp;
-#endif      
+#endif
       /* user per thread data */
       union scmobj *user_data;
    } dynamic_env;
@@ -1012,7 +1013,7 @@ typedef obj_t (*function_t)();
 /*---------------------------------------------------------------------*/
 /*    The garbage collector                                            */
 /*---------------------------------------------------------------------*/
-#include <bigloo_gc.h>       
+#include <bigloo_gc.h>
 
 /*---------------------------------------------------------------------*/
 /*    Constants                                                        */
@@ -1056,10 +1057,10 @@ typedef obj_t (*function_t)();
 /* practically NIL and UNSPEC are the only two ODD constants.       */
 #define BNIL BCNST( 1L )
 #define BUNSPEC BCNST( 3L )
-   
+
 #define BFALSE BCNST( 2L )
 #define BTRUE BCNST( 4L )
-   
+
 #define BCHARH ((unsigned long)BCNST( 6L ))
 #define BUCS2H ((unsigned long)BCNST( 8L ))
 
@@ -1097,7 +1098,7 @@ typedef obj_t (*function_t)();
 #define BBOOL( i ) (i ? BTRUE : BFALSE)
 #define CBOOL( o ) (o != BFALSE)
 
-#define NOT( o ) (!o)   
+#define NOT( o ) (!o)
 
 #define TRUEP( c ) ((bool_t)(c != BFALSE))
 
@@ -1155,7 +1156,7 @@ typedef obj_t (*function_t)();
 #define PROCEDURE_SIZE (sizeof( struct procedure ))
 
 #define PROCEDURE( o ) CREF( o )->procedure
-   
+
 #define PROCEDURE_ENTRY( fun ) (obj_t)(PROCEDURE( fun ).entry)
 #define PROCEDURE_VA_ENTRY( fun ) (obj_t)(PROCEDURE( fun ).va_entry)
 
@@ -1164,7 +1165,7 @@ typedef obj_t (*function_t)();
 
 #define PROCEDURE_ARITY( fun ) (PROCEDURE( fun ).arity)
 #define PROCEDURE_LENGTH( fun ) (HEADER_SIZE( CREF( fun )->header ))
-   
+
 #define PROCEDURE_ATTR( fun ) (PROCEDURE( fun ).attr)
 #define PROCEDURE_ATTR_SET( fun, _v ) (BASSIGN( PROCEDURE( fun ).attr, (_v), fun ), (_v))
 
@@ -1172,12 +1173,12 @@ typedef obj_t (*function_t)();
    ( PROCEDURE_ARITY( fun ) < 0 )
 #define OPT_PROCEDUREP( fun ) \
    ( PROCEDURE_ATTR( fun ) == BFALSE )
-   
+
 #define PROCEDURE_CORRECT_ARITYP( fun, num )           \
         ( (PROCEDURE_ARITY( fun ) == num) ||           \
 	  (VA_PROCEDUREP( fun ) &&                     \
 	   ((-num - 1) <= (PROCEDURE_ARITY( fun )))) )
-		  
+
 #define PROCEDURE_ENV( p ) (&(PROCEDURE( p ).obj0))
 
 #define PROCEDURE_REF( p, i )    (PROCEDURE_ENV( p ))[ i ]
@@ -1194,10 +1195,10 @@ typedef obj_t (*function_t)();
 
 #define BGL_PROCEDURE_BYTE_SIZE( size ) \
    (PROCEDURE_SIZE + ((size-1) * OBJ_SIZE))
-	 
+
 #define BGL_ALLOC_STACK_FX_PROCEDURE( size ) \
    char[ PROCEDURE_SIZE + ((size-1) * OBJ_SIZE) ]
-	 
+
 /*---------------------------------------------------------------------*/
 /*    Light procedures                                                 */
 /*---------------------------------------------------------------------*/
@@ -1206,7 +1207,7 @@ typedef obj_t (*function_t)();
                    union scmobj *(*entry)(); } \
       na = { __CNST_FILLER (obj_t (*)())e }; \
       static const obj_t n = BLIGHT( &(na.entry) )
-   
+
 #define BLIGHT( l ) BPAIR( l )
 #define CLIGHT( l ) CPAIR( l )
 
@@ -1294,14 +1295,14 @@ typedef obj_t (*function_t)();
 #  define SYMBOLP( c ) ((c && ((((long)c)&TAG_MASK) == TAG_SYMBOL)))
 #  define BSYMBOL( p ) ((obj_t)((long)p + TAG_SYMBOL))
 #  define CSYMBOL( p ) ((obj_t)((long)p - TAG_SYMBOL))
-#else   
+#else
 #  define SYMBOLP( o ) (POINTERP( o ) && (TYPE( o ) == SYMBOL_TYPE))
 #  define BSYMBOL( p ) BREF( p )
 #  define CSYMBOL( p ) CREF( p )
-#endif   
+#endif
 
 #define SYMBOL( o ) (CSYMBOL( o )->symbol)
-   
+
 #define SYMBOL_SIZE (sizeof( struct symbol ))
 
 #define SYMBOL_TO_STRING( o ) \
@@ -1317,7 +1318,7 @@ typedef obj_t (*function_t)();
 #define KEYWORDP( o ) (POINTERP( o ) && (TYPE( o ) == KEYWORD_TYPE))
 
 #define KEYWORD( o ) (CREF( o )->keyword)
-   
+
 #define KEYWORD_SIZE (sizeof( struct keyword ))
 
 #define KEYWORD_TO_STRING( o ) KEYWORD( o ).string
@@ -1339,10 +1340,10 @@ typedef obj_t (*function_t)();
 /*    Ports                                                            */
 /*---------------------------------------------------------------------*/
 #define PORT( o ) CREF( o )->port
-   
+
 #define PORT_CHOOK( o ) (PORT( o ).chook)
 #define PORT_CHOOK_SET( o, v ) BASSIGN( PORT( o ).chook, (v), o )
-   
+
 #define PORT_FILE( o ) (PORT( o ).stream.file)
 #define PORT_FD( o ) (PORT( o ).stream.fd)
 #define PORT_CHANNEL( o ) (PORT( o ).stream.channel)
@@ -1359,10 +1360,10 @@ typedef obj_t (*function_t)();
 
 #define BGL_OUTPUT_STRING_PORTP( o ) \
    (OUTPUT_PORTP( o ) && (PORT( o ).kindof == KINDOF_STRING))
-   
+
 #define BGL_OUTPUT_PROCEDURE_PORTP( o ) \
    (OUTPUT_PORTP( o ) && (PORT( o ).kindof == KINDOF_PROCEDURE))
-   
+
 #define OUTPUT_PORT_TO_FILE( o ) \
    (PORT_FILE( o ))
 
@@ -1374,22 +1375,22 @@ typedef obj_t (*function_t)();
 
 #define BGL_OUTPUT_PORT_CNT( _p ) \
    (OUTPUT_PORT( _p ).end - OUTPUT_PORT( _p ).ptr)
-   
+
 #define BGL_OUTPUT_PORT_FILEPOS( _p ) \
    (bgl_output_port_filepos( _p ))
-   
+
 #define BGL_OUTPUT_PORT_FILEPOS_SET( _p, _i ) \
    (bgl_output_port_seek( _p, _i ))
 
 #define BGL_OUTPUT_PORT_FHOOK( o ) (OUTPUT_PORT( o ).fhook)
 #define BGL_OUTPUT_PORT_FHOOK_SET( o, v ) BASSIGN( OUTPUT_PORT( o ).fhook, v, o )
-   
+
 #define BGL_OUTPUT_PORT_FLUSHBUF( o ) (OUTPUT_PORT( o ).flushbuf)
 #define BGL_OUTPUT_PORT_FLUSHBUF_SET( o, v ) BASSIGN( OUTPUT_PORT( o ).flushbuf, v, o )
-   
+
 #define BGL_OUTPUT_PORT_BUFFER( o ) \
    (OUTPUT_PORT( o ).buf)
-   
+
 /* output ports buffering mode */
 #define BGL_IONB  0 /* unubuffered */
 #define BGL_IOLBF 1 /* line buffered */
@@ -1437,7 +1438,7 @@ typedef obj_t (*function_t)();
 
 #define PORT_IS_OS( o ) (PORT( o ).kindof < KINDOF_VIRTUAL)
 #define PORT_IS_VIRTUAL( o ) (PORT( o ).kindof > KINDOF_VIRTUAL)
-   
+
 #define INPUT_PORT_SIZE (sizeof( struct input_port ))
 #define INPUT_PROCEDURE_PORT_SIZE (sizeof( struct input_procedure_port ))
 #define INPUT_GZIP_PORT_SIZE (sizeof( struct input_gzip_port ))
@@ -1474,7 +1475,7 @@ typedef obj_t (*function_t)();
 #define INPUT_PORT_ON_SOCKETP( o ) (PORT( o ).kindof == KINDOF_SOCKET)
 
 #define BGL_INPUT_GZIP_PORT_INPUT_PORT( o ) ((obj_t)(INPUT_GZIP_PORT( o ).gzip))
-   
+
 #define INPUT_PORT_FILLBARRIER( o ) \
    (INPUT_PORT( o ).fillbarrier)
 #define INPUT_PORT_FILLBARRIER_SET( o, v ) \
@@ -1488,7 +1489,7 @@ typedef obj_t (*function_t)();
 
 #define BGL_INPUT_PORT_BUFFER( o ) \
    (INPUT_PORT( o ).buf)
-   
+
 #define BGL_INPUT_PORT_BUFSIZ( o ) \
    (STRING_LENGTH( BGL_INPUT_PORT_BUFFER( o ) ))
 
@@ -1500,10 +1501,10 @@ typedef obj_t (*function_t)();
 
 #define BGL_INPUT_PORT_USEEK( o ) \
    INPUT_PORT( o ).userseek
-   
+
 #define BGL_INPUT_PORT_USEEK_SET( o, p ) \
    BASSIGN( INPUT_PORT( o ).userseek, p, o )
-   
+
 /*---------------------------------------------------------------------*/
 /*    Binary ports                                                     */
 /*---------------------------------------------------------------------*/
@@ -1520,7 +1521,7 @@ typedef obj_t (*function_t)();
 #define BINARY_PORT_INP( p ) (BINARY_PORT( o ).io == BINARY_PORT_IN)
 
 #define BINARY_PORT_TO_FILE( p ) (BINARY_PORT( p ).file)
-   
+
 #define BGL_OUTPUT_CHAR( p, c ) \
    (fputc( (c), BINARY_PORT( (p) ).file ), BUNSPEC)
 
@@ -1537,17 +1538,17 @@ typedef obj_t (*function_t)();
 #define BGL_MMAPP( o ) (POINTERP( o ) && (TYPE( o ) == MMAP_TYPE))
 
 #define BGL_MMAP_TO_STRING( s ) ((char *)(BGL_MMAP( s ).map))
-   
+
 #define BGL_MMAP_LENGTH( s ) BGL_MMAP( s ).length
 #define BGL_MMAP_NAME( s ) BGL_MMAP( s ).name
 
 #define BGL_MMAP_RP_GET( s ) (BGL_MMAP( s ).rp)
 #define BGL_MMAP_RP_SET( s, p ) (BGL_MMAP_RP_GET( s ) = p)
-   
+
 #define BGL_MMAP_WP_GET( s ) (BGL_MMAP( s ).wp)
 #define BGL_MMAP_WP_SET( s, p ) (BGL_MMAP_WP_GET( s ) = p)
-   
-#if HAVE_MMAP   
+
+#if HAVE_MMAP
 #  define BGL_MMAP_REF( s, i ) (BGL_MMAP( s ).map[ i ])
 #  define BGL_MMAP_SET( s, i, c ) (BGL_MMAP_REF( s, i ) = c, BUNSPEC)
 #else
@@ -1590,7 +1591,7 @@ BGL_RUNTIME_DECL void weakptr_data_set( obj_t , obj_t  );
 #define SOCKET_HOSTIP( o ) (SOCKET( o ).hostip)
 #define SOCKET_PORT( o ) (SOCKET( o ).portnum)
 #define SOCKET_DOWNP( o ) (SOCKET( o ).fd == -1)
-   
+
 #define SOCKET_INPUT( o ) \
    (INPUT_PORTP( SOCKET( o ).input) ? \
     (SOCKET( o ).input) \
@@ -1605,7 +1606,7 @@ BGL_RUNTIME_DECL void weakptr_data_set( obj_t , obj_t  );
 			"socket-output", \
 			"socket servers have no port", \
 			o ))
-   
+
 #define BGL_SOCKET_SERVER 22
 #define BGL_SOCKET_CLIENT 23
 #define BGL_SOCKET_UNIX 24
@@ -1639,7 +1640,7 @@ BGL_RUNTIME_DECL void weakptr_data_set( obj_t , obj_t  );
 #define BGL_DATAGRAM_SOCKET_CLIENTP( o ) \
    (BGL_DATAGRAM_SOCKETP( o ) \
     && (BGL_DATAGRAM_SOCKET( o ).stype >= BGL_SOCKET_CLIENT))
-   
+
 /*---------------------------------------------------------------------*/
 /*    Regexp ...                                                       */
 /*---------------------------------------------------------------------*/
@@ -1647,7 +1648,7 @@ BGL_RUNTIME_DECL void weakptr_data_set( obj_t , obj_t  );
    (POINTERP( o ) && (TYPE( o ) == REGEXP_TYPE))
 #define BGL_REGEXP_SIZE (sizeof( struct bgl_regexp ))
 #define BGL_REGEXP( o ) (CREF( o )->regexp)
-#define BGL_REGEXP_PREG( o ) (BGL_REGEXP( o ).preg)   
+#define BGL_REGEXP_PREG( o ) (BGL_REGEXP( o ).preg)
 #define BGL_REGEXP_PREG_SET( o, v ) (BGL_REGEXP_PREG( o ) = (v))
 #define BGL_REGEXP_PAT( o ) (BGL_REGEXP( o ).pat)
 #define BGL_REGEXP_CAPTURE_COUNT( o ) (BGL_REGEXP( o ).capturecount)
@@ -1658,16 +1659,16 @@ BGL_RUNTIME_DECL void weakptr_data_set( obj_t , obj_t  );
    BGL_REGEXP( o ).match_n( o, string, vres, beg, len )
 #define BGL_REGEXP_FREE( o ) \
    BGL_REGEXP( o ).free( o )
-   
+
 /*---------------------------------------------------------------------*/
 /*    opaque                                                           */
 /*---------------------------------------------------------------------*/
 #define OPAQUEP( o ) (POINTERP( o ) && (TYPE( o ) == OPAQUE_TYPE))
 #define BGL_OPAQUE( f ) CREF( f )
-		 
+
 BGL_RUNTIME_DECL header_t bgl_opaque_nil;
 #define BGL_OPAQUE_NIL() BREF( &bgl_opaque_nil )
-   
+
 /*---------------------------------------------------------------------*/
 /*    Custom management                                                */
 /*---------------------------------------------------------------------*/
@@ -1704,7 +1705,7 @@ BGL_RUNTIME_DECL header_t bgl_opaque_nil;
 #else
 #  define BGL_DATE_TIMEZONE( f ) (BGL_DATE( f ).timezone)
 #endif
-   
+
 #define BGL_DATE_ISGMT( f ) (HEADER_SIZE( CREF( f )->header) > 0)
 
 #define BGL_DATE_ISDST( f ) (BGL_DATE( f ).tm.tm_isdst)
@@ -1727,7 +1728,7 @@ BGL_RUNTIME_DECL header_t bgl_opaque_nil;
 /*    Mutexes and condition variables                                  */
 /*---------------------------------------------------------------------*/
 #define BGL_MUTEXP( o ) (POINTERP( o ) && (TYPE( o ) == MUTEX_TYPE))
-   
+
 #define BGL_MUTEX( o )  (CREF( o )->mutex)
 #define BGL_MUTEX_SIZE (sizeof( struct bgl_mutex ))
 
@@ -1742,41 +1743,41 @@ BGL_RUNTIME_DECL header_t bgl_opaque_nil;
 
 #define BGL_MUTEX_UNLOCK( o ) \
    (BGL_MUTEX( o ).sysunlock( BGL_MUTEX_SYSMUTEX( o ) ))
-   
+
 #define BGL_MUTEX_LOCK_PRELOCK( o, l ) \
    (BGL_MUTEX( o ).syslockprelock( BGL_MUTEX_SYSMUTEX( o ), l ))
 
 #define BGL_MUTEX_STATE( o ) \
    (BGL_MUTEX( o ).sysstate( BGL_MUTEX_SYSMUTEX( o ) ))
-   
+
 #define BGL_MUTEX_NAME( o ) BGL_MUTEX( o ).name
 
 #define BGL_MUTEX_BACKEND( o ) BGL_MUTEX( o ).backend
 
-#if( defined( BGL_INLINE_MUTEX ) )   
+#if( defined( BGL_INLINE_MUTEX ) )
 #  define BGL_MUTEX_SYSMUTEX( o ) &(BGL_MUTEX( o ).sysmutex)
 #else
 #  define BGL_MUTEX_SYSMUTEX( o ) BGL_MUTEX( o ).sysmutex
 #endif
-   
+
 #define BGL_CONDVARP( o ) (POINTERP( o ) && (TYPE( o ) == CONDVAR_TYPE))
 #define BGL_CONDVAR( o ) (CREF( o )->condvar)
 #define BGL_CONDVAR_SIZE (sizeof( struct bgl_condvar ))
 
 #define BGL_CONDVAR_NAME( o ) (BGL_CONDVAR( o ).name)
-   
+
 #define BGL_CONDVAR_WAIT( o, cv ) (BGL_CONDVAR( o ).syswait( o, cv ))
 #define BGL_CONDVAR_TIMED_WAIT( o, cv, to ) (BGL_CONDVAR( o ).systimedwait( o, cv, to ))
 #define BGL_CONDVAR_BROADCAST( o ) (BGL_CONDVAR( o ).sysbroadcast( o ))
 #define BGL_CONDVAR_SIGNAL( o ) (BGL_CONDVAR( o ).syssignal( o ))
-   
+
 /*---------------------------------------------------------------------*/
 /*    Foreign management                                               */
 /*---------------------------------------------------------------------*/
 #define FOREIGNP( o ) (POINTERP( o ) && (TYPE( o ) == FOREIGN_TYPE))
 
 #define FOREIGN_TYPE_NAME( o ) "_"
-   
+
 #define FOREIGN_SIZE (sizeof( struct foreign ))
 #define FOREIGN( f ) CREF( f )->foreign
 
@@ -1786,7 +1787,7 @@ BGL_RUNTIME_DECL header_t bgl_opaque_nil;
 #define FOREIGN_EQP( o1,o2 ) \
   ((bool_t)(FOREIGN_TO_COBJ( o1 ) == (FOREIGN_TO_COBJ( o2 ))))
 #define FOREIGN_PTR_NULL( _p ) (_p == 0)
-   
+
 #define FOREIGN_ID( f ) FOREIGN( f ).id
 
 #define C_STRUCT_REF( o, type, slot )             \
@@ -1866,88 +1867,88 @@ BGL_RUNTIME_DECL obj_t (*bgl_multithread_dynamic_denv)();
 #if( BGL_HAS_THREAD_LOCALSTORAGE )
 #  define BGL_CURRENT_DYNAMIC_ENV() \
      single_thread_denv
-#else   
+#else
 #  define BGL_CURRENT_DYNAMIC_ENV() \
      (single_thread_denv ? single_thread_denv : bgl_multithread_dynamic_denv())
-#endif   
+#endif
 
 /* The set of macros for accessing dynamic environments */
 #define BGL_ENV_USER_DATA( env ) \
    (BGL_DYNAMIC_ENV( env ).user_data)
 #define BGL_ENV_USER_DATA_SET( env, _l ) \
    (BGL_DYNAMIC_ENV( env ).user_data = (_l))
-   
+
 #define BGL_ENV_THREAD_BACKEND( env ) \
    (BGL_DYNAMIC_ENV( env ).thread_backend)
 #define BGL_ENV_THREAD_BACKEND_SET( env, _l ) \
    (BGL_DYNAMIC_ENV( env ).thread_backend = (_l))
-   
+
 #define BGL_ENV_PARAMETERS( env ) \
   (BGL_DYNAMIC_ENV( env ).parameters)
 #define BGL_ENV_PARAMETERS_SET( env, _l ) \
   (BGL_DYNAMIC_ENV( env ).parameters = (_l))
-   
+
 #define BGL_ENV_SIG_HANDLERS( env ) \
   (BGL_DYNAMIC_ENV( env ).sig_handlers)
-   
+
 #define BGL_ENV_CURRENT_OUTPUT_PORT( env ) \
    (BGL_DYNAMIC_ENV( env ).current_output_port)
 #define BGL_ENV_CURRENT_OUTPUT_PORT_SET( env, _1 ) \
    (BGL_DYNAMIC_ENV( env ).current_output_port = (_1), BUNSPEC)
-   
+
 #define BGL_ENV_CURRENT_ERROR_PORT( env ) \
    (BGL_DYNAMIC_ENV( env ).current_error_port)
 #define BGL_ENV_CURRENT_ERROR_PORT_SET( env, _1 ) \
    (BGL_DYNAMIC_ENV( env ).current_error_port = (_1), BUNSPEC)
-   
+
 #define BGL_ENV_CURRENT_INPUT_PORT( env ) \
    (BGL_DYNAMIC_ENV( env ).current_input_port)
 #define BGL_ENV_CURRENT_INPUT_PORT_SET( env, _1 ) \
    (BGL_DYNAMIC_ENV( env ).current_input_port = (_1), BUNSPEC)
-   
+
 #define BGL_ENV_STACK_BOTTOM( env ) \
    (BGL_DYNAMIC_ENV( env ).stack_bottom)
 #define BGL_ENV_STACK_BOTTOM_SET( env, _1 ) \
    (BGL_DYNAMIC_ENV( env ).stack_bottom = (_1), BUNSPEC)
-   
+
 #define BGL_ENV_EXIT_VALUE( env ) \
    (BGL_DYNAMIC_ENV( env ).exit_value)
 #define BGL_ENV_EXIT_VALUE_SET( env, _1 ) \
    (BGL_DYNAMIC_ENV( env ).exit_value = (_1), BUNSPEC)
-   
+
 #define BGL_ENV_EXIT_TRACES( env ) \
    (BGL_DYNAMIC_ENV( env ).exit_traces)
 #define BGL_ENV_EXIT_TRACES_SET( env, _1 ) \
    (BGL_DYNAMIC_ENV( env ).exit_traces = (_1), BUNSPEC)
-   
+
 #define BGL_ENV_EXITD_BOTTOM( env ) \
    (BGL_DYNAMIC_ENV( env ).exitd_bottom)
-   
+
 #define BGL_ENV_EXITD_TOP( env ) \
    (BGL_DYNAMIC_ENV( env ).exitd_top)
 #define BGL_ENV_EXITD_TOP_SET( env, _1 ) \
    (BGL_DYNAMIC_ENV( env ).exitd_top = (_1), BUNSPEC)
-   
+
 #define BGL_ENV_EXITD_VAL( env ) \
    (BGL_DYNAMIC_ENV( env ).exitd_val)
 #define BGL_ENV_EXITD_VAL_SET( env, _1 ) \
    (BGL_DYNAMIC_ENV( env ).exitd_val = (_1), BUNSPEC)
-   
+
 #define BGL_ENV_EXITD_STAMP( env ) \
    (BGL_DYNAMIC_ENV( env ).exitd_stamp = \
       BINT( 1 + CINT( BGL_DYNAMIC_ENV( env ).exitd_stamp )), \
     BGL_DYNAMIC_ENV( env ).exitd_stamp)
-   
+
 #define BGL_ENV_BEFORED_TOP( env ) \
    (BGL_DYNAMIC_ENV( env ).befored_top)
 #define BGL_ENV_BEFORED_TOP_SET( env, _1 ) \
    (BGL_DYNAMIC_ENV( env ).befored_top = (_1), BUNSPEC)
-   
+
 #define BGL_ENV_MVALUES_NUMBER( env ) \
    (BGL_DYNAMIC_ENV( env ).mvalues_number)
 #define BGL_ENV_MVALUES_NUMBER_SET( env, _1 ) \
    (BGL_DYNAMIC_ENV( env ).mvalues_number = (_1))
-   
+
 #define BGL_ENV_MVALUES_VAL( env, _1 ) \
    (BGL_DYNAMIC_ENV( env ).mvalues[ _1 ])
 #define BGL_ENV_MVALUES_VAL_SET( env, _1, _2 ) \
@@ -1957,37 +1958,37 @@ BGL_RUNTIME_DECL obj_t (*bgl_multithread_dynamic_denv)();
   (BGL_DYNAMIC_ENV( env ).error_handler)
 #define BGL_ENV_ERROR_HANDLER_SET( env, _hdl ) \
   (BGL_DYNAMIC_ENV( env ).error_handler = (_hdl))
-   
+
 #define BGL_ENV_UNCAUGHT_EXCEPTION_HANDLER_GET( env ) \
   (BGL_DYNAMIC_ENV( env ).uncaught_exception_handler)
 #define BGL_ENV_UNCAUGHT_EXCEPTION_HANDLER_SET( env, _hdl ) \
   (BGL_DYNAMIC_ENV( env ).uncaught_exception_handler = (_hdl))
-   
+
 #define BGL_ENV_ERROR_NOTIFIERS_GET( env ) \
   (BGL_DYNAMIC_ENV( env ).error_notifiers)
 #define BGL_ENV_ERROR_NOTIFIERS_SET( env , _not ) \
   (BGL_DYNAMIC_ENV( env ).error_notifiers = (_not))
-   
+
 #define BGL_ENV_INTERRUPT_NOTIFIER_GET( env ) \
   (BGL_DYNAMIC_ENV( env ).interrupt_notifier)
 #define BGL_ENV_INTERRUPT_NOTIFIER_SET( env, _hdl ) \
   (BGL_DYNAMIC_ENV( env ).interrupt_notifier = (_hdl))
-   
+
 #define BGL_ENV_DEBUG_ALIST_GET( env ) \
   (BGL_DYNAMIC_ENV( env ).debug_alist)
 #define BGL_ENV_DEBUG_ALIST_SET( env, _l ) \
   (BGL_DYNAMIC_ENV( env ).debug_alist = (_l))
-   
+
 #define BGL_ENV_LEXICAL_STACK( env ) \
   (BGL_DYNAMIC_ENV( env ).lexical_stack)
 #define BGL_ENV_LEXICAL_STACK_SET( env, _l ) \
   (BGL_DYNAMIC_ENV( env ).lexical_stack = (_l))
-   
+
 #define BGL_ENV_EVSTATE( env ) \
    (BGL_DYNAMIC_ENV( env ).evstate)
 #define BGL_ENV_EVSTATE_SET( env, _1 ) \
    (BGL_DYNAMIC_ENV( env ).evstate = (_1), BUNSPEC)
-   
+
 #define BGL_ENV_MODULE( env ) \
    (BGL_DYNAMIC_ENV( env ).module)
 #define BGL_ENV_MODULE_SET( env, _1 ) \
@@ -2013,20 +2014,20 @@ BGL_RUNTIME_DECL obj_t (*bgl_multithread_dynamic_denv)();
    BGL_ENV_PARAMETERS( BGL_CURRENT_DYNAMIC_ENV() )
 #define BGL_PARAMETERS_SET( _l ) \
    BGL_ENV_PARAMETERS_SET( BGL_CURRENT_DYNAMIC_ENV(), _l )
-   
+
 #define BGL_SIG_HANDLERS() \
    BGL_ENV_SIG_HANDLERS( BGL_CURRENT_DYNAMIC_ENV() )
-   
+
 #define BGL_THREAD_BACKEND() \
    BGL_ENV_THREAD_BACKEND( BGL_CURRENT_DYNAMIC_ENV() )
 #define BGL_THREAD_BACKEND_SET( _v ) \
    BGL_ENV_THREAD_BACKEND_SET( BGL_CURRENT_DYNAMIC_ENV(), _v )
-   
+
 #define BGL_EXIT_VALUE() \
    BGL_ENV_EXIT_VALUE( BGL_CURRENT_DYNAMIC_ENV() )
 #define BGL_EXIT_VALUE_SET( _1 ) \
    BGL_ENV_EXIT_VALUE_SET( BGL_CURRENT_DYNAMIC_ENV(), _1 )
-   
+
 #define BGL_EXITD_TOP() \
    BGL_ENV_EXITD_TOP( BGL_CURRENT_DYNAMIC_ENV() )
 #define BGL_EXITD_TOP_SET( _1 ) \
@@ -2042,20 +2043,20 @@ BGL_RUNTIME_DECL obj_t (*bgl_multithread_dynamic_denv)();
    BGL_ENV_EXITD_VAL( BGL_CURRENT_DYNAMIC_ENV() )
 #define BGL_EXITD_VAL_SET( _1 ) \
    BGL_ENV_EXITD_VAL_SET( BGL_CURRENT_DYNAMIC_ENV(), _1 )
-   
+
 #define BGL_EXITD_STAMP() \
    BGL_ENV_EXITD_STAMP( BGL_CURRENT_DYNAMIC_ENV() )
-   
+
 #define BGL_BEFORED_TOP() \
    BGL_ENV_BEFORED_TOP( BGL_CURRENT_DYNAMIC_ENV() )
 #define BGL_BEFORED_TOP_SET( _1 ) \
    BGL_ENV_BEFORED_TOP_SET( BGL_CURRENT_DYNAMIC_ENV(), _1 )
-   
+
 #define BGL_MVALUES_NUMBER() \
    BGL_ENV_MVALUES_NUMBER( BGL_CURRENT_DYNAMIC_ENV() )
 #define BGL_MVALUES_NUMBER_SET( _1 ) \
    BGL_ENV_MVALUES_NUMBER_SET( BGL_CURRENT_DYNAMIC_ENV(), _1 )
-   
+
 #define BGL_MVALUES_VAL( _1 ) \
    BGL_ENV_MVALUES_VAL( BGL_CURRENT_DYNAMIC_ENV(), _1 )
 #define BGL_MVALUES_VAL_SET( _1, _2 ) \
@@ -2065,7 +2066,7 @@ BGL_RUNTIME_DECL obj_t (*bgl_multithread_dynamic_denv)();
    BGL_ENV_ERROR_HANDLER_GET( BGL_CURRENT_DYNAMIC_ENV() )
 #define BGL_ERROR_HANDLER_SET( _hdl ) \
    BGL_ENV_ERROR_HANDLER_SET( BGL_CURRENT_DYNAMIC_ENV(), _hdl )
-   
+
 #define BGL_UNCAUGHT_EXCEPTION_HANDLER_GET() \
    BGL_ENV_UNCAUGHT_EXCEPTION_HANDLER_GET( BGL_CURRENT_DYNAMIC_ENV() )
 #define BGL_UNCAUGHT_EXCEPTION_HANDLER_SET( _hdl ) \
@@ -2075,32 +2076,32 @@ BGL_RUNTIME_DECL obj_t (*bgl_multithread_dynamic_denv)();
    BGL_ENV_ERROR_NOTIFIERS_GET( BGL_CURRENT_DYNAMIC_ENV() )
 #define BGL_ERROR_NOTIFIERS_SET( _not ) \
    BGL_ENV_ERROR_NOTIFIERS_SET( BGL_CURRENT_DYNAMIC_ENV(), _not )
-   
+
 #define BGL_INTERRUPT_NOTIFIER_GET() \
    BGL_ENV_INTERRUPT_NOTIFIER_GET( BGL_CURRENT_DYNAMIC_ENV() )
 #define BGL_INTERRUPT_NOTIFIER_SET( _hdl ) \
    BGL_ENV_INTERRUPT_NOTIFIER_SET( BGL_CURRENT_DYNAMIC_ENV(), _hdl )
-   
+
 #define BGL_DEBUG_ALIST_GET() \
    BGL_ENV_DEBUG_ALIST_GET( BGL_CURRENT_DYNAMIC_ENV() )
 #define BGL_DEBUG_ALIST_SET( _l ) \
    BGL_ENV_DEBUG_ALIST_SET( BGL_CURRENT_DYNAMIC_ENV(), _l )
-   
+
 #define BGL_LEXICAL_STACK() \
    BGL_ENV_LEXICAL_STACK( BGL_CURRENT_DYNAMIC_ENV() )
 #define BGL_LEXICAL_STACK_SET( _l ) \
    BGL_ENV_LEXICAL_STACK_SET( BGL_CURRENT_DYNAMIC_ENV(), _l )
-   
+
 #define BGL_MODULE() \
    BGL_ENV_MODULE( BGL_CURRENT_DYNAMIC_ENV() )
 #define BGL_MODULE_SET( _1 ) \
    BGL_ENV_MODULE_SET( BGL_CURRENT_DYNAMIC_ENV(), _1 )
-   
+
 #define BGL_ABASE() \
    BGL_ENV_ABASE( BGL_CURRENT_DYNAMIC_ENV() )
 #define BGL_ABASE_SET( _1 ) \
    BGL_ENV_ABASE_SET( BGL_CURRENT_DYNAMIC_ENV(), _1 )
-   
+
 /*---------------------------------------------------------------------*/
 /*    The debugging strack traces                                      */
 /*---------------------------------------------------------------------*/
@@ -2116,11 +2117,11 @@ BGL_RUNTIME_DECL obj_t (*bgl_multithread_dynamic_denv)();
    bgl_dframe.name = nm; \
    bgl_dframe.location = loc; \
    bgl_link = bgl_dframe.link = BGL_ENV_GET_TOP_OF_FRAME( env ); \
-   BGL_ENV_SET_TOP_OF_FRAME( env, &bgl_dframe );      
-   
+   BGL_ENV_SET_TOP_OF_FRAME( env, &bgl_dframe );
+
 #define BGL_ENV_PUSH_TRACE_NAME( env, name ) \
    BGL_ENV_PUSH_TRACE( env, name, BUNSPEC )
-   
+
 #define BGL_ENV_POP_TRACE( env ) \
    BGL_ENV_SET_TOP_OF_FRAME( env, bgl_link );
 
@@ -2135,7 +2136,7 @@ BGL_RUNTIME_DECL obj_t (*bgl_multithread_dynamic_denv)();
    BGL_ENV_PUSH_TRACE( bgl_denv, nm, loc )
 
 #define BGL_PUSH_TRACE_LOCATION PUSH_TRACE
-   
+
 #define BGL_POP_TRACE() \
    BGL_ENV_POP_TRACE( bgl_denv )
 
@@ -2143,7 +2144,7 @@ BGL_RUNTIME_DECL obj_t (*bgl_multithread_dynamic_denv)();
 /* See cgen/emit-cop.scm and SawC/code.scm            */
 /* MS 21apr2010: these macros cannot use a local var  */
 /* because longjmp does not restore them. Hence, the  */
-/* top_of_stack value has to be stored in the env.    */   
+/* top_of_stack value has to be stored in the env.    */
 #define BGL_ENV_STORE_TRACE( env ) \
    BGL_ENV_EXIT_TRACES_SET( env, \
      MAKE_PAIR( (obj_t)BGL_ENV_GET_TOP_OF_FRAME( env ), BGL_ENV_EXIT_TRACES( env ) ) )
@@ -2151,7 +2152,7 @@ BGL_RUNTIME_DECL obj_t (*bgl_multithread_dynamic_denv)();
 #define BGL_ENV_RESTORE_TRACE( env ) \
    BGL_ENV_SET_TOP_OF_FRAME( env, (struct bgl_dframe *)CAR( BGL_ENV_EXIT_TRACES( env ) ) ); \
    BGL_ENV_EXIT_TRACES_SET( env, CDR( BGL_ENV_EXIT_TRACES( env ) ) );
-   
+
 /* after a bind-exit, we must reset the current trace */
 /* See cgen/emit-cop.scm and SawC/code.scm            */
 #define BGL_STORE_TRACE() \
@@ -2159,16 +2160,16 @@ BGL_RUNTIME_DECL obj_t (*bgl_multithread_dynamic_denv)();
 
 #define BGL_RESTORE_TRACE() \
    BGL_ENV_RESTORE_TRACE( BGL_CURRENT_DYNAMIC_ENV() )
-   
+
 /*---------------------------------------------------------------------*/
 /*    Failures                                                         */
 /*---------------------------------------------------------------------*/
 #if BGL_HAVE_BIGLOO_ABORT
 #  define __BIGLOO_ABORT( _x ) (BINT( bigloo_abort( CINT( _x ) ) ))
-#else   
+#else
 #  define __BIGLOO_ABORT( _x ) (_x)
 #endif
-   
+
 #define FAILURE( p, m, o ) \
    exit( (bigloo_exit( __BIGLOO_ABORT( the_failure( p, m, o ) ) ), 0) )
 
@@ -2183,14 +2184,14 @@ BGL_RUNTIME_DECL obj_t (*bgl_multithread_dynamic_denv)();
 
 #define BGL_ERROR                     1
 #define BGL_LOCATION_ERROR            2
-   
+
 #define BGL_TYPE_ERROR               10
 #define BGL_TYPENAME_ERROR           11
 #define BGL_INDEX_OUT_OF_BOUND_ERROR 12
-   
-#define BGL_IO_ERROR                 20   
+
+#define BGL_IO_ERROR                 20
 #define BGL_IO_PORT_ERROR            21
-   
+
 #define BGL_IO_READ_ERROR            31
 #define BGL_IO_WRITE_ERROR           32
 #define BGL_IO_CLOSED_ERROR          33
@@ -2201,14 +2202,14 @@ BGL_RUNTIME_DECL obj_t (*bgl_multithread_dynamic_denv)();
 #define BGL_IO_SIGPIPE_ERROR         38
 #define BGL_IO_TIMEOUT_ERROR         39
 #define BGL_IO_CONNECTION_ERROR      40
-   
+
 #define BGL_PROCESS_EXCEPTION        50
-   
+
 /*---------------------------------------------------------------------*/
 /*    BGL_MKDIR                                                        */
 /*---------------------------------------------------------------------*/
 #define BGL_MKDIR( a, b ) (mkdir( a, (mode_t)b ))
-   
+
 /*---------------------------------------------------------------------*/
 /*    RGC macros                                                       */
 /*---------------------------------------------------------------------*/
@@ -2218,7 +2219,7 @@ BGL_RUNTIME_DECL obj_t (*bgl_multithread_dynamic_denv)();
 #if defined( RGC_DEBUG )
 #  include <assert.h>
 #else
-#undef assert   
+#undef assert
 #  define assert( exp ) ;
 #endif
 
@@ -2229,19 +2230,19 @@ BGL_RUNTIME_DECL obj_t (*bgl_multithread_dynamic_denv)();
 
 #define RGC_BUFFER_GET_CHAR( i, offset ) \
    ((int)(RGC_BUFFER_REF( i, offset )))
-   
+
 #define RGC_BUFFER_PEEK_CHAR( i ) \
    ((unsigned int)(RGC_BUFFER_REF( i, INPUT_PORT( i ).forward )))
-   
+
 #define RGC_BUFFER_BYTE_REF( i, offset ) \
    ((int)(RGC_BUFFER_REF( i, INPUT_PORT( i ).matchstart + offset )))
-   
+
 #define RGC_BUFFER_BYTE( i ) \
    ((int)(RGC_BUFFER_BYTE_REF( i, 0 )))
-   
+
 #define RGC_BUFFER_CHARACTER( i ) \
    ((char)(RGC_BUFFER_BYTE( i )))
-   
+
 #define RGC_SET_FILEPOS( p ) \
    (INPUT_PORT( p ).filepos += RGC_BUFFER_MATCH_LENGTH( p ))
 
@@ -2261,7 +2262,7 @@ BGL_RUNTIME_DECL obj_t (*bgl_multithread_dynamic_denv)();
 
 #define RGC_BUFFER_AVAILABLE( o ) \
    (INPUT_PORT( o ).bufpos - INPUT_PORT( o ).matchstop)
-   
+
 #define RGC_BUFFER_MATCH_LENGTH( p ) \
    (INPUT_PORT( p ).matchstop - INPUT_PORT( p ).matchstart)
 
@@ -2294,7 +2295,7 @@ BGL_RUNTIME_DECL obj_t (*bgl_multithread_dynamic_denv)();
 /*    Call/cc stuff.                                                   */
 /*---------------------------------------------------------------------*/
 #define STACK_SIZE (sizeof( struct stack ))
-   
+
 #define STACK( _o_ ) CREF( _o_ )->stack
 
 #define STACKP( _s_ ) (POINTERP( _s_ ) && (TYPE( _s_ ) == STACK_TYPE))
@@ -2334,7 +2335,7 @@ BGL_RUNTIME_DECL void bgl_init_module_debug_library( char * );
 BGL_RUNTIME_DECL void bgl_init_module_debug_import( char *, char * );
 BGL_RUNTIME_DECL void bgl_init_module_debug_object( char * );
 BGL_RUNTIME_DECL void bgl_init_module_debug_end( char * );
-   
+
 BGL_RUNTIME_DECL obj_t the_failure( obj_t, obj_t, obj_t );
 BGL_RUNTIME_DECL obj_t bgl_system_failure( int, obj_t, obj_t, obj_t );
 
@@ -2345,23 +2346,23 @@ BGL_RUNTIME_DECL obj_t bgl_init_fx_procedure( obj_t, function_t, int, int );
 BGL_RUNTIME_DECL obj_t bgl_dup_procedure( obj_t );
 
 BGL_RUNTIME_DECL obj_t bgl_time( obj_t );
-   
-BGL_RUNTIME_DECL obj_t bgl_procedure_entry_to_string( obj_t ); 
+
+BGL_RUNTIME_DECL obj_t bgl_procedure_entry_to_string( obj_t );
 BGL_RUNTIME_DECL obj_t bgl_string_to_procedure_entry( obj_t );
 
 BGL_RUNTIME_DECL obj_t make_belong( long );
 BGL_RUNTIME_DECL obj_t make_bllong( BGL_LONGLONG_T );
 
-#if( !defined( BGL_CNST_SHIFT_INT32 ) )   
+#if( !defined( BGL_CNST_SHIFT_INT32 ) )
 BGL_RUNTIME_DECL obj_t bgl_make_bint32( int32_t );
 BGL_RUNTIME_DECL obj_t bgl_make_buint32( uint32_t );
 #endif
-   
+
 BGL_RUNTIME_DECL obj_t bgl_make_bint64( int64_t );
 BGL_RUNTIME_DECL obj_t bgl_make_buint64( uint64_t );
 
 BGL_RUNTIME_DECL obj_t bgl_make_output_port( obj_t, bgl_stream_t, int, obj_t, obj_t, ssize_t (*)(), long (*)(), int (*)() );
-BGL_RUNTIME_DECL void bgl_output_port_buffer_set( obj_t, obj_t );   
+BGL_RUNTIME_DECL void bgl_output_port_buffer_set( obj_t, obj_t );
 BGL_RUNTIME_DECL obj_t bgl_close_output_port( obj_t );
 BGL_RUNTIME_DECL obj_t get_output_string( obj_t );
 BGL_RUNTIME_DECL obj_t bgl_file_to_output_port( FILE *, obj_t );
@@ -2375,12 +2376,12 @@ BGL_RUNTIME_DECL obj_t bgl_reset_output_string_port( obj_t );
 BGL_RUNTIME_DECL bool_t bgl_output_port_truncate( obj_t, long );
 BGL_RUNTIME_DECL bool_t bgl_port_isatty( obj_t );
 BGL_RUNTIME_DECL obj_t bgl_reset_output_port_error( obj_t );
-					
+
 BGL_RUNTIME_DECL obj_t ucs2_string_to_utf8_string( obj_t );
 BGL_RUNTIME_DECL obj_t make_ucs2_string( int, ucs2_t );
-   
+
 BGL_RUNTIME_DECL obj_t bgl_find_runtime_type( obj_t );
-   
+
 BGL_RUNTIME_DECL obj_t cobj_to_foreign( obj_t, void * );
 BGL_RUNTIME_DECL long obj_to_cobj( obj_t );
 BGL_RUNTIME_DECL int _bigloo_main( int, char *[], char *[], obj_t (*)(obj_t), int (*)(int, char *[], char *[]), long );
@@ -2391,34 +2392,34 @@ extern long bigloo_abort( long );
 BGL_RUNTIME_DECL obj_t string_to_symbol( char * );
 BGL_RUNTIME_DECL obj_t bstring_to_symbol( obj_t );
 BGL_RUNTIME_DECL obj_t bgl_symbol_genname( obj_t, char * );
-   
+
 BGL_RUNTIME_DECL obj_t string_to_keyword( char * );
-   
+
 BGL_RUNTIME_DECL obj_t bgl_open_input_string( obj_t, long );
 BGL_RUNTIME_DECL obj_t bgl_open_input_substring( obj_t, long, long );
 BGL_RUNTIME_DECL obj_t bgl_open_input_substring_bang( obj_t, long, long );
-   
+
 BGL_RUNTIME_DECL long bgl_file_size( char * );
 BGL_RUNTIME_DECL obj_t create_custom( long );
 
 BGL_RUNTIME_DECL void bgl_input_port_buffer_set( obj_t, obj_t );
 BGL_RUNTIME_DECL obj_t bgl_reset_output_string_port( obj_t );
-   
+
 BGL_RUNTIME_DECL obj_t bgl_display_string( obj_t, obj_t );
 BGL_RUNTIME_DECL obj_t bgl_display_substring( obj_t, long, long, obj_t );
 BGL_RUNTIME_DECL obj_t bgl_display_symbol( obj_t, obj_t );
 BGL_RUNTIME_DECL obj_t bgl_display_fixnum( obj_t, obj_t );
 BGL_RUNTIME_DECL obj_t bgl_display_char( char, obj_t );
-   
+
 BGL_RUNTIME_DECL obj_t bgl_flush_output_port( obj_t );
 BGL_RUNTIME_DECL obj_t bgl_write( obj_t, unsigned char *, size_t );
-   
+
 BGL_RUNTIME_DECL obj_t bgl_make_date( BGL_LONGLONG_T, int, int, int, int, int, int, long, bool_t, int );
-   
+
 BGL_RUNTIME_DECL obj_t bgl_make_condvar( obj_t );
 BGL_RUNTIME_DECL obj_t bgl_make_mutex( obj_t );
 BGL_RUNTIME_DECL obj_t bgl_make_spinlock( obj_t );
-   
+
 BGL_RUNTIME_DECL bool_t (*bgl_mutex_lock)( obj_t );
 BGL_RUNTIME_DECL bool_t (*bgl_mutex_timed_lock)( obj_t, long );
 BGL_RUNTIME_DECL bool_t (*bgl_mutex_unlock)( obj_t );
@@ -2432,7 +2433,7 @@ BGL_RUNTIME_DECL bool_t (*bgl_condvar_broadcast)( obj_t );
 BGL_RUNTIME_DECL obj_t bgl_open_mmap( obj_t, bool_t, bool_t );
 BGL_RUNTIME_DECL obj_t bgl_string_to_mmap( obj_t, bool_t, bool_t );
 BGL_RUNTIME_DECL obj_t bgl_close_mmap( obj_t );
-   
+
 BGL_RUNTIME_DECL obj_t bgl_make_class( obj_t, obj_t, long,
 				       obj_t, obj_t,
 				       obj_t, long,
@@ -2441,14 +2442,14 @@ BGL_RUNTIME_DECL obj_t bgl_make_class( obj_t, obj_t, long,
 				       long, obj_t );
 
 BGL_RUNTIME_DECL obj_t bgl_getgroups( void );
-   
-#if !HAVE_MMAP   
+
+#if !HAVE_MMAP
 BGL_RUNTIME_DECL unsigned char bgl_mmap_nommap_ref( obj_t, long );
 BGL_RUNTIME_DECL obj_t bgl_mmap_nommap_set( obj_t, long, unsigned char );
 #endif
 
 #define STRTOD( x ) strtod( x, 0L )
-   
+
 #if !BGL_HAVE_STRTOLL
 BGL_RUNTIME_DECL BGL_LONGLONG_T bgl_strtoll( const char *, char **, int );
 BGL_RUNTIME_DECL BGL_LONGLONG_T bgl_strtoull( const char *, char **, int );
@@ -2458,22 +2459,22 @@ BGL_RUNTIME_DECL BGL_LONGLONG_T bgl_strtoull( const char *, char **, int );
 BGL_RUNTIME_DECL void (*bgl_gc_start_blocking )( void );
 BGL_RUNTIME_DECL void (*bgl_gc_stop_blocking )( void );
 #endif
-   
+
 #if( BGL_GC_HAVE_DO_BLOCKING )
 BGL_RUNTIME_DECL void *(*bgl_gc_do_blocking )( void (*fun)(), void * );
 #endif
-   
+
 BGL_RUNTIME_DECL obj_t bgl_make_client_socket( obj_t, int, int, obj_t, obj_t );
 BGL_RUNTIME_DECL obj_t bgl_make_server_socket( obj_t, int, int, bool_t );
 BGL_RUNTIME_DECL obj_t bgl_socket_accept( obj_t, bool_t, obj_t, obj_t );
 BGL_RUNTIME_DECL long bgl_socket_accept_many( obj_t, bool_t, obj_t, obj_t, obj_t );
-   
+
 BGL_RUNTIME_DECL obj_t bgl_gethostname( void );
 BGL_RUNTIME_DECL obj_t bgl_socket_hostname( obj_t );
 BGL_RUNTIME_DECL obj_t bgl_datagram_socket_hostname( obj_t );
 BGL_RUNTIME_DECL obj_t bgl_getsockopt( obj_t, obj_t );
 BGL_RUNTIME_DECL obj_t bgl_setsockopt( obj_t, obj_t, obj_t );
-   
+
 BGL_RUNTIME_DECL void bgl_init_trace( void );
 
 BGL_RUNTIME_DECL long bgl_rgc_blit_string( obj_t, char *, long, long );

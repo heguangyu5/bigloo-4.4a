@@ -1264,6 +1264,7 @@ if [ "$bigloo_h " = " " ]; then
   bigloo_semaphore_h=lib/bigloo/$release/bigloo_semaphore.h
   bigloo_object_h=lib/bigloo/$release/bigloo_object.h
   bigloo_exit_h=lib/bigloo/$release/bigloo_exit.h
+  bigloo_bdb_h=lib/bigloo/$release/bigloo_bdb.h
 fi
 
 # The bigloo_gc.h file
@@ -3589,6 +3590,7 @@ if [ $action = "all" -o $action = "bigloo_config" ]; then
   cp runtime/Include/`basename $bigloo_semaphore_h` $bigloo_semaphore_h
   cp runtime/Include/`basename $bigloo_object_h` $bigloo_object_h
   cp runtime/Include/`basename $bigloo_exit_h` $bigloo_exit_h
+  cp runtime/Include/`basename $bigloo_bdb_h` $bigloo_bdb_h
 
   # bigloo.sh
   for p in bigloo.sh bglafile.sh bgljfile.sh bgltags.sh bgldepend.sh bglmco.sh bglrun.sh bglld.sh bglmake.sh bgljas.sh bglpp.sh bglprof.sh; do

@@ -289,7 +289,7 @@ INCLUDE_FILE	= Include/bigloo.h Include/bigloo_saw.h \
                   Include/bigloo_struct.h Include/bigloo_cell.h \
                   Include/bigloo_int.h Include/bigloo_semaphore.h \
                   Include/bigloo_object.h Include/bigloo_bignum.h \
-                  Include/bigloo_exit.h
+                  Include/bigloo_exit.h Include/bigloo_bdb.h
 
 #*---------------------------------------------------------------------*/
 #*    Object files                                                     */
