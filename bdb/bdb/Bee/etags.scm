@@ -51,7 +51,7 @@
 ;*    bigloo-symbol-etags-source-location ...                          */
 ;*---------------------------------------------------------------------*/
 (define (bigloo-symbol-etags-source-location id)
-   (let ((idents (find-bdl-regexp-ident *prgm* id)))
+   (let ((idents (find-bdl-regexp-ident *prgm* (string-append "^" id "$"))))
       (if (and (= (length idents) 1)
                (isa? (car idents) bdl-entity))
           (let ((e::bdl-entity (car idents)))
