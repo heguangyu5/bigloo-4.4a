@@ -33,19 +33,36 @@
 ;*    read-etags-file ...                                              */
 ;*---------------------------------------------------------------------*/
 (define (read-etags-file)
-    (let* ((dirs (list "." *root-directory*))
-          (afile (find-file/path *afile* dirs))
-          (etags (find-file/path *etags* dirs)))
-        (if (and (string? afile) (string? etags))
-            (set! *prgm* (read-program afile etags))
+    (let* ((afile-files (string-split (system->string "find " *root-directory* " -name " *afile*)))
+           (etags-files (string-split (system->string "find " *root-directory* " -name " *etags*))))
+        (if (and (not (null? afile-files))
+                 (not (null? etags-files)))
+            (begin
+                (call-with-append-file ".bdb-tmp-afile"
+                    (lambda (port)
+                        (display "(" port)
+                        (for-each (lambda (f)
+                                    (let* ((s     (file->string f))
+                                           (start (string-index s "("))
+                                           (end   (string-index-right s ")"))
+                                           (s     (substring s (+fx start 1) end)))
+                                        (display s port)))
+                                  afile-files)
+                        (display ")" port)))
+                (call-with-append-file ".bdb-tmp-etags"
+                    (lambda (port)
+                        (for-each (lambda (f) (send-file f port)) etags-files)))
+                (set! *prgm* (read-program ".bdb-tmp-afile" ".bdb-tmp-etags"))
+                (delete-file ".bdb-tmp-afile")
+                (delete-file ".bdb-tmp-etags"))
             (error 'read-etags-file
-                (format "Can't find ~a file in path ~a, please generate one with ~a"
-                    (if (string? afile) *etags* *afile*)
-                    dirs
-                    (if (string? afile)
-                        (format"`bgltags *.scm -o ~a`" *etags*)
-                        (format"`bglafile *.scm -o ~a`" *afile*)))
-                (if (string? afile) *etags* *afile*)))))
+                (format "Can't find ~a file in path ~a and subdirectories, please generate one with ~a"
+                    (if (null? afile-files) *afile* *etags*)
+                    *root-directory*
+                    (if (null? afile-files)
+                        (format "`bglafile *.scm -o ~a`" *afile*)
+                        (format "`bgltags *.scm -o ~a`" *etags*)))
+                (if (null? afile-files) *afile* *etags* )))))
 
 ;*---------------------------------------------------------------------*/
 ;*    bigloo-symbol-etags-source-location ...                          */
