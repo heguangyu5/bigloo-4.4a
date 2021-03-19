@@ -55,6 +55,9 @@
      extern void GC_add_roots( void *, void * );
      extern void GC_set_finalize_on_demand(int);
      extern void GC_set_max_heap_size(unsigned long);
+     extern size_t GC_get_heap_size(void);
+     extern size_t GC_get_free_bytes(void);
+     extern size_t GC_get_total_bytes(void);
      extern int  GC_collect_a_little(void);
 #    if( defined( PROFILE ) )
        extern void GC_profile_start();
