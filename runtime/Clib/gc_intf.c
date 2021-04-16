@@ -16,5 +16,5 @@
 /*---------------------------------------------------------------------*/
 GC_API void bgl_gc_init() {
    GC_INIT();
-   GC_set_finalize_on_demand( 1 );
+   GC_set_finalize_on_demand( 0 );
 }

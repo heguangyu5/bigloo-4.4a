@@ -394,7 +394,8 @@ gclibdir=
 customgclib=bigloogc
 gchaveblocking=0
 gchavedoblocking=0
-gcfinalizer=0
+gcfinalizer=1
+cgcfinalflags=
 gcparallelmark=
 
 #*--- Cross Compilation -----------------------------------------------*/
@@ -430,7 +431,6 @@ makefile_build=Makefile.buildconfig
 pwd=`pwd`
 bootdir=$pwd
 buildbindir=
-cgcfinalflags="-DFINALIZE_ON_DEMAND"
 bigloo_h=
 bigloo_gc_h=
 bigloo_static_h=
@@ -851,6 +851,7 @@ while : ; do
       cgcfinalflags=;;
 
     --finalization=no)
+      gcfinalizer=0;
       cgcfinalflags=-DFINALIZE_ON_DEMAND;;
 
     --stack-check=no)
