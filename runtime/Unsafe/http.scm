@@ -769,9 +769,9 @@
 		       "")
 		      ((or (string=? l "\r\n") (string=? l "\n"))
 		       (set! state 'eof)
-		       l)
+		       "")
 		      (else
-		       l))))
+		       ""))))
 	       ((chunk)
 		(cond
 		   ((=fx sz 0)
