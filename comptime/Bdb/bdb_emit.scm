@@ -132,7 +132,7 @@
 				 0))
 		   (bp-name  (global-name global)))
 		(fprint *c-port* "   {\"" fname "\", (char *)" lnum " },")
-		(fprint *c-port* "   {\"" id "\", 0},")
+		(fprint *c-port* "   {\"" (string-replace! (symbol->string id) #\\ #\|) "\", 0},")
 		(if (not (number? val-name))
 		    (fprint *c-port* "   {\"" val-name "\", \"" bp-name "\"},")
 		    (fprint *c-port* "   {" val-name ", \"" bp-name "\"},"))
@@ -153,8 +153,8 @@
 		   (id    (global-id global))
 		   (name  (global-name global)))
 		(fprint *c-port* "   {\"" fname "\", (char *)" lnum " },")
-		(fprint *c-port* "   {\"" id "\", \"" name "\"},"))))))
-   
+		(fprint *c-port* "   {\"" (string-replace! (symbol->string id) #\\ #\|) "\", \"" name "\"},"))))))
+
 ;*---------------------------------------------------------------------*/
 ;*    bdb-sfun! ...                                                    */
 ;*---------------------------------------------------------------------*/
